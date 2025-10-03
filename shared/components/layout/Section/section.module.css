@@ -1,0 +1,5 @@
+.section {
+  width: 100%;
+  max-width: var(--default-max-width);
+  margin: 0 auto;
+}
