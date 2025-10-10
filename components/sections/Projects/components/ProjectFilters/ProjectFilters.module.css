@@ -1,0 +1,7 @@
+.filtersBar {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-weight: 500;
+}

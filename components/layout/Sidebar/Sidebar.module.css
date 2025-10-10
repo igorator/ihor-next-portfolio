@@ -1,0 +1,134 @@
+:root {
+  /* можно перенастроить под проект */
+  --sidebar-w: 200px;
+  --sidebar-content: max(100%, 130px);
+  --sidebar-w-collapsed: 64px;
+  --gap-lg: 24px;
+  --gap-md: 16px;
+  --gap-sm: 8px;
+}
+
+/* Контейнер сайдбара */
+.sidebarNav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: var(--sidebar-w);
+  max-height: 100svh;
+  inset-inline: 0;
+  z-index: 50;
+  padding-top: var(--outer-padding);
+  padding-bottom: var(--outer-padding);
+  padding-left: var(--inner-padding);
+  padding-right: var(--inner-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  transition: max-width 0.2s ease;
+}
+
+.sidebarInner {
+  height: 100%;
+  max-width: var(--sidebar-content);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+/* Лого/название (если есть) */
+.logo {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Список ссылок */
+.menuList {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 32px;
+  flex-grow: 1;
+}
+
+/* Ссылка меню: иконка + лейбл */
+.menuLink {
+  all: unset;
+  cursor: pointer;
+  font-size: var(--text-base);
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  gap: var(--gap-sm);
+  padding: 8px 10px;
+  padding-left: 30px;
+  border-radius: var(--full-radius);
+}
+
+.menuLink:hover {
+  color: var(--foreground);
+  background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+/* Активное состояние */
+.isActive {
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+/* Иконка и подпись */
+.menuIcon {
+  inline-size: 18px;
+  block-size: 18px;
+  flex: 0 0 auto;
+}
+
+.menuLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Кнопка сворачивания */
+
+/* --- Режим коллапса --- */
+[data-collapsed="true"].sidebarNav {
+  max-width: var(--sidebar-w-collapsed);
+}
+
+[data-collapsed="true"] .menuLabel {
+  display: none;
+}
+
+[data-collapsed="true"] .menuList {
+  gap: var(--gap-md);
+}
+
+[data-collapsed="true"] .menuLink {
+  justify-content: center;
+  padding: 8px;
+  max-width: 32px;
+  aspect-ratio: 1 / 1;
+}
+
+[data-collapsed="true"] .menuIcon {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+/* Опционально: скрыть .logo в коллапсе */
+[data-collapsed="true"] .logo {
+  display: none;
+}

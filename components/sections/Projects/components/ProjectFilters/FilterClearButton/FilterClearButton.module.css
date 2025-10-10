@@ -1,0 +1,28 @@
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  aspect-ratio: 1 / 1;
+  padding: 0 14px;
+  border-radius: var(--full-radius);
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.clearButton:hover:not(:disabled) {
+  background: var(--bg-hover, rgba(255, 255, 255, 0.08));
+}
+
+.clearButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.clearIcon {
+  width: 16px;
+  height: 16px;
+}

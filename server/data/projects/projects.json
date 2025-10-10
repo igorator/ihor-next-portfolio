@@ -1,0 +1,104 @@
+{
+  "projects": [
+    {
+      "id": "doido-market",
+      "title": "DOIDO Market",
+      "description_en": "NFT/Gift marketplace: client built with React, Redux Toolkit, and React Router v7; backend on Node.js, Express, and TypeORM; integrated TON payments, Telegram Auth, and bot flows.",
+      "description_ua": "NFT/Gift маркетплейс: клієнт на React + Redux Toolkit + React Router v7; сервер на Node.js/Express/TypeORM; інтеграція TON, Telegram Auth і бота.",
+      "technologyIds": [
+        "react",
+        "redux",
+        "react-router-v7",
+        "typescript",
+        "nodejs",
+        "express",
+        "typeorm",
+        "postgres",
+        "telegram",
+        "ton",
+        "tailwind",
+        "shadcn",
+        "framer-motion",
+        "jest"
+      ],
+      "imageUrl": "/projects/doido-market.png",
+      "githubUrl": "https://github.com/igorator",
+      "demoUrl": "https://t.me/doido_marketplace_bot/gifts"
+    },
+
+    {
+      "id": "zycsel-store-bot",
+      "title": "Zycsel Store Bot",
+      "description_en": "Telegram clothing search and catalog bot using Supabase as database, Node.js with GrammY framework, and Telegram API integration.",
+      "description_ua": "Telegram-бот для пошуку одягу з базою даних Supabase, побудований на Node.js з фреймворком GrammY і інтеграцією Telegram API.",
+      "technologyIds": ["nodejs", "supabase", "telegram", "grammy"],
+      "imageUrl": "/projects/zycsel-store-bot.png",
+      "githubUrl": "https://github.com/igorator/zycsel_bot",
+      "demoUrl": null
+    },
+    {
+      "id": "studio-dashboard",
+      "title": "Studio Dashboard",
+      "description_en": "Admin dashboard built with React, TypeScript, Redux Toolkit, and Ant Design; backend on Node.js, Express, and PostgreSQL.",
+      "description_ua": "Адмін-панель на React, TypeScript, Redux Toolkit і Ant Design; серверна частина — Node.js, Express, PostgreSQL.",
+      "technologyIds": [
+        "react",
+        "typescript",
+        "redux",
+        "antd",
+        "nodejs",
+        "express",
+        "postgres"
+      ],
+      "imageUrl": "/projects/studio-dashboard.png",
+      "githubUrl": "https://github.com/igorator/studio-dashboard",
+      "demoUrl": null
+    },
+    {
+      "id": "3mpq-studio-lite",
+      "title": "3mpq Studio Lite",
+      "description_en": "Showcase website built with Next.js, Tailwind, Zustand, next-intl, and React Hook Form. Smooth Framer Motion animations.",
+      "description_ua": "Вітрина/сайт на Next.js з Tailwind, Zustand, next-intl і React Hook Form, плавні анімації через Framer Motion.",
+      "technologyIds": [
+        "nextjs",
+        "typescript",
+        "tailwind",
+        "zustand",
+        "react-hook-form",
+        "framer-motion",
+        "next-intl"
+      ],
+      "imageUrl": "/projects/3mpq-studio-lite.png",
+      "githubUrl": "https://github.com/igorator/3mpq-Studio-lite",
+      "demoUrl": null
+    },
+    {
+      "id": "webwise",
+      "title": "Webwise (Logics7)",
+      "description_en": "Marketing landing page built with Next.js, Tailwind, and Spline 3D; integrated with Zoho CRM.",
+      "description_ua": "Маркетинговий лендинг на Next.js, Tailwind і Spline 3D; інтеграція з CRM Zoho.",
+      "technologyIds": [
+        "nextjs",
+        "typescript",
+        "tailwind",
+        "spline3d",
+        "zustand",
+        "framer-motion",
+        "zoho"
+      ],
+      "imageUrl": "/projects/webwise.png",
+      "githubUrl": null,
+      "demoUrl": "https://webwise.logics7.com/"
+    },
+    {
+      "id": "turbota-liqpay",
+      "title": "Turbota — LiqPay Integration",
+      "description_en": "Payment integration for Turbota service built with Node.js and Express using LiqPay API.",
+      "description_ua": "Інтеграція платежів LiqPay у сервіс Turbota на Node.js/Express через API LiqPay.",
+      "technologyIds": ["nodejs", "express", "liqpay"],
+      "imageUrl": "/projects/turbota-liqpay.png",
+      "githubUrl": null,
+      "demoUrl": null
+    }
+  ]
+}

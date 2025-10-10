@@ -1,0 +1,48 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--background, #0a0a0a);
+  color: var(--foreground, #fff);
+  z-index: 9999;
+}
+
+.box {
+  width: min(360px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+.title {
+  opacity: 0.9;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  border: none;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* WebKit */
+.progress::-webkit-progress-bar {
+  background: transparent;
+}
+.progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+/* Firefox */
+.progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.percent {
+  font-size: 0.825rem;
+  opacity: 0.75;
+}

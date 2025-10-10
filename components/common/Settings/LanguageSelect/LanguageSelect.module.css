@@ -1,0 +1,51 @@
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  padding: var(--inner-padding);
+  text-align: center;
+  border-radius: var(--full-radius);
+  min-height: 36px;
+}
+
+.selectLabel {
+  color: var(--foreground);
+  font-size: 14px;
+}
+
+.selectContent {
+  border-radius: var(--default-radius);
+  width: var(--radix-select-trigger-width);
+  z-index: 100;
+}
+
+.selectItem {
+  all: unset;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  color: var(--foreground);
+  transition: all 200ms ease;
+  width: 100%;
+  font-size: 14px;
+  padding: var(--inner-padding);
+}
+
+.selectItem:hover {
+  background-color: color-mix(in srgb, var(--foreground) 5%, var(--background));
+}
+
+.selectItem[data-state="checked"] {
+  background-color: color-mix(in srgb, var(--accent) 10%, var(--background));
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.selectItemContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,0 +1,95 @@
+.triggerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-headings);
+  min-width: 220px;
+  padding: 0 12px;
+  border-radius: var(--full-radius);
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.triggerButton:hover {
+  background: var(--bg-hover, rgba(255, 255, 255, 0.06));
+}
+
+.triggerButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-alpha);
+  border-color: var(--primary);
+}
+
+.menuContent {
+  min-width: 280px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.menuItem {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr max-content 16px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  user-select: none;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 14px;
+  transition: background-color 0.15s ease;
+}
+
+.menuItem:hover {
+  background: var(--bg-hover, rgba(255, 255, 255, 0.06));
+}
+
+.menuItem[data-state="checked"] {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.menuItemLabel {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuItemHint {
+  white-space: nowrap;
+  font-size: 12px;
+  padding-left: 8px;
+  justify-self: end;
+}
+
+.rightSlot {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.chevronIcon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+/* крутить, когда меню открыто */
+.triggerButton[data-state="open"] .chevronIcon {
+  transform: rotate(180deg);
+}

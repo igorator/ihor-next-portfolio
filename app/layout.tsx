@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
+import { ThemeSetup } from "@/components/theme/theme-setup";
 import "./globals.css";
+import { Sidebar } from "@/components/layout/Sidebar/Sidebar";
+import { ThemeProvider } from "@/shared/state/providers/theme-provider";
 
-const geistSans = Geist({
+const fontHeading = Manrope({
   variable: "--font-headings",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const fontText = Inter({
   variable: "--font-text",
   subsets: ["latin"],
 });
@@ -23,9 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="page-wrapper">{children}</div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${fontHeading.variable} ${fontText.variable}`}>
+        <ThemeProvider>
+          <ThemeSetup />
+          <main className="page-wrapper">
+            <Sidebar />
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
