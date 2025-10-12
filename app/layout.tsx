@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { ThemeSetup } from "@/components/theme/theme-setup";
 import "./globals.css";
-import { Sidebar } from "@/components/layout/Sidebar/Sidebar";
+import { Navbar } from "@/components/common/Navbar/Navbar";
 import { ThemeProvider } from "@/shared/state/providers/theme-provider";
 
 const fontHeading = Manrope({
@@ -30,9 +30,9 @@ export default function RootLayout({
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
         <ThemeProvider>
           <ThemeSetup />
+          <Navbar />
           <main className="page-wrapper">
-            <Sidebar />
-            {children}
+            <div className="content">{children}</div>
           </main>
         </ThemeProvider>
       </body>

@@ -1,0 +1,26 @@
+.socialBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: var(--inner-padding);
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.iconLink:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--foreground);
+}

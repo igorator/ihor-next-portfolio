@@ -6,6 +6,8 @@
   padding: var(--inner-padding);
   border-radius: var(--full-radius);
   height: 100%;
+  border: var(--inner-glass-border);
+  background-color: transparent;
 }
 
 .themeIcon {

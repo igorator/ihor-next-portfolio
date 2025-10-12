@@ -1,0 +1,132 @@
+:root {
+  --nav-radius: var(--full-radius);
+  --nav-icon-size: 20px;
+  --nav-font-size: 0.8125rem;
+
+  --nav-float-bottom: 16px;
+  --nav-container-px: 10px;
+  --nav-container-py: 8px;
+  --nav-inner-px: 10px;
+  --nav-inner-py: 8px;
+  --navbar-inner-gap: 12px;
+  --navbar-gap: 12px;
+
+  --navlink-padding: 8px;
+
+  --nav-max-width: 560px;
+  --nav-min-x-padding: 8px;
+
+  --nav-fg: light-dark(var(--foreground, #171717), var(--foreground, #ededed));
+  --nav-accent: var(--accent, #2563eb);
+  --nav-border: var(
+    --border,
+    color-mix(in srgb, var(--nav-fg) 12%, transparent)
+  );
+  --nav-bg: light-dark(
+    var(--muted, #f5f5f5),
+    color-mix(in srgb, #000 65%, transparent)
+  );
+  --nav-hover: color-mix(in srgb, var(--nav-fg) 3%, transparent);
+  --nav-active-bg: color-mix(in srgb, var(--nav-fg) 8%, transparent);
+  --nav-fg-dimmed: var(--foreground);
+
+  --nav-blur: 12px;
+  --nav-z: 50;
+  --nav-shadow: 0 8px 20px color-mix(in srgb, #000 18%, transparent);
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  gap: var(--navbar-gap);
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--nav-float-bottom) + env(safe-area-inset-bottom));
+  z-index: var(--nav-z);
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.navbarLinks {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--navbar-inner-gap);
+  padding: var(--nav-inner-py) var(--nav-inner-px);
+  border-radius: var(--nav-radius);
+}
+
+.navItem {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
+  gap: 4px;
+  color: var(--nav-fg-dimmed);
+  font-size: var(--nav-font-size);
+  line-height: 1;
+  min-width: 80px;
+  padding: var(--navlink-padding);
+  border-radius: var(--nav-radius);
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.navItem:hover {
+  background-color: var(--nav-hover);
+}
+
+.navItem:active {
+  transform: translateY(1px);
+}
+
+/* Активное состояние */
+.isActive {
+  color: var(--nav-accent);
+  border: var(--inner-glass-border);
+}
+
+/* Иконка и лейбл */
+.icon {
+  inline-size: var(--nav-icon-size);
+  block-size: var(--nav-icon-size);
+  flex: 0 0 auto;
+}
+
+.label {
+  font-size: var(--nav-font-size);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbarControls {
+  display: flex;
+  height: 100%;
+  gap: var(--navbar-inner-gap);
+  padding: var(--nav-inner-py) var(--nav-inner-px);
+}
+
+@media (max-width: 360px) {
+  .label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottomNav,
+  .navItem {
+    transition: none !important;
+  }
+  .navItem:active {
+    transform: none;
+  }
+}

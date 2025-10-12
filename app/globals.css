@@ -1,5 +1,4 @@
 :root {
-  /* ПАЛИТРА (фиксированные значения) */
   --background-light: #ffffff;
   --foreground-light: #171717;
   --accent-light: rgb(52, 189, 99);
@@ -12,7 +11,6 @@
   --muted-dark: #1a1a1a;
   --border-dark: #262626;
 
-  /* СЕМАНТИКА (дефолт: dark) */
   --background: var(--background-dark);
   --foreground: var(--foreground-dark);
   --accent: var(--accent-dark);
@@ -31,6 +29,9 @@
   --default-radius: 8px;
   --full-radius: 9999px;
 
+  --inner-glass-border: 1px solid
+    color-mix(in srgb, var(--foreground) 60%, var(--background) 40%);
+
   --text-xs: clamp(12px, 10.8px + 0.35vw, 13px);
   --text-sm: clamp(13px, 11.8px + 0.4vw, 14px);
   --text-base: clamp(14px, 12.8px + 0.5vw, 16px);
@@ -40,15 +41,6 @@
   --text-3xl: clamp(28px, 19.2px + 2.6vw, 40px);
   --text-4xl: clamp(36px, 22.4px + 4vw, 56px);
   --text-5xl: clamp(48px, 25.6px + 6vw, 72px);
-
-  /* GLASS */
-  --glass-blur: blur(12px);
-  --glass-saturation: 180%;
-  --glass-brightness: 1.1;
-  --glass-reflex-opacity: 0.1;
-  --glass-ambient-opacity: 0.1;
-  --glass-background: color-mix(in srgb, var(--background) 80%, transparent);
-  --glass-border: color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 
 :root[data-theme="light"] {
@@ -65,6 +57,22 @@
   --accent: var(--accent-dark);
   --muted: var(--muted-dark);
   --border: var(--border-dark);
+}
+
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
@@ -84,6 +92,13 @@ body {
   min-height: 100svh;
   align-items: stretch;
   display: flex;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  max-width: var(--default-max-width);
 }
 
 .button {
@@ -103,11 +118,7 @@ h5,
 h6 {
   font-family: var(--font-headings), Arial, Helvetica, sans-serif;
 }
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 a {
   color: var(--foreground);
   text-decoration: none;
@@ -115,52 +126,4 @@ a {
 }
 a:hover {
   color: var(--accent);
-}
-
-/* GLASS */
-.glass-wrapper {
-  position: relative;
-  background: var(--glass-background);
-  border: 1px solid var(--glass-border);
-  overflow: hidden;
-  isolation: isolate;
-  background-color: color-mix(in srgb, var(--background) 92%, transparent);
-
-  -webkit-backdrop-filter: var(--glass-blur) saturate(var(--glass-saturation))
-    brightness(var(--glass-brightness));
-  backdrop-filter: var(--glass-blur) saturate(var(--glass-saturation))
-    brightness(var(--glass-brightness));
-
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--background) 10%, transparent);
-  transition:
-    background 0.3s ease,
-    border 0.3s ease;
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  .glass-wrapper {
-    background: color-mix(in srgb, var(--background) 92%, transparent);
-  }
-}
-
-.glass-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 30% 30%,
-    color-mix(
-      in srgb,
-      var(--foreground) var(--glass-reflex-opacity),
-      transparent
-    ),
-    transparent 60%
-  );
-  opacity: var(--glass-ambient-opacity);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.glass-wrapper:hover::before {
-  opacity: calc(var(--glass-ambient-opacity) * 2);
 }

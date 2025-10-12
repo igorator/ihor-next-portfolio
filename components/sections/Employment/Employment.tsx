@@ -21,8 +21,8 @@ export const EmploymentSection = ({
           </p>
 
           <ul className={styles.roles}>
-            {item.roles.map((role, index) => (
-              <li key={`${role}-${index}`}>{role}</li>
+            {item.roles.map((role) => (
+              <li key={`${role}-${item.company}`}>{role}</li>
             ))}
           </ul>
         </div>

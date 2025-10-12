@@ -10,7 +10,7 @@ export const LanguageSelect = () => {
   return (
     <Select.Root value={language} onValueChange={setLanguage}>
       <Select.Trigger
-        className={`${styles.selectTrigger} glass-wrapper`}
+        className={`${styles.selectTrigger}`}
         aria-label="Language"
       >
         <div className={styles.selectLabel}>
@@ -20,9 +20,10 @@ export const LanguageSelect = () => {
 
       <Select.Portal>
         <Select.Content
-          className={`${styles.selectContent} glass-wrapper`}
+          className={`${styles.selectContent}`}
           position="popper"
           side="top"
+          align="end"
           sideOffset={5}
         >
           <Select.Viewport>

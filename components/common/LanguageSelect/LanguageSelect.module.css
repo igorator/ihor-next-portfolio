@@ -7,7 +7,8 @@
   padding: var(--inner-padding);
   text-align: center;
   border-radius: var(--full-radius);
-  min-height: 36px;
+  border: var(--inner-glass-border);
+  background-color: transparent;
 }
 
 .selectLabel {
@@ -17,7 +18,6 @@
 
 .selectContent {
   border-radius: var(--default-radius);
-  width: var(--radix-select-trigger-width);
   z-index: 100;
 }
 
