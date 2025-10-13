@@ -4,6 +4,7 @@ import { ThemeSetup } from "@/components/theme/theme-setup";
 import "./globals.css";
 import { Navbar } from "@/components/common/Navbar/Navbar";
 import { ThemeProvider } from "@/shared/state/providers/theme-provider";
+import { AppBackground } from "@/components/layout/AppBackground/AppBackground";
 
 const fontHeading = Manrope({
   variable: "--font-headings",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
         <ThemeProvider>
           <ThemeSetup />
+          <AppBackground />
           <Navbar />
           <main className="page-wrapper">
             <div className="content">{children}</div>

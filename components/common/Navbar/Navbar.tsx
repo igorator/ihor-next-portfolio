@@ -24,28 +24,11 @@ export const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <GlassSurface
-        width="fit-content"
-        borderRadius={9999}
-        blur={36}
-        backgroundOpacity={0.4}
-        saturation={1.1}
-        distortionScale={-140}
-        displace={0.7}
-      >
+      <GlassSurface>
         <Socials />
       </GlassSurface>
 
-      <GlassSurface
-        width="fit-content"
-        height="fit-content"
-        borderRadius={9999}
-        blur={36}
-        backgroundOpacity={0.4}
-        saturation={1.1}
-        distortionScale={-140}
-        displace={0.7}
-      >
+      <GlassSurface>
         <div className={styles.navbarLinks}>
           {items.map(({ path, label, icon: Icon }) => {
             const active =
@@ -68,20 +51,12 @@ export const Navbar = () => {
         </div>
       </GlassSurface>
 
-      <GlassSurface
-        width="fit-content"
-        borderRadius={9999}
-        blur={36}
-        backgroundOpacity={0.4}
-        saturation={1.1}
-        distortionScale={-140}
-        displace={0.7}
-        className={styles.navControls}
-      >
-        <div className={styles.navbarControls}>
-          <ThemeSwitch />
-          <LanguageSelect />
-        </div>
+      <GlassSurface>
+        <ThemeSwitch />
+      </GlassSurface>
+
+      <GlassSurface>
+        <LanguageSelect />
       </GlassSurface>
     </nav>
   );

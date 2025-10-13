@@ -1,5 +1,6 @@
 "use client";
 
+import { GlassSurface } from "@/components/decorative/GlassSurface/GlassSurface";
 import styles from "./FilterClearButton.module.css";
 import { MdOutlineClear } from "react-icons/md";
 
@@ -13,14 +14,16 @@ export const FilterClearButton = ({
   disabled,
 }: FilterClearButtonProps) => {
   return (
-    <button
-      type="button"
-      className={`${styles.clearButton} glass-wrapper`}
-      onClick={onClear}
-      disabled={disabled}
-      title="Clear filters"
-    >
-      <MdOutlineClear className={styles.clearIcon} aria-hidden="true" />
-    </button>
+    <GlassSurface>
+      <button
+        type="button"
+        className={`${styles.clearButton} glass-wrapper`}
+        onClick={onClear}
+        disabled={disabled}
+        title="Clear filters"
+      >
+        <MdOutlineClear className={styles.clearIcon} aria-hidden="true" />
+      </button>
+    </GlassSurface>
   );
 };

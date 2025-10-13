@@ -1,15 +1,16 @@
 :root {
-  --background-light: #ffffff;
-  --foreground-light: #171717;
-  --accent-light: rgb(52, 189, 99);
-  --muted-light: #f5f5f5;
-  --border-light: #e5e5e5;
+  /* === Apple HIG–style colors === */
+  --background-light: #ffffff; /* systemBackground (light) */
+  --foreground-light: #1d1d1f; /* label (light) — Apple text tone */
+  --accent-light: #0a84ff; /* systemBlue (macOS/iOS) */
+  --muted-light: #f2f2f7; /* secondary/tertiary surfaces */
+  --border-light: rgba(60, 60, 67, 0.1); /* separator (light) */
 
-  --background-dark: #0a0a0a;
-  --foreground-dark: #ededed;
-  --accent-dark: rgb(52, 189, 99);
-  --muted-dark: #1a1a1a;
-  --border-dark: #262626;
+  --background-dark: #000000; /* systemBackground (dark) */
+  --foreground-dark: #f5f5f7; /* label (dark) */
+  --accent-dark: #0a84ff; /* systemBlue */
+  --muted-dark: #1c1c1e; /* secondarySystemBackground (dark) */
+  --border-dark: rgba(84, 84, 88, 0.1); /* separator (dark) */
 
   --background: var(--background-dark);
   --foreground: var(--foreground-dark);
@@ -17,21 +18,25 @@
   --muted: var(--muted-dark);
   --border: var(--border-dark);
 
-  --default-font-weight: 500;
+  --default-font-weight: 400;
 
   --default-max-width: 1440px;
 
-  --inner-padding: 8px;
-  --outer-padding: 32px;
-  --container-padding: 48px;
-  --navbar-height: 64px;
+  --inner-padding: 8px; /* base step */
+  --outer-padding: 24px; /* 3 × 8 */
+  --container-padding: 32px; /* 4 × 8 */
+  --navbar-height: 56px; /* 7 × 8 – компактная шапка в духе iOS/macOS */
 
-  --default-radius: 8px;
+  /* Radii */
+  --default-radius: 12px; /* «карточный» радиус как у iOS панелей */
   --full-radius: 9999px;
 
+  /* Backdrop */
+  --backdrop-blur: 20px; /* дефолтный блюр для стекла/вибранси */
   --inner-glass-border: 1px solid
     color-mix(in srgb, var(--foreground) 60%, var(--background) 40%);
 
+  /* Fluid type (оставил твою сетку значений) */
   --text-xs: clamp(12px, 10.8px + 0.35vw, 13px);
   --text-sm: clamp(13px, 11.8px + 0.4vw, 14px);
   --text-base: clamp(14px, 12.8px + 0.5vw, 16px);
@@ -59,8 +64,31 @@
   --border: var(--border-dark);
 }
 
+/* WebKit/Blink: Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent; /* невидимый трек */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: var(--sb-radius);
+  background-clip: padding-box;
+  border: 3px solid transparent; /* тонкая «нить» за счёт внутреннего отступа */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sb-thumb-hover);
+}
+
 html {
   scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin; /* thin | auto | none */
+  scrollbar-color: var(--sb-thumb) transparent; /* thumb | track */
 }
 
 @supports not (scrollbar-gutter: stable) {

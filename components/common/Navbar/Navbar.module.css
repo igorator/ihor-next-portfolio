@@ -5,9 +5,9 @@
 
   --nav-float-bottom: 16px;
   --nav-container-px: 10px;
-  --nav-container-py: 8px;
-  --nav-inner-px: 10px;
-  --nav-inner-py: 8px;
+  --nav-container-py: 5px;
+  --nav-inner-px: 18px;
+  --nav-inner-py: 6px;
   --navbar-inner-gap: 12px;
   --navbar-gap: 12px;
 
@@ -76,14 +76,13 @@
 
   transition:
     color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.15s ease;
+    transform 0.2s ease; /* только scale */
 }
 
-.navItem:hover {
-  background-color: var(--nav-hover);
+.navItem:hover:not(:active) {
+  transform: scale(1.1);
+  background-color: transparent;
 }
-
 .navItem:active {
   transform: translateY(1px);
 }
@@ -91,7 +90,6 @@
 /* Активное состояние */
 .isActive {
   color: var(--nav-accent);
-  border: var(--inner-glass-border);
 }
 
 /* Иконка и лейбл */

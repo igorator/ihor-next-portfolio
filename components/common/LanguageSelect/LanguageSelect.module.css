@@ -3,12 +3,13 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 100%;
   transition: all 200ms ease;
-  padding: var(--inner-padding);
+  padding: 24px;
+  background-color: transparent;
+  border: none;
   text-align: center;
   border-radius: var(--full-radius);
-  border: var(--inner-glass-border);
-  background-color: transparent;
 }
 
 .selectLabel {

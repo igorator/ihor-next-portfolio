@@ -4,6 +4,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import styles from "./TechnologyMultiSelect.module.css";
 import type { Technology } from "@/shared/types/technology";
 import { BsCheckLg, BsChevronDown } from "react-icons/bs";
+import { GlassSurface } from "@/components/decorative/GlassSurface/GlassSurface";
 
 type Props = {
   technologies: Technology[];
@@ -26,10 +27,14 @@ export const TechnologyMultiSelect = ({
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger className={`${styles.triggerButton} glass-wrapper`}>
-        <span className={styles.triggerLabel}>{triggerLabel}</span>
-        <BsChevronDown className={styles.chevronIcon} aria-hidden />
-      </DropdownMenu.Trigger>
+      <GlassSurface>
+        <DropdownMenu.Trigger
+          className={`${styles.triggerButton} glass-wrapper`}
+        >
+          <span className={styles.triggerLabel}>{triggerLabel}</span>
+          <BsChevronDown className={styles.chevronIcon} aria-hidden />
+        </DropdownMenu.Trigger>
+      </GlassSurface>
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content

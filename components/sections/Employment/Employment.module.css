@@ -1,4 +1,25 @@
 .employment {
+  --tl-rail-color: var(--separator);
+  --tl-rail-width: 2px;
+
+  --tl-marker-size: 14px;
+  --tl-marker-ring: 6px;
+  --tl-marker-color: var(--accent);
+  --tl-marker-bg: var(--bg);
+
+  --tl-gap-y: 28px;
+  --tl-gap-x: clamp(14px, 2.2vw, 28px);
+
+  --tl-card-bg: color-mix(in oklab, var(--surface) 88%, transparent);
+  --tl-card-border: color-mix(in oklab, var(--separator) 70%, transparent);
+  --tl-card-radius: var(--radius-lg);
+  --tl-card-pad: 16px 18px;
+
+  --tl-title-fs: var(--text-3xl);
+  --tl-company-fs: var(--text-lg);
+  --tl-period-fs: var(--text-sm);
+  --tl-role-gap: 6px;
+
   padding: 6rem 1rem;
   display: flex;
   flex-direction: column;
@@ -6,50 +27,129 @@
 }
 
 .title {
-  font-size: var(--text-3xl);
+  font-size: var(--tl-title-fs);
   font-weight: 700;
   margin-bottom: 3rem;
+  text-align: center;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.timeline {
+  position: relative;
   width: 100%;
-  max-width: 700px;
+  max-width: min(900px, 100%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--tl-marker-size) / 2);
+  top: 0;
+  bottom: 0;
+  width: var(--tl-rail-width);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--tl-rail-color) 0%, transparent),
+    var(--tl-rail-color) 10%,
+    var(--tl-rail-color) 90%,
+    color-mix(in oklab, var(--tl-rail-color) 0%, transparent)
+  );
+  transform: translateX(-50%);
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--tl-marker-size) var(--tl-gap-x) 1fr;
+  align-items: start;
+  gap: var(--tl-gap-y) 0;
+  padding-block: 4px;
+}
+
+.marker {
+  position: relative;
+  width: var(--tl-marker-size);
+  height: var(--tl-marker-size);
+  border-radius: 50%;
+  background: var(--tl-marker-bg);
+  border: 2px solid var(--tl-marker-color);
+  box-shadow:
+    0 0 0 var(--tl-marker-ring)
+    color-mix(in oklab, var(--tl-marker-color) 14%, transparent),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  transform: translateY(6px);
 }
 
 .card {
-  background: var(--muted);
-  border-radius: 1rem;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.25s ease;
+  grid-column: 3;
+  background: var(--tl-card-bg);
+  border: 1px solid var(--tl-card-border);
+  border-radius: var(--tl-card-radius);
+  padding: var(--tl-card-pad);
+  box-shadow: var(--shadow-1);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  backdrop-filter: saturate(140%) blur(8px);
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--tl-card-border));
+}
+
+.header {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .company {
-  font-weight: 600;
-  font-size: var(--text-lg);
+  font-weight: 700;
+  font-size: var(--tl-company-fs);
   color: var(--accent);
 }
 
 .period {
-  font-size: var(--text-sm);
-  opacity: 0.8;
-  margin-bottom: 0.75rem;
+  font-size: var(--tl-period-fs);
+  color: var(--text-muted);
+}
+
+.type {
+  color: inherit;
 }
 
 .roles {
   margin: 0;
   padding-left: 1.25rem;
-  list-style-type: disc;
+  list-style: disc;
+  display: grid;
+  gap: var(--tl-role-gap);
 }
 
-.roles li {
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
+.role {
+  line-height: 1.55;
+}
+
+@media (min-width: 720px) {
+  .employment {
+    --tl-gap-y: 32px;
+    --tl-marker-size: 16px;
+    --tl-marker-ring: 8px;
+    --tl-card-pad: 18px 20px;
+  }
+}
+
+@media (min-width: 1060px) {
+  .timeline {
+    max-width: 900px;
+  }
+  .employment {
+    --tl-gap-x: clamp(20px, 2.2vw, 36px);
+    --tl-card-pad: 20px 22px;
+  }
 }

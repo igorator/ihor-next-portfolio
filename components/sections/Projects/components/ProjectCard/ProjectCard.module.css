@@ -4,6 +4,7 @@
   --desc-lines: 3; /* сколько строк показывать в описании */
   --desc-mb: 16px;
   --techs-mb: 16px;
+  --card-background-color: color-mix();
 }
 
 .projectCard {
@@ -15,7 +16,7 @@
   padding: 1.5rem;
   min-height: var(--card-min-h);
   height: 100%;
-
+  backdrop-filter: blur(12px);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;

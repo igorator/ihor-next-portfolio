@@ -2,12 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: var(--inner-padding);
+  gap: 6px;
+  padding: 12px;
   border-radius: var(--full-radius);
-  height: 100%;
-  border: var(--inner-glass-border);
   background-color: transparent;
+  border: none;
 }
 
 .themeIcon {
