@@ -4,19 +4,18 @@
   --desc-lines: 3; /* сколько строк показывать в описании */
   --desc-mb: 16px;
   --techs-mb: 16px;
-  --card-background-color: color-mix();
+  --card-background-color: var(--background);
 }
 
 .projectCard {
   display: grid;
   grid-template-rows: auto auto 1fr auto; /* title | description | tech | links */
   gap: 1rem;
-  background: var(--card-background);
-  border-radius: var(--default-radius);
-  padding: 1.5rem;
+
+  padding: 40px;
   min-height: var(--card-min-h);
   height: 100%;
-  backdrop-filter: blur(12px);
+
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -74,7 +73,6 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   background: var(--primary);
-  color: white;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.2s ease;

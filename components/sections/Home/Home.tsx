@@ -1,8 +1,12 @@
-import { Section } from "@/components/layout/Section/Section";
-import styles from "./Home.module.css";
+"use client";
+
 import Link from "next/link";
-import { routes } from "@/shared/config/routes";
+import { motion, type Variants, cubicBezier } from "framer-motion";
+import { Section } from "@/components/layout/Section/Section";
 import { GlassSurface } from "@/components/decorative/GlassSurface/GlassSurface";
+import { routes } from "@/shared/config/routes";
+import { GoArrowDownRight } from "react-icons/go";
+import styles from "./Home.module.css";
 
 const heroLinks = {
   projects: { label: "Projects", href: routes.projects.path },
@@ -10,24 +14,81 @@ const heroLinks = {
   employment: { label: "Employment", href: routes.employment.path },
 } as const;
 
+/** Контейнер для stagger-эффекта заголовка */
+const titleContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+/** Анимация строк заголовка */
+const titleLine: Variants = {
+  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
+  },
+};
+
+/** Обёртка для блока кнопок */
+const buttonsWrap: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.1,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
+  },
+};
+
 export const HomeSection = () => (
   <Section className={styles.home}>
     <div className={styles.content}>
-      <h1 className={styles.title}>
-        <span className={styles.fade}>Hello,</span> <br />
-        <span className={styles.name}>I'm Ihor</span> <br />
-        <span className={styles.role}>Web Developer</span>
-      </h1>
+      <motion.h1
+        className={styles.title}
+        variants={titleContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.6 }}
+      >
+        <motion.span className={styles.fade} variants={titleLine}>
+          Hello,
+        </motion.span>
+        <motion.span className={styles.name} variants={titleLine}>
+          I’m Ihor
+        </motion.span>
+        <motion.span className={styles.role} variants={titleLine}>
+          Web&nbsp;Developer
+        </motion.span>
+      </motion.h1>
 
-      <GlassSurface>
-        <div className={styles.buttons}>
-          {Object.values(heroLinks).map(({ href, label }) => (
-            <Link key={href} href={href} className={`${styles.btn} `}>
-              {label}
-            </Link>
-          ))}
-        </div>
-      </GlassSurface>
+      <motion.div
+        variants={buttonsWrap}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.6 }}
+      >
+        <GlassSurface>
+          <div className={styles.buttons}>
+            {Object.values(heroLinks).map(({ href, label }) => (
+              <Link key={href} href={href} className={styles.btn}>
+                {label} <GoArrowDownRight />
+              </Link>
+            ))}
+          </div>
+        </GlassSurface>
+      </motion.div>
     </div>
   </Section>
 );
+
+export default HomeSection;

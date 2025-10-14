@@ -1,34 +1,104 @@
-/* Hero.module.css */
 .home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
+  display: grid;
+  place-items: center;
+  min-height: 72svh;
+  padding: clamp(16px, 2vw, 32px);
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  max-width: min(1100px, 92vw);
+  width: 100%;
+  display: grid;
+  gap: clamp(16px, 3vw, 28px);
 }
 
+/* Заголовок — три строки, выровнял и дал приятный вертикальный ритм */
 .title {
-  font-size: var(--text-4xl);
-  font-weight: 600;
+  display: grid;
+  gap: clamp(6px, 1.2vw, 10px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
+.fade {
+  color: var(--foreground-50, #9ca3af);
+  font-weight: 500;
+  font-size: clamp(22px, 3.2vw, 34px);
+}
+
+/* Имя — крупно и с мягким градиентом (без вырвиглаз) */
+.name {
+  font-weight: 800;
+  font-size: clamp(40px, 8vw, 92px);
+  line-height: 0.98;
+
+  /* Простой градиент — от голубого к фиолетовому */
+  background: linear-gradient(90deg, #3b82f6, #a855f7);
+
+  /* Делает градиент видимым только внутри букв */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Делаем сам текст прозрачным, чтобы "просвечивал" фон */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Роль — контрастная подпись */
+.role {
+  color: var(--foreground, #e5e7eb);
+  font-weight: 700;
+  font-size: clamp(28px, 4.5vw, 48px);
+  opacity: 0.95;
+}
+
+/* Кнопки */
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 0 20px 0 10px;
+  display: grid;
+  grid-auto-flow: column;
+  padding: 12px;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
 }
 
 .btn {
-  flex-grow: 1;
-  cursor: pointer;
-  padding: 12px 12px;
-  transition: all 0.2s ease;
+  display: inline-grid;
+  place-items: center;
+  padding: 10px 16px;
+  min-width: 120px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--foreground, #111);
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+  filter: saturate(0.95) brightness(0.98);
+}
+
+/* Мелкие доработки под мобильные */
+@media (max-width: 720px) {
+  .buttons {
+    grid-auto-flow: row;
+    justify-content: stretch;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Уважение к prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .title {
+    transition: none !important;
+  }
 }

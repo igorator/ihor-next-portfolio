@@ -34,6 +34,7 @@ export const GlassSurface = ({
   contentStyle,
 
   radius = 9999,
+
   padding = "0",
   blur = 3,
   tint = "rgba(255,255,255,0.1)",

@@ -1,8 +1,8 @@
-import { RippleGrid } from "@/components/decorative/RippleGrid/RippleGrid";
 import styles from "./AppBackground.module.css";
+import Plasma from "@/components/decorative/Plasma/Plasma";
 
 export const AppBackground: React.FC = () => (
   <div className={styles.appBackground}>
-    <RippleGrid />
+    <Plasma />
   </div>
 );
