@@ -125,6 +125,8 @@ body {
 
 .content {
   position: relative;
+  display: flex;
+  justify-content: stretch;
   width: 100%;
   max-width: var(--default-max-width);
 }

@@ -10,8 +10,9 @@
   --tl-gap-y: 28px;
   --tl-gap-x: clamp(14px, 2.2vw, 28px);
 
-  --tl-card-bg: color-mix(in oklab, var(--surface) 88%, transparent);
-  --tl-card-border: color-mix(in oklab, var(--separator) 70%, transparent);
+  --tl-card-bg-0: color-mix(in oklab, var(--surface) 40%, transparent);
+  --tl-card-bg-1: color-mix(in oklab, var(--surface) 20%, transparent);
+  --tl-card-border: color-mix(in oklab, var(--separator) 65%, transparent);
   --tl-card-radius: var(--radius-lg);
   --tl-card-pad: 16px 18px;
 
@@ -84,21 +85,30 @@
 
 .card {
   grid-column: 3;
-  background: var(--tl-card-bg);
+  background: linear-gradient(
+    135deg,
+    var(--tl-card-bg-0) 0%,
+    var(--tl-card-bg-1) 100%
+  );
   border: 1px solid var(--tl-card-border);
   border-radius: var(--tl-card-radius);
   padding: var(--tl-card-pad);
-  box-shadow: var(--shadow-1);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition:
     transform 0.18s ease,
     box-shadow 0.2s ease,
-    border-color 0.2s ease;
-  backdrop-filter: saturate(140%) blur(8px);
+    border-color 0.2s ease,
+    background 0.25s ease;
+  backdrop-filter: saturate(140%) blur(10px);
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border-color: color-mix(in oklab, var(--accent) 45%, var(--tl-card-border));
 }
 

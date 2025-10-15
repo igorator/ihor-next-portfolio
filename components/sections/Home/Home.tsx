@@ -14,7 +14,6 @@ const heroLinks = {
   employment: { label: "Employment", href: routes.employment.path },
 } as const;
 
-/** Контейнер для stagger-эффекта заголовка */
 const titleContainer: Variants = {
   hidden: {},
   visible: {
@@ -22,7 +21,6 @@ const titleContainer: Variants = {
   },
 };
 
-/** Анимация строк заголовка */
 const titleLine: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
   visible: {
@@ -36,7 +34,6 @@ const titleLine: Variants = {
   },
 };
 
-/** Обёртка для блока кнопок */
 const buttonsWrap: Variants = {
   hidden: { opacity: 0, y: 10 },
   visible: {
@@ -61,7 +58,7 @@ export const HomeSection = () => (
         viewport={{ once: true, amount: 0.6 }}
       >
         <motion.span className={styles.fade} variants={titleLine}>
-          Hello,
+          Hello
         </motion.span>
         <motion.span className={styles.name} variants={titleLine}>
           I’m Ihor
@@ -90,5 +87,3 @@ export const HomeSection = () => (
     </div>
   </Section>
 );
-
-export default HomeSection;

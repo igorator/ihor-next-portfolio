@@ -59,15 +59,15 @@
 }
 
 .navItem {
-  display: grid;
-  grid-auto-flow: row;
+  display: flex;
+  flex-grow: 1;
   justify-items: center;
   align-items: center;
+  flex-direction: column;
   gap: 4px;
   color: var(--nav-fg-dimmed);
   font-size: var(--nav-font-size);
   line-height: 1;
-  min-width: 80px;
   padding: var(--navlink-padding);
   border-radius: var(--nav-radius);
 

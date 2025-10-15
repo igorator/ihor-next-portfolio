@@ -1,0 +1,54 @@
+/* Привязываем переменные к ЛОКАЛЬНОМУ классу .wrapper,
+   а html[data-theme="..."] используем только как глобальный предок.
+   Так селектор остаётся "pure" для CSS-modules. */
+
+:where(html[data-theme="light"]) .wrapper {
+  /* Apple Light — свежие голубые, розовые и золотистые оттенки */
+  --grad-1: #a0c8ff; /* sky blue */
+  --grad-2: #ffd1e0; /* soft pink */
+  --grad-3: #fff0b3; /* gentle yellow tint */
+  --grad-4: #b8ffe3; /* mint-green highlight */
+}
+
+:where(html[data-theme="dark"]) .wrapper {
+  /* Apple Dark — глубокие сине-фиолетовые с неоновыми акцентами */
+  --grad-1: #0a0f2c; /* deep navy */
+  --grad-2: #2a2f5f; /* indigo */
+  --grad-3: #5b4b8a; /* muted purple */
+  --grad-4: #00b8d4; /* aqua accent */
+}
+/* === Полноэкранный контейнер === */
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    -45deg,
+    var(--grad-1),
+    var(--grad-2),
+    var(--grad-3),
+    var(--grad-4)
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+
+  color: #fff;
+  text-align: center;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* === Анимация градиента === */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,90 +1,156 @@
+/* Home.module.css */
+
+/* ===== Глобальные переменные (видны везде) ===== */
+:root {
+  /* Палитра (подхватывает твои глобальные, но имеет фолбэки) */
+  --fg-strong: var(--foreground, #e5e7eb);
+  --fg-muted: var(--foreground-50, #9ca3af);
+
+  /* Размеры контейнеров */
+  --home-min-h: 72svh;
+  --home-pad: clamp(16px, 2vw, 32px);
+  --content-max-w: 1100px;
+  --content-max-w-vw: 92vw;
+  --content-gap: clamp(16px, 3vw, 28px);
+
+  /* Типографика */
+  --title-gap: clamp(6px, 1.2vw, 10px);
+  --lh-tight: 1.05;
+  --ls-tight: -0.02em;
+
+  --fz-fade: clamp(22px, 3.2vw, 34px);
+  --fz-name: clamp(40px, 8vw, 92px);
+  --fz-role: clamp(28px, 4.5vw, 48px);
+
+  /* Кнопки */
+  --buttons-pad: 12px;
+  --buttons-gap: 10px;
+
+  --btn-min-w: 120px;
+  --btn-radius: 14px;
+  --btn-pad-y: 10px;
+  --btn-pad-x: 16px;
+  --btn-fz: 14px;
+  --btn-fw: 700;
+
+  /* Ховер/актив */
+  --btn-hover-scale: 1.1;
+  --btn-active-brightness: 0.98;
+  --btn-active-saturate: 0.95;
+
+  /* Градиент имени */
+  --name-grad-a: #d9d9d9;
+  --name-grad-b: #f5f5f5;
+  --name-grad-c: #bfbfbf;
+  --name-grad-d: #f0f0f0;
+  --name-grad-e: #d4d4d4;
+
+  /* Прочее */
+  --opacity-role: 0.95;
+}
+
+/* ===== Блок секции ===== */
 .home {
   display: grid;
   place-items: center;
-  min-height: 72svh;
-  padding: clamp(16px, 2vw, 32px);
+  min-height: var(--home-min-h);
+  padding: var(--home-pad);
+  /* совет по визуальным эффектам: изоляция помогает со стеклянными слоями */
+  isolation: isolate;
 }
 
 .content {
-  max-width: min(1100px, 92vw);
+  max-width: min(var(--content-max-w), var(--content-max-w-vw));
   width: 100%;
   display: grid;
-  gap: clamp(16px, 3vw, 28px);
+  gap: var(--content-gap);
+  position: relative;
+  z-index: 0;
 }
 
-/* Заголовок — три строки, выровнял и дал приятный вертикальный ритм */
+/* ===== Заголовок ===== */
 .title {
   display: grid;
-  gap: clamp(6px, 1.2vw, 10px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  gap: var(--title-gap);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  position: relative;
+  z-index: 2; /* держим текст поверх декоративных слоев */
 }
 
 .fade {
-  color: var(--foreground-50, #9ca3af);
+  color: var(--fg-muted);
   font-weight: 500;
-  font-size: clamp(22px, 3.2vw, 34px);
+  font-size: var(--fz-fade);
 }
 
-/* Имя — крупно и с мягким градиентом (без вырвиглаз) */
 .name {
   font-weight: 800;
-  font-size: clamp(40px, 8vw, 92px);
+  font-size: var(--fz-name);
   line-height: 0.98;
 
-  /* Простой градиент — от голубого к фиолетовому */
-  background: linear-gradient(90deg, #3b82f6, #a855f7);
-
-  /* Делает градиент видимым только внутри букв */
+  background: linear-gradient(
+    90deg,
+    var(--name-grad-a) 0%,
+    var(--name-grad-b) 25%,
+    var(--name-grad-c) 50%,
+    var(--name-grad-d) 75%,
+    var(--name-grad-e) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
-
-  /* Делаем сам текст прозрачным, чтобы "просвечивал" фон */
   -webkit-text-fill-color: transparent;
   color: transparent;
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-/* Роль — контрастная подпись */
 .role {
-  color: var(--foreground, #e5e7eb);
+  color: var(--fg-strong);
   font-weight: 700;
-  font-size: clamp(28px, 4.5vw, 48px);
-  opacity: 0.95;
+  font-size: var(--fz-role);
+  opacity: var(--opacity-role);
 }
 
-/* Кнопки */
+/* ===== Кнопки ===== */
 .buttons {
   display: grid;
   grid-auto-flow: column;
-  padding: 12px;
-  gap: 10px;
+  padding: var(--buttons-pad);
+  gap: var(--buttons-gap);
   align-items: center;
   justify-content: start;
+  position: relative;
+  z-index: 2; /* поверх стекла */
 }
 
 .btn {
-  display: inline-grid;
-  place-items: center;
-  padding: 10px 16px;
-  min-width: 120px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 14px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  min-width: var(--btn-min-w);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-fw);
+  font-size: var(--btn-fz);
   line-height: 1;
   color: var(--foreground, #111);
   text-decoration: none;
+  transition: transform 180ms ease;
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(var(--btn-hover-scale));
 }
 
 .btn:active {
   transform: translateY(0);
-  filter: saturate(0.95) brightness(0.98);
+  filter: saturate(var(--btn-active-saturate))
+    brightness(var(--btn-active-brightness));
 }
 
-/* Мелкие доработки под мобильные */
+/* ===== Мобильные правки ===== */
 @media (max-width: 720px) {
   .buttons {
     grid-auto-flow: row;
@@ -95,7 +161,7 @@
   }
 }
 
-/* Уважение к prefers-reduced-motion */
+/* ===== Respect prefers-reduced-motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .btn,
   .title {
