@@ -1,6 +1,5 @@
 import { ProjectsSection } from "@/components/sections/Projects/Projects";
-import { getProjects } from "@/shared/api/services/projects";
-import { getTechnologies } from "@/shared/api/services/technologies";
+import { getProjects, getTechnologies } from "@/lib/data";
 
 export default async function Projects() {
   const [projects, technologies] = await Promise.all([

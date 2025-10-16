@@ -36,7 +36,7 @@ export const SortSelect = ({ value, onChange }: Props) => {
           <Select.Content
             className={`${styles.selectContent} glass-wrapper`}
             position="popper"
-            sideOffset={6}
+            sideOffset={20}
           >
             <Select.Viewport className={styles.selectViewport}>
               {sortOptions.map((opt) => (

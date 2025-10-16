@@ -69,39 +69,19 @@
   padding-block: 4px;
 }
 
-.marker {
-  position: relative;
-  width: var(--tl-marker-size);
-  height: var(--tl-marker-size);
-  border-radius: 50%;
-  background: var(--tl-marker-bg);
-  border: 2px solid var(--tl-marker-color);
-  box-shadow:
-    0 0 0 var(--tl-marker-ring)
-    color-mix(in oklab, var(--tl-marker-color) 14%, transparent),
-    0 1px 3px rgba(0, 0, 0, 0.15);
-  transform: translateY(6px);
-}
-
 .card {
   grid-column: 3;
+  padding: var(--tl-card-pad);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--backdrop-blur) saturate(140%);
   background: linear-gradient(
     135deg,
-    var(--tl-card-bg-0) 0%,
-    var(--tl-card-bg-1) 100%
+    var(--glass-bg) 0%,
+    color-mix(in srgb, var(--glass-bg) 50%, transparent) 100%
   );
-  border: 1px solid var(--tl-card-border);
-  border-radius: var(--tl-card-radius);
-  padding: var(--tl-card-pad);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background 0.25s ease;
-  backdrop-filter: saturate(140%) blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
 }
 
 .card:hover {
@@ -112,25 +92,41 @@
   border-color: color-mix(in oklab, var(--accent) 45%, var(--tl-card-border));
 }
 
+/* ИЗМЕНЕНО: двухколоночный заголовок (компания слева, годы справа) */
 .header {
   display: grid;
-  gap: 4px;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 4px;
   margin-bottom: 8px;
 }
 
+/* ИЗМЕНЕНО: защита от переполнения */
 .company {
   font-weight: 700;
   font-size: var(--tl-company-fs);
   color: var(--accent);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+/* ИЗМЕНЕНО: годы прижаты вправо и не переносятся */
 .period {
   font-size: var(--tl-period-fs);
   color: var(--text-muted);
+  white-space: nowrap;
+  justify-self: end;
 }
 
 .type {
-  color: inherit;
+  color: color-mix(in oklab, var(--text) 90%, transparent); /* немного менее прозрачный */
+  font-size: var(--text-sm);
+  font-weight: 600; /* жирный */
+  text-transform: capitalize; /* первая буква заглавная */
+  margin-bottom: 16px;
 }
 
 .roles {

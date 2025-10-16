@@ -37,7 +37,10 @@ export const ProjectsSection = ({
         onSortChange={setSortBy}
       />
       <AnimatePresence mode="popLayout">
-        <ProjectsGrid projects={filteredProjects} />
+        <ProjectsGrid
+          projects={filteredProjects}
+          onTechnologyClick={handleTechSelect}
+        />
       </AnimatePresence>
     </Section>
   );

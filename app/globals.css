@@ -21,20 +21,50 @@
   --default-font-weight: 400;
 
   --default-max-width: 1440px;
-
-  --inner-padding: 8px; /* base step */
-  --outer-padding: 24px; /* 3 × 8 */
-  --container-padding: 32px; /* 4 × 8 */
   --navbar-height: 56px; /* 7 × 8 – компактная шапка в духе iOS/macOS */
 
-  /* Radii */
-  --default-radius: 12px; /* «карточный» радиус как у iOS панелей */
-  --full-radius: 9999px;
+  /* Spacing System */
+  --space-1: 4px; /* tiny */
+  --space-2: 8px; /* extra small */
+  --space-3: 12px; /* small */
+  --space-4: 16px; /* base */
+  --space-5: 24px; /* medium */
+  --space-6: 32px; /* large */
+  --space-7: 48px; /* extra large */
+  --space-8: 64px; /* huge */
 
-  /* Backdrop */
-  --backdrop-blur: 20px; /* дефолтный блюр для стекла/вибранси */
-  --inner-glass-border: 1px solid
-    color-mix(in srgb, var(--foreground) 60%, var(--background) 40%);
+  /* Layout Spacing */
+  --inner-padding: var(--space-2); /* 8px */
+  --outer-padding: var(--space-5); /* 24px */
+  --container-padding: var(--space-6); /* 32px */
+  --section-gap: var(--space-7); /* 48px */
+  --component-gap: var(--space-3); /* 12px */
+  --element-gap: var(--space-2); /* 8px */
+
+  /* Radii */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  --backdrop-blur: 20px;
+  --glass-bg: color-mix(in srgb, var(--background) 95%, transparent);
+  --glass-border: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --glass-shine: color-mix(in srgb, var(--foreground) 5%, transparent);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Fluid type (оставил твою сетку значений) */
   --text-xs: clamp(12px, 10.8px + 0.35vw, 13px);
@@ -64,25 +94,38 @@
   --border: var(--border-dark);
 }
 
+/* Scrollbar */
+:root {
+  --scrollbar-size: 10px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --scrollbar-thumb-hover: color-mix(
+    in srgb,
+    var(--foreground) 15%,
+    transparent
+  );
+  --scrollbar-radius: var(--radius-full);
+}
+
 /* WebKit/Blink: Chrome, Edge, Safari */
 *::-webkit-scrollbar {
-  width: var(--sb-size);
-  height: var(--sb-size);
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent; /* невидимый трек */
+  background: var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--sb-thumb);
-  border-radius: var(--sb-radius);
+  background-color: var(--scrollbar-thumb);
+  border-radius: var(--scrollbar-radius);
   background-clip: padding-box;
-  border: 3px solid transparent; /* тонкая «нить» за счёт внутреннего отступа */
+  border: 3px solid transparent;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: var(--sb-thumb-hover);
+  background-color: var(--scrollbar-thumb-hover);
 }
 
 html {
@@ -107,10 +150,11 @@ html,
 body {
   max-width: 100vw;
 }
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-text), Arial, Helvetica, sans-serif;
+  font-family: var(--font-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: var(--default-font-weight);
@@ -131,7 +175,7 @@ body {
   max-width: var(--default-max-width);
 }
 
-.button {
+button {
   font-family: var(--font-headings);
 }
 
@@ -146,7 +190,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-headings), Arial, Helvetica, sans-serif;
+  font-family: var(--font-headings);
 }
 
 a {

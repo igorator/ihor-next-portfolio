@@ -24,7 +24,7 @@ export const LanguageSelect = () => {
           position="popper"
           side="top"
           align="end"
-          sideOffset={5}
+          sideOffset={12}
         >
           <Select.Viewport>
             <Select.Item value="en" className={`${styles.selectItem}`}>

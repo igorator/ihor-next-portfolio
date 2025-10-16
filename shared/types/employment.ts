@@ -1,4 +1,4 @@
-export type EmploymentItem = {
+export type Employment = {
   id: string;
   company: string;
   period: string;

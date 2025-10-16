@@ -18,8 +18,14 @@
 }
 
 .selectContent {
-  border-radius: var(--default-radius);
   z-index: 100;
+  max-height: 320px;
+  overflow: auto;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
 }
 
 .selectItem {

@@ -38,8 +38,8 @@ export const TechnologyMultiSelect = ({
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className={`${styles.menuContent} glass-wrapper`} // + glass-wrapper
-          sideOffset={6}
+          className={`${styles.menuContent} glass-wrapper`}
+          sideOffset={20}
           align="start"
         >
           {technologies.map((t) => {
@@ -49,7 +49,7 @@ export const TechnologyMultiSelect = ({
                 key={t.id}
                 checked={checked}
                 onCheckedChange={() => onToggle(t.id)}
-                onSelect={(e) => e.preventDefault()} // не закрывать меню
+                onSelect={(e) => e.preventDefault()}
                 className={styles.menuItem}
               >
                 <span className={styles.menuItemLabel}>{t.name}</span>

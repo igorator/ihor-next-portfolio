@@ -3,6 +3,8 @@ import type { Technology } from "./technology";
 export type ProjectBase = {
   id: string;
   title: string;
+  date: string;
+  year: number;
   description_ua: string;
   description_en: string;
   technologyIds: string[];

@@ -6,18 +6,16 @@ export const useProjectFilters = (
   projects: Project[],
   technologies: Technology[],
 ) => {
-  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState("newest");
 
   const filteredProjects = useMemo(() => {
     let filtered = [...projects];
 
-    // Filter by specific technologies
-    if (selectedTechs.length > 0) {
+    // Filter by specific technology
+    if (selectedTech) {
       filtered = filtered.filter((project) =>
-        selectedTechs.every((techId) =>
-          project.technologies.some((tech) => tech.id === techId),
-        ),
+        project.technologies.some((tech) => tech.id === selectedTech),
       );
     }
 
@@ -25,9 +23,9 @@ export const useProjectFilters = (
     return filtered.sort((a, b) => {
       switch (sortBy) {
         case "newest":
-          return Number(b.id) - Number(a.id);
+          return b.date.localeCompare(a.date);
         case "oldest":
-          return Number(a.id) - Number(b.id);
+          return a.date.localeCompare(b.date);
         case "az":
           return a.title.localeCompare(b.title);
         case "za":
@@ -36,14 +34,10 @@ export const useProjectFilters = (
           return 0;
       }
     });
-  }, [projects, selectedTechs, sortBy]);
+  }, [projects, selectedTech, sortBy]);
 
   const handleTechSelect = (techId: string) => {
-    setSelectedTechs((prev) =>
-      prev.includes(techId)
-        ? prev.filter((id) => id !== techId)
-        : [...prev, techId],
-    );
+    setSelectedTech((current) => (current === techId ? null : techId));
   };
 
   const availableTechnologies = useMemo(
@@ -57,7 +51,7 @@ export const useProjectFilters = (
   );
 
   return {
-    selectedTechs,
+    selectedTechs: selectedTech ? [selectedTech] : [],
     sortBy,
     filteredProjects,
     handleTechSelect,

@@ -5,9 +5,13 @@ import { ProjectCard } from "./ProjectCard/ProjectCard";
 
 type ProjectsGridProps = {
   projects: Project[];
+  onTechnologyClick?: (techId: string) => void;
 };
 
-export const ProjectsGrid = ({ projects }: ProjectsGridProps) => (
+export const ProjectsGrid = ({
+  projects,
+  onTechnologyClick,
+}: ProjectsGridProps) => (
   <motion.div layout className={styles.projectsWrapper}>
     {projects.length > 0 ? (
       projects.map((project) => (
@@ -19,7 +23,10 @@ export const ProjectsGrid = ({ projects }: ProjectsGridProps) => (
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <ProjectCard project={project} />
+          <ProjectCard
+            project={project}
+            onTechnologyClick={onTechnologyClick}
+          />
         </motion.div>
       ))
     ) : (

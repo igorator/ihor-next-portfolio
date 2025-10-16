@@ -1,9 +1,9 @@
 import { Section } from "@/components/layout/Section/Section";
 import styles from "./Employment.module.css";
-import type { EmploymentItem } from "@/shared/types";
+import type { Employment } from "@/shared/types";
 
 type EmploymentSectionProps = {
-  employmentHistory: EmploymentItem[];
+  employmentHistory: Employment[];
 };
 
 export const EmploymentSection = ({
@@ -15,17 +15,16 @@ export const EmploymentSection = ({
     <ol className={styles.timeline}>
       {employmentHistory.map((item) => (
         <li key={item.id} className={styles.item}>
-          <div className={styles.marker} aria-hidden="true" />
           <article className={styles.card}>
             <header className={styles.header}>
               <h3 className={styles.company}>{item.company}</h3>
-              <p className={styles.period}>
-                {item.period} • <span className={styles.type}>{item.type}</span>
-              </p>
+              <span className={styles.period}>{item.period}</span>
             </header>
 
+            <div className={styles.type}>{item.type}</div>
+
             <ul className={styles.roles}>
-              {item.roles.map((role) => (
+              {item.roles.map((role: string) => (
                 <li key={`${role}-${item.company}`} className={styles.role}>
                   {role}
                 </li>
