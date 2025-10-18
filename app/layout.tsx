@@ -1,10 +1,11 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import { ThemeSetup } from "@/components/theme/theme-setup";
-import "./globals.css";
-import { Navbar } from "@/components/common/Navbar/Navbar";
+import type { Locale } from "@/shared/config/i18n/config";
+import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
 import { ThemeProvider } from "@/shared/state/providers/theme-provider";
-import { AppBackground } from "@/components/layout/AppBackground/AppBackground";
+import { ThemeSetup } from "@/shared/components/features/Theme/ThemeSetup";
+import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackground";
 
 const fontHeading = Manrope({
   variable: "--font-headings",
@@ -21,13 +22,21 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "uk" }];
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: Locale }>;
 }>) {
+  const { lang } = await params;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
         <ThemeProvider>
           <ThemeSetup />

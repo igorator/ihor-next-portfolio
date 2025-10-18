@@ -1,4 +1,4 @@
-import { NotFoundSection } from "@/components/sections/NotFound/NotFoundSection";
+import { NotFoundSection } from "@/shared/components/pages/NotFound/NotFoundSection";
 
 export default function AppNotFound() {
   return <NotFoundSection />;

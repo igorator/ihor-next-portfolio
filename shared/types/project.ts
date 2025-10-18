@@ -1,6 +1,4 @@
-import type { Technology } from "./technology";
-
-export type ProjectBase = {
+export type Project = {
   id: string;
   title: string;
   date: string;
@@ -11,8 +9,4 @@ export type ProjectBase = {
   imageUrl: string;
   githubUrl?: string | null;
   demoUrl?: string | null;
-};
-
-export type Project = Omit<ProjectBase, "technologyIds"> & {
-  technologies: Technology[];
 };

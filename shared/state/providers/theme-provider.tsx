@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from "react";
 import { useThemeStore } from "@/shared/state/store/useThemeStore";
-import { getSystemTheme, getEffectiveTheme } from "@/shared/lib/theme";
+import { getSystemTheme, getEffectiveTheme } from "@/shared/lib/utils/theme";
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const { theme } = useThemeStore();

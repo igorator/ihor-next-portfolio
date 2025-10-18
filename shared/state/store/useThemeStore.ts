@@ -2,8 +2,8 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Theme } from "@/shared/lib/theme";
-import { defaultTheme, isValidTheme } from "@/shared/lib/theme";
+import type { Theme } from "@/shared/lib/utils/theme";
+import { defaultTheme, isValidTheme } from "@/shared/lib/utils/theme";
 
 interface ThemeStore {
   theme: Theme;
