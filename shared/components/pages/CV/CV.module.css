@@ -15,14 +15,9 @@
 
 .iconWrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: var(--muted);
-  color: var(--accent);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .cvIcon {
@@ -47,20 +42,9 @@
   transition: all 0.25s ease;
 }
 
-.download {
-  background: var(--accent);
-  color: white;
-}
-
 .download:hover {
   transform: translateY(-2px);
   opacity: 0.9;
-}
-
-.view {
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
 }
 
 .view:hover {

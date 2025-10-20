@@ -6,11 +6,13 @@ import { BsChevronDown } from "react-icons/bs";
 import { BsCheckLg } from "react-icons/bs";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
 
-const sortOptions = [
-  { id: "newest", name: "Newest First" },
-  { id: "oldest", name: "Oldest First" },
-  { id: "az", name: "A-Z" },
-  { id: "za", name: "Z-A" },
+import { useTranslations } from "next-intl";
+
+const sortOptions = (t: any) => [
+  { id: "newest", name: t("projects.filters.options.newest") },
+  { id: "oldest", name: t("projects.filters.options.oldest") },
+  { id: "az", name: t("projects.filters.options.az") },
+  { id: "za", name: t("projects.filters.options.za") },
 ];
 
 type Props = {
@@ -19,6 +21,8 @@ type Props = {
 };
 
 export const SortSelect = ({ value, onChange }: Props) => {
+  const t = useTranslations();
+
   return (
     <GlassSurface>
       <Select.Root value={value} onValueChange={onChange}>
@@ -26,7 +30,7 @@ export const SortSelect = ({ value, onChange }: Props) => {
           className={`${styles.selectTrigger} glass-wrapper`}
           aria-label="Sort"
         >
-          <Select.Value placeholder="Sort Projects" />
+          <Select.Value placeholder={t("projects.filters.sort")} />
           <Select.Icon className={styles.selectIcon}>
             <BsChevronDown className={styles.chevronIcon} aria-hidden="true" />
           </Select.Icon>
@@ -39,7 +43,7 @@ export const SortSelect = ({ value, onChange }: Props) => {
             sideOffset={20}
           >
             <Select.Viewport className={styles.selectViewport}>
-              {sortOptions.map((opt) => (
+              {sortOptions(t).map((opt) => (
                 <Select.Item
                   key={opt.id}
                   value={opt.id}

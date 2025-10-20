@@ -1,18 +1,23 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, type Variants, cubicBezier } from "framer-motion";
 import { Section } from "@/shared/components/layout/Section/Section";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
 import { routes } from "@/shared/config/routes";
-import { GoArrowDownRight } from "react-icons/go";
 import styles from "./Home.module.css";
+import { useTranslations } from "next-intl";
+import { BsArrowRight } from "react-icons/bs";
 
-const heroLinks = {
-  projects: { label: "Projects", href: routes.projects.path },
-  cv: { label: "CV", href: routes.cv.path },
-  employment: { label: "Employment", href: routes.employment.path },
-} as const;
+const getHeroLinks = (t: any) =>
+  ({
+    projects: { label: t("navigation.projects"), href: routes.projects.path },
+    cv: { label: t("navigation.cv"), href: routes.cv.path },
+    employment: {
+      label: t("navigation.employment"),
+      href: routes.employment.path,
+    },
+  }) as const;
 
 const titleContainer: Variants = {
   hidden: {},
@@ -47,43 +52,47 @@ const buttonsWrap: Variants = {
   },
 };
 
-export const HomeSection = () => (
-  <Section className={styles.home}>
-    <div className={styles.content}>
-      <motion.h1
-        className={styles.title}
-        variants={titleContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.6 }}
-      >
-        <motion.span className={styles.fade} variants={titleLine}>
-          Hello
-        </motion.span>
-        <motion.span className={styles.name} variants={titleLine}>
-          I’m Ihor
-        </motion.span>
-        <motion.span className={styles.role} variants={titleLine}>
-          Web&nbsp;Developer
-        </motion.span>
-      </motion.h1>
+export const HomeSection = () => {
+  const t = useTranslations();
 
-      <motion.div
-        variants={buttonsWrap}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.6 }}
-      >
-        <GlassSurface>
-          <div className={styles.buttons}>
-            {Object.values(heroLinks).map(({ href, label }) => (
-              <Link key={href} href={href} className={styles.btn}>
-                {label} <GoArrowDownRight />
-              </Link>
-            ))}
-          </div>
-        </GlassSurface>
-      </motion.div>
-    </div>
-  </Section>
-);
+  return (
+    <Section className={styles.home}>
+      <div className={styles.content}>
+        <motion.h1
+          className={styles.title}
+          variants={titleContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <motion.span className={styles.fade} variants={titleLine}>
+            {t("home.greeting")}
+          </motion.span>
+          <motion.span className={styles.name} variants={titleLine}>
+            {t("home.introduction")}
+          </motion.span>
+          <motion.span className={styles.role} variants={titleLine}>
+            {t("home.role")}
+          </motion.span>
+        </motion.h1>
+
+        <motion.div
+          variants={buttonsWrap}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <GlassSurface>
+            <div className={styles.buttons}>
+              {Object.values(getHeroLinks(t)).map(({ href, label }) => (
+                <Link key={href} href={href} className={styles.btn}>
+                  <span>{label}</span> <BsArrowRight />
+                </Link>
+              ))}
+            </div>
+          </GlassSurface>
+        </motion.div>
+      </div>
+    </Section>
+  );
+};

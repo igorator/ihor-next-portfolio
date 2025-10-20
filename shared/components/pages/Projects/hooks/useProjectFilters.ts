@@ -15,7 +15,10 @@ export const useProjectFilters = (
     // Filter by specific technology
     if (selectedTech) {
       filtered = filtered.filter((project) =>
-        project.technologies.some((tech) => tech.id === selectedTech),
+        // projects may be merged with technologies on server; fall back to technologyIds
+        ((project as any).technologies ?? project.technologyIds ?? []).some(
+          (tech: any) => tech.id === selectedTech || tech === selectedTech,
+        ),
       );
     }
 
@@ -44,7 +47,10 @@ export const useProjectFilters = (
     () =>
       technologies.filter((tech) =>
         projects.some((project) =>
-          project.technologies.some((pt) => pt.id === tech.id),
+          // project may have merged technologies or only ids
+          ((project as any).technologies ?? project.technologyIds ?? []).some(
+            (pt: any) => (pt && pt.id ? pt.id === tech.id : pt === tech.id),
+          ),
         ),
       ),
     [projects, technologies],

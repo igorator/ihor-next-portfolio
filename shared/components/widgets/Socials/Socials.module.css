@@ -18,10 +18,10 @@
 .iconLink:hover {
   transform: scale(1.15);
   opacity: 0.8;
+  color: var(--accent);
 }
 
 .icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--foreground);
 }

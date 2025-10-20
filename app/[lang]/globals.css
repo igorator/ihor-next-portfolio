@@ -129,7 +129,6 @@
 }
 
 html {
-  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin; /* thin | auto | none */
   scrollbar-color: var(--sb-thumb) transparent; /* thumb | track */
 }
@@ -177,6 +176,7 @@ body {
 
 button {
   font-family: var(--font-headings);
+  font-weight: 600;
 }
 
 html {

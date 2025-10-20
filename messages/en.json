@@ -1,0 +1,43 @@
+{
+  "home": {
+    "greeting": "Hello",
+    "introduction": "I'm Ihor",
+    "role": "Web Developer"
+  },
+  "navigation": {
+    "root": "Home",
+    "projects": "Projects",
+    "cv": "CV",
+    "employment": "Employment"
+  },
+  "projects": {
+    "title": "Projects",
+    "filters": {
+      "technologies": "Technologies",
+      "sort": "Sort by",
+      "clear": "Clear filters",
+      "selected": "{count, plural, =0{Select Technologies} =1{# selected} other{# selected}}",
+      "options": {
+        "newest": "Newest First",
+        "oldest": "Oldest First",
+        "az": "A-Z",
+        "za": "Z-A"
+      }
+    }
+  },
+  "projects_ui": {
+    "noMatches": "No projects match your filters",
+    "links": {
+      "github": "GitHub",
+      "liveDemo": "Live Demo"
+    }
+  },
+  "cv": {
+    "title": "CV",
+    "download": "Download CV",
+    "view": "View in Browser"
+  },
+  "employment": {
+    "title": "Employment History"
+  }
+}

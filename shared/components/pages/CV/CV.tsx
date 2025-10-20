@@ -3,9 +3,12 @@
 import { Section } from "@/shared/components/layout/Section/Section";
 import styles from "./CV.module.css";
 import { BsFileEarmarkPerson, BsDownload, BsEye } from "react-icons/bs";
+import { useTranslations } from "next-intl";
+import { GlassSurface } from "../../ui/GlassSurface/GlassSurface";
 
 export const CVSection = () => {
   const cvFile = "/cv/CV_Kliushnyk_Frontend.pdf"; // ← строка, НЕ import
+  const t = useTranslations();
 
   return (
     <Section className={styles.cv}>
@@ -15,14 +18,16 @@ export const CVSection = () => {
         </div>
 
         <div className={styles.buttons}>
-          <a
-            href={cvFile}
-            download
-            className={`${styles.button} ${styles.download}`}
-          >
-            <BsDownload size={18} />
-            <span>Download CV</span>
-          </a>
+          <GlassSurface>
+            <a
+              href={cvFile}
+              download
+              className={`${styles.button} ${styles.download}`}
+            >
+              <BsDownload size={18} />
+              <span>{t("cv.download")}</span>
+            </a>
+          </GlassSurface>
 
           <a
             href={cvFile}
@@ -31,7 +36,7 @@ export const CVSection = () => {
             className={`${styles.button} ${styles.view}`}
           >
             <BsEye size={18} />
-            <span>View in Browser</span>
+            <span>{t("cv.view")}</span>
           </a>
         </div>
       </div>

@@ -14,10 +14,13 @@ interface ProjectsSectionProps {
   technologies: Technology[];
 }
 
+import { useTranslations } from "next-intl";
+
 export const ProjectsSection = ({
   projects,
   technologies,
 }: ProjectsSectionProps) => {
+  const t = useTranslations();
   const {
     selectedTechs,
     sortBy,
@@ -27,8 +30,8 @@ export const ProjectsSection = ({
   } = useProjectFilters(projects, technologies);
 
   return (
-    <Section>
-      <h2 className={styles.title}>My Projects</h2>
+    <Section className={styles.projectSection}>
+      <h2 className={styles.title}>{t("projects.title")}</h2>
       <ProjectFilters
         technologies={technologies}
         selectedTechnologies={selectedTechs}

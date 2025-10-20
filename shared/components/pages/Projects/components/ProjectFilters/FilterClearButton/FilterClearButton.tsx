@@ -13,6 +13,9 @@ export const FilterClearButton = ({
   onClear,
   disabled,
 }: FilterClearButtonProps) => {
+  const { useTranslations } = require("next-intl");
+  const t = useTranslations();
+
   return (
     <GlassSurface>
       <button
@@ -20,7 +23,7 @@ export const FilterClearButton = ({
         className={`${styles.clearButton} glass-wrapper`}
         onClick={onClear}
         disabled={disabled}
-        title="Clear filters"
+        title={t("projects.filters.clear")}
       >
         <MdOutlineClear className={styles.clearIcon} aria-hidden="true" />
       </button>

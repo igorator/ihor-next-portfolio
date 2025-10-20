@@ -17,13 +17,19 @@ export const TechnologyMultiSelect = ({
   selectedTechnologies,
   onToggle,
 }: Props) => {
+  // translations
+  const { useTranslations } = require("next-intl");
+  const t = useTranslations();
+
   const triggerLabel =
     selectedTechnologies.length === 0
-      ? "Select Technologies"
+      ? t("projects.filters.selected", { count: 0 })
       : selectedTechnologies.length === 1
-        ? (technologies.find((t) => t.id === selectedTechnologies[0])?.name ??
-          "1 selected")
-        : `${selectedTechnologies.length} selected`;
+        ? (technologies.find((tec) => tec.id === selectedTechnologies[0])
+            ?.name ?? t("projects.filters.selected", { count: 1 }))
+        : t("projects.filters.selected", {
+            count: selectedTechnologies.length,
+          });
 
   return (
     <DropdownMenu.Root>

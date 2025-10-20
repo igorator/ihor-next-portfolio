@@ -1,5 +1,5 @@
-import { PageLoading } from "@/shared/components/loading/PageLoading/PageLoading";
+import { AppLoading } from "@/shared/components/loading/AppLoading/AppLoading";
 
 export default function Loading() {
-  return <PageLoading />;
+  return <AppLoading />;
 }

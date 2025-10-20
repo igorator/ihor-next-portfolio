@@ -1,0 +1,43 @@
+{
+  "home": {
+    "greeting": "Вітаю",
+    "introduction": "Я Ігор",
+    "role": "Веб-розробник"
+  },
+  "navigation": {
+    "root": "Головна",
+    "projects": "Проекти",
+    "cv": "Резюме",
+    "employment": "Досвід"
+  },
+  "projects": {
+    "title": "Проекти",
+    "filters": {
+      "technologies": "Технології",
+      "sort": "Сортувати за",
+      "clear": "Очистити фільтри",
+      "selected": "{count, plural, =0{Виберіть технології} =1{# вибрано} other{# вибрано}}",
+      "options": {
+        "newest": "Найновіші",
+        "oldest": "Найстаріші",
+        "az": "A-Z",
+        "za": "Z-A"
+      }
+    }
+  },
+  "projects_ui": {
+    "noMatches": "Жоден проект не відповідає фільтрам",
+    "links": {
+      "github": "GitHub",
+      "liveDemo": "Демо"
+    }
+  },
+  "cv": {
+    "title": "Резюме",
+    "download": "Завантажити резюме",
+    "view": "Переглянути в браузері"
+  },
+  "employment": {
+    "title": "Досвід роботи"
+  }
+}

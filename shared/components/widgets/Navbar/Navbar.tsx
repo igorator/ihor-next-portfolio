@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import styles from "./Navbar.module.css";
 import { routes } from "@/shared/config/routes";
-import { LanguageSelect } from "@/shared/components/widgets/LanguageSelect/LanguageSelect";
-import { ThemeSwitch } from "@/shared/components/widgets/ThemeSwitcher/ThemeSwitcher";
+import { useTranslations } from "next-intl";
+import { LanguageSelect } from "@/shared/components/features/LanguageSelect/LanguageSelect";
+import { ThemeSwitch } from "@/shared/components/features/Theme/ThemeSwitcher/ThemeSwitcher";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
 import { Socials } from "../Socials/Socials";
 
@@ -20,6 +21,7 @@ export const Navbar = () => {
       ? pathname.slice(0, -1)
       : pathname;
 
+  const t = useTranslations();
   const items: Route[] = useMemo(() => Object.values(routes), []);
 
   return (
@@ -30,7 +32,7 @@ export const Navbar = () => {
 
       <GlassSurface>
         <div className={styles.navbarLinks}>
-          {items.map(({ path, label, icon: Icon }) => {
+          {items.map(({ path, icon: Icon }) => {
             const active =
               path === "/"
                 ? normalized === "/"
@@ -44,7 +46,18 @@ export const Navbar = () => {
                 aria-current={active ? "page" : undefined}
               >
                 <Icon className={styles.icon} aria-hidden="true" />
-                <span className={styles.label}>{label}</span>
+                <span className={styles.label}>
+                  {
+                    // compute translated label per route
+                    path === routes.root.path
+                      ? t("navigation.root")
+                      : path === routes.cv.path
+                        ? t("navigation.cv")
+                        : path === routes.employment.path
+                          ? t("navigation.employment")
+                          : t("navigation.projects")
+                  }
+                </span>
               </Link>
             );
           })}
