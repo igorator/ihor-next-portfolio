@@ -55,7 +55,7 @@
   grid-column: 3;
   padding: var(--tl-card-pad);
   border-radius: var(--radius-lg);
-  backdrop-filter: var(--backdrop-blur) saturate(140%);
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
   background: linear-gradient(
     135deg,
     var(--glass-bg) 0%,

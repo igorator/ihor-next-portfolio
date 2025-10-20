@@ -7,12 +7,12 @@ import type { Locale } from "next-intl";
 export default async function Projects({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ locale: Locale }>;
 }) {
-  const { lang } = await params;
+  const { locale } = await params;
 
   const [projects, technologies] = await Promise.all([
-    getProjects(lang),
+    getProjects(locale),
     getTechnologies(),
   ]);
 

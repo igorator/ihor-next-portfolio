@@ -4,10 +4,10 @@ import { EmploymentSection } from "@/shared/components/pages/Employment/Employme
 export default async function Employment({
   params,
 }: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { lang } = await params;
-  const employmentHistory = await getEmployment(lang);
+  const { locale } = await params;
+  const employmentHistory = await getEmployment(locale);
 
   return <EmploymentSection employmentHistory={employmentHistory} />;
 }
