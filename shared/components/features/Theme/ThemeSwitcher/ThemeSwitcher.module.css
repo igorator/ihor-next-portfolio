@@ -5,8 +5,6 @@
   gap: 6px;
   padding: 12px;
   border-radius: var(--full-radius);
-  background-color: transparent;
-  border: none;
 }
 
 .themeIcon {
@@ -19,7 +17,7 @@
   all: unset;
   width: 42px;
   height: 25px;
-  background-color: color-mix(in srgb, var(--foreground) 20%, var(--background));
+  border: 1px solid var(--glass-border);
   border-radius: 9999px;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -3,46 +3,79 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: var(--background, #0a0a0a);
+  background: color-mix(in oklab, var(--background, #0a0a0a) 92%, #000 8%);
   color: var(--foreground, #fff);
   z-index: 9999;
 }
-
 .box {
-  width: min(360px, 90%);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  width: min(380px, 92%);
+  display: grid;
+  gap: 10px;
   text-align: center;
+  padding: 18px 16px;
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--foreground, #fff) 4%, transparent);
+  border: 1px solid
+    color-mix(in oklab, var(--foreground, #fff) 10%, transparent);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
 }
 .title {
   opacity: 0.9;
+  font-weight: 600;
 }
 
+.progressWrap {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--foreground, #fff) 10%, transparent);
+}
 .progress {
   width: 100%;
-  height: 8px;
+  height: 100%;
   appearance: none;
-  border: none;
-  border-radius: 9999px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  background: transparent;
 }
-
-/* WebKit */
 .progress::-webkit-progress-bar {
   background: transparent;
 }
 .progress::-webkit-progress-value {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
-
-/* Firefox */
 .progress::-moz-progress-bar {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
+.progressStripe {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, #fff 14%, transparent),
+    transparent
+  );
+  translate: -100% 0;
+  animation: stripe 1.05s linear infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@keyframes stripe {
+  to {
+    translate: 100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progressStripe {
+    animation: none;
+    display: none;
+  }
+}
+
 .percent {
-  font-size: 0.825rem;
+  font-size: 0.85rem;
   opacity: 0.75;
 }

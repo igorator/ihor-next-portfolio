@@ -1,4 +1,4 @@
-import { Locale, NextIntlClientProvider } from "next-intl";
+import { type Locale, NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/shared/state/providers/theme-provider";
 import { ThemeSetup } from "@/shared/components/features/Theme/ThemeSetup";
 import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
@@ -6,12 +6,13 @@ import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackg
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params, // <-- Promise
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  // Подтягиваем сообщения локали (вариант с импортом файла)
+  const { locale } = await params; // <-- обязательно await
+
   const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
