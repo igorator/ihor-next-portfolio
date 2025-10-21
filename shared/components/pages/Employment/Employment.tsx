@@ -1,6 +1,6 @@
 import { Section } from "@/shared/components/layout/Section/Section";
-import styles from "./Employment.module.css";
 import type { Employment } from "@/shared/types";
+import styles from "./Employment.module.css";
 
 type EmploymentSectionProps = {
   employmentHistory: Employment[];

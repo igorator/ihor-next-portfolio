@@ -1,10 +1,10 @@
 "use client";
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import styles from "./TechnologyMultiSelect.module.css";
-import type { Technology } from "@/shared/types/technology";
 import { BsCheckLg, BsChevronDown } from "react-icons/bs";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
+import type { Technology } from "@/shared/types/technology";
+import styles from "./TechnologyMultiSelect.module.css";
 
 type Props = {
   technologies: Technology[];

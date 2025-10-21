@@ -1,7 +1,7 @@
 "use client";
 
 import * as Switch from "@radix-ui/react-switch";
-import { BsSun, BsMoon } from "react-icons/bs";
+import { BsMoon, BsSun } from "react-icons/bs";
 import { useThemeStore } from "@/shared/state/store/useThemeStore";
 import styles from "./ThemeSwitcher.module.css";
 

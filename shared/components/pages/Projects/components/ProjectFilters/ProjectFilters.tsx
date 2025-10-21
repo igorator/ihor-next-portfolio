@@ -2,17 +2,21 @@
 
 import { useMemo } from "react";
 import type { Technology } from "@/shared/types/technology";
-import styles from "./ProjectFilters.module.css";
-import { TechnologyMultiSelect } from "./TechnologyMultiSelect/TechnologyMultiSelect";
-import { SortSelect } from "./SortSelect/SortSelect";
 import { FilterClearButton } from "./FilterClearButton/FilterClearButton";
+import styles from "./ProjectFilters.module.css";
+import { SortSelect } from "./SortSelect/SortSelect";
+import { TechnologyMultiSelect } from "./TechnologyMultiSelect/TechnologyMultiSelect";
 
+// 1) Единый тип сортировки
+type SortKey = "newest" | "oldest" | "az" | "za";
+
+// 2) Правим пропсы под SortKey
 type ProjectFiltersProps = {
   technologies: Technology[];
   selectedTechnologies: string[];
-  sortBy: string;
+  sortBy: SortKey;
   onTechnologySelect: (id: string) => void; // toggler
-  onSortChange: (value: string) => void;
+  onSortChange: (value: SortKey) => void;
 };
 
 export const ProjectFilters = ({
@@ -37,7 +41,7 @@ export const ProjectFilters = ({
     // Снять все выбранные технологии (toggler-логика)
     if (selectedTechnologies.length) {
       selectedTechnologies.forEach((id) => {
-        onTechnologySelect(id); // ← теперь без возврата
+        onTechnologySelect(id);
       });
     }
   };
@@ -52,6 +56,7 @@ export const ProjectFilters = ({
         onToggle={onTechnologySelect}
       />
 
+      {/* 4) SortSelect тоже должен принимать SortKey */}
       <SortSelect value={sortBy} onChange={onSortChange} />
 
       <FilterClearButton onClear={handleClear} disabled={isPristine} />

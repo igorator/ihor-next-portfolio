@@ -1,10 +1,10 @@
 "use client";
 
 import * as Select from "@radix-ui/react-select";
-import styles from "./LanguageSelect.module.css";
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import styles from "./LanguageSelect.module.css";
 
 const localeLabels = {
   en: "English",

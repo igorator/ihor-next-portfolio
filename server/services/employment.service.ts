@@ -1,10 +1,9 @@
 import "server-only";
 import { routing } from "@/i18n/routing";
-import type { Employment } from "@/shared/types/employment";
-
 // Статические импортЫ (удобно и надёжно для serverless)
 import employmentEn from "@/server/data/employment/employment_en.json";
 import employmentUk from "@/server/data/employment/employment_uk.json";
+import type { Employment } from "@/shared/types/employment";
 
 // Тип локали из routing (строго: "en" | "uk")
 type Locale = (typeof routing.locales)[number];

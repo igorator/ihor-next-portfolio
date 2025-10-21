@@ -1,7 +1,7 @@
-import { Section } from "@/shared/components/layout/Section/Section";
-import styles from "./NotFoundSection.module.css";
 import Link from "next/link";
+import { Section } from "@/shared/components/layout/Section/Section";
 import { routes } from "@/shared/config/routes";
+import styles from "./NotFoundSection.module.css";
 
 export const NotFoundSection = () => (
   <Section id="not-found" className={styles.notFound}>

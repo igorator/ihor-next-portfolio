@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import styles from "./AppLoading.module.css";
 import { useEffect, useRef, useState } from "react";
+import styles from "./AppLoading.module.css";
 
 export function AppLoading() {
   const [progress, setProgress] = useState(0);

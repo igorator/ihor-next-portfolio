@@ -1,6 +1,6 @@
+import { useTranslations } from "next-intl";
 import type { CSSProperties } from "react";
 import styles from "./ProjectCard.module.css";
-import { useTranslations } from "next-intl";
 
 export type ProjectCardProps = {
   id: string;

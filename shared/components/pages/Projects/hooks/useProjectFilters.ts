@@ -1,28 +1,47 @@
-import { useState, useMemo } from "react";
-import type { Project } from "@/shared/types/project";
+import { useMemo, useState } from "react";
+import type {
+  Project,
+  ProjectWithTechnologies,
+} from "@/shared/types/projects/project";
 import type { Technology } from "@/shared/types/technology";
 
 export const useProjectFilters = (
   projects: Project[],
   technologies: Technology[],
 ) => {
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState("newest");
+  // теперь массив выбранных технологий
+  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<"newest" | "oldest" | "az" | "za">(
+    "newest",
+  );
+
+  const toggleTech = (id: string) => {
+    setSelectedTechs((prev) =>
+      prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id],
+    );
+  };
+
+  // КЛИК ИЗ КАРТОЧКИ: оставить только одну технологию
+  const setOnlyTechnology = (id: string) => setSelectedTechs([id]);
+
+  const clearTechnologies = () => setSelectedTechs([]);
 
   const filteredProjects = useMemo(() => {
     let filtered = [...projects];
 
-    // Filter by specific technology
-    if (selectedTech) {
-      filtered = filtered.filter((project) =>
-        // projects may be merged with technologies on server; fall back to technologyIds
-        ((project as any).technologies ?? project.technologyIds ?? []).some(
-          (tech: any) => tech.id === selectedTech || tech === selectedTech,
-        ),
-      );
+    if (selectedTechs.length > 0) {
+      filtered = filtered.filter((project) => {
+        const list = ((project as ProjectWithTechnologies).technologies ??
+          project.technologyIds ??
+          []) as Array<{ id?: string } | string>;
+        const projectTechIds = list
+          .map((x) => (typeof x === "string" ? x : x.id))
+          .filter(Boolean);
+        // OR-логика: проект попадает, если у него есть ХОТЯ БЫ ОДНА из выбранных технологий
+        return selectedTechs.some((id) => projectTechIds.includes(id));
+      });
     }
 
-    // Sort projects
     return filtered.sort((a, b) => {
       switch (sortBy) {
         case "newest":
@@ -37,31 +56,33 @@ export const useProjectFilters = (
           return 0;
       }
     });
-  }, [projects, selectedTech, sortBy]);
-
-  const handleTechSelect = (techId: string) => {
-    setSelectedTech((current) => (current === techId ? null : techId));
-  };
+  }, [projects, selectedTechs, sortBy]);
 
   const availableTechnologies = useMemo(
     () =>
       technologies.filter((tech) =>
-        projects.some((project) =>
-          // project may have merged technologies or only ids
-          ((project as any).technologies ?? project.technologyIds ?? []).some(
-            (pt: any) => (pt && pt.id ? pt.id === tech.id : pt === tech.id),
-          ),
-        ),
+        projects.some((project) => {
+          const list = ((project as ProjectWithTechnologies).technologies ??
+            project.technologyIds ??
+            []) as Array<{ id?: string } | string>;
+          return list.some((pt) =>
+            typeof pt === "string" ? pt === tech.id : pt.id === tech.id,
+          );
+        }),
       ),
     [projects, technologies],
   );
 
   return {
-    selectedTechs: selectedTech ? [selectedTech] : [],
+    // состояние
+    selectedTechs,
     sortBy,
     filteredProjects,
-    handleTechSelect,
-    setSortBy,
     availableTechnologies,
+    // экшены
+    toggleTech,
+    setOnlyTechnology,
+    clearTechnologies,
+    setSortBy,
   };
 };

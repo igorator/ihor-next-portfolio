@@ -1,6 +1,11 @@
 "use client";
 
-import React, { ReactNode, useId, CSSProperties, useMemo } from "react";
+import React, {
+  type CSSProperties,
+  type ReactNode,
+  useId,
+  useMemo,
+} from "react";
 
 type GlassSurfaceProps = {
   children: ReactNode;

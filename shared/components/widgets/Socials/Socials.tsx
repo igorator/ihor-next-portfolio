@@ -1,5 +1,5 @@
-import styles from "./Socials.module.css";
 import { socials } from "@/shared/data/socials";
+import styles from "./Socials.module.css";
 
 export const Socials: React.FC = () => {
   return (

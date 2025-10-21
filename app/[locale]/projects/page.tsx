@@ -1,8 +1,8 @@
-import { ProjectsSection } from "@/shared/components/pages/Projects/Projects";
+import type { Locale } from "next-intl";
 import { getProjects } from "@/server/services/projects.service";
 import { getTechnologies } from "@/server/services/technologies.service";
+import { ProjectsSection } from "@/shared/components/pages/Projects/Projects";
 import { mergeProjectsWithTechnologies } from "@/shared/lib/utils/data-utils";
-import type { Locale } from "next-intl";
 
 export default async function Projects({
   params,

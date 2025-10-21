@@ -1,4 +1,4 @@
-import type { Technology } from "./technology";
+import type { Technology } from "../technology";
 
 export type Project = {
   id: string;

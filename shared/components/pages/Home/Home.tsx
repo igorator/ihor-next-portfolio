@@ -1,23 +1,22 @@
 "use client";
 
+import { cubicBezier, motion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { BsArrowRight } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";
-import { motion, type Variants, cubicBezier } from "framer-motion";
 import { Section } from "@/shared/components/layout/Section/Section";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
 import { routes } from "@/shared/config/routes";
 import styles from "./Home.module.css";
-import { useTranslations } from "next-intl";
-import { BsArrowRight } from "react-icons/bs";
 
-const getHeroLinks = (t: any) =>
-  ({
-    projects: { label: t("navigation.projects"), href: routes.projects.path },
-    cv: { label: t("navigation.cv"), href: routes.cv.path },
-    employment: {
-      label: t("navigation.employment"),
-      href: routes.employment.path,
-    },
-  }) as const;
+const getHeroLinks = (t: ReturnType<typeof useTranslations>) => ({
+  projects: { label: t("navigation.projects"), href: routes.projects.path },
+  cv: { label: t("navigation.cv"), href: routes.cv.path },
+  employment: {
+    label: t("navigation.employment"),
+    href: routes.employment.path,
+  },
+});
 
 const titleContainer: Variants = {
   hidden: {},
@@ -54,6 +53,7 @@ const buttonsWrap: Variants = {
 
 export const HomeSection = () => {
   const t = useTranslations();
+  const heroLinks = getHeroLinks(t);
 
   return (
     <Section className={styles.home}>
@@ -84,7 +84,7 @@ export const HomeSection = () => {
         >
           <GlassSurface>
             <div className={styles.buttons}>
-              {Object.values(getHeroLinks(t)).map(({ href, label }) => (
+              {Object.values(heroLinks).map(({ href, label }) => (
                 <Link key={href} href={href} className={styles.btn}>
                   <span>{label}</span> <BsArrowRight />
                 </Link>

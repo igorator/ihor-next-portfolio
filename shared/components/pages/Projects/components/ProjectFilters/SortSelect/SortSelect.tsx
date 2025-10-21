@@ -1,35 +1,40 @@
 "use client";
 
 import * as Select from "@radix-ui/react-select";
-import styles from "./SortSelect.module.css";
-import { BsChevronDown } from "react-icons/bs";
-import { BsCheckLg } from "react-icons/bs";
-import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
-
 import { useTranslations } from "next-intl";
+import { BsCheckLg, BsChevronDown } from "react-icons/bs";
+import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
+import styles from "./SortSelect.module.css";
 
-const sortOptions = (t: any) => [
-  { id: "newest", name: t("projects.filters.options.newest") },
-  { id: "oldest", name: t("projects.filters.options.oldest") },
-  { id: "az", name: t("projects.filters.options.az") },
-  { id: "za", name: t("projects.filters.options.za") },
-];
+// 1) Единый тип сортировки
+export type SortKey = "newest" | "oldest" | "az" | "za";
+
+// 2) Опции с жёсткими id (юнион)
+const makeSortOptions = (t: ReturnType<typeof useTranslations>) =>
+  [
+    { id: "newest", name: t("projects.filters.options.newest") },
+    { id: "oldest", name: t("projects.filters.options.oldest") },
+    { id: "az", name: t("projects.filters.options.az") },
+    { id: "za", name: t("projects.filters.options.za") },
+  ] as const satisfies ReadonlyArray<{ id: SortKey; name: string }>;
 
 type Props = {
-  value: string;
-  onChange: (val: string) => void;
+  value: SortKey;
+  onChange: (val: SortKey) => void;
 };
 
 export const SortSelect = ({ value, onChange }: Props) => {
   const t = useTranslations();
+  const options = makeSortOptions(t);
 
   return (
     <GlassSurface>
-      <Select.Root value={value} onValueChange={onChange}>
+      <Select.Root value={value} onValueChange={(v) => onChange(v as SortKey)}>
         <Select.Trigger
           className={`${styles.selectTrigger} glass-wrapper`}
-          aria-label="Sort"
+          aria-label={t("projects.filters.sort")}
         >
+          {/* Select.Value сам подставит текст выбранного ItemText */}
           <Select.Value placeholder={t("projects.filters.sort")} />
           <Select.Icon className={styles.selectIcon}>
             <BsChevronDown className={styles.chevronIcon} aria-hidden="true" />
@@ -41,9 +46,10 @@ export const SortSelect = ({ value, onChange }: Props) => {
             className={`${styles.selectContent} glass-wrapper`}
             position="popper"
             sideOffset={20}
+            align="start"
           >
             <Select.Viewport className={styles.selectViewport}>
-              {sortOptions(t).map((opt) => (
+              {options.map((opt) => (
                 <Select.Item
                   key={opt.id}
                   value={opt.id}
@@ -51,7 +57,7 @@ export const SortSelect = ({ value, onChange }: Props) => {
                 >
                   <Select.ItemText>{opt.name}</Select.ItemText>
                   <Select.ItemIndicator className={styles.selectCheck}>
-                    <BsCheckLg />
+                    <BsCheckLg aria-hidden="true" />
                   </Select.ItemIndicator>
                 </Select.Item>
               ))}

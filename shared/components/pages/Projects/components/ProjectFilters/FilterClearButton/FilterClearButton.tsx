@@ -1,8 +1,8 @@
 "use client";
 
+import { MdOutlineClear } from "react-icons/md";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
 import styles from "./FilterClearButton.module.css";
-import { MdOutlineClear } from "react-icons/md";
 
 type FilterClearButtonProps = {
   onClear: () => void;

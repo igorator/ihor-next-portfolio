@@ -1,10 +1,10 @@
 "use client";
 
-import { Section } from "@/shared/components/layout/Section/Section";
-import styles from "./CV.module.css";
-import { BsFileEarmarkPerson, BsDownload, BsEye } from "react-icons/bs";
 import { useTranslations } from "next-intl";
+import { BsDownload, BsEye, BsFileEarmarkPerson } from "react-icons/bs";
+import { Section } from "@/shared/components/layout/Section/Section";
 import { GlassSurface } from "../../ui/GlassSurface/GlassSurface";
+import styles from "./CV.module.css";
 
 export const CVSection = () => {
   const cvFile = "/cv/CV_Kliushnyk_Frontend.pdf"; // ← строка, НЕ import

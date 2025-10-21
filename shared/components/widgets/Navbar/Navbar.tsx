@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo } from "react";
-import styles from "./Navbar.module.css";
-import { routes } from "@/shared/config/routes";
-import { useTranslations, useLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { LanguageSelect } from "@/shared/components/features/LanguageSelect/LanguageSelect";
 import { ThemeSwitch } from "@/shared/components/features/Theme/ThemeSwitcher/ThemeSwitcher";
 import { GlassSurface } from "@/shared/components/ui/GlassSurface/GlassSurface";
+import { routes } from "@/shared/config/routes";
 import { Socials } from "../Socials/Socials";
+import styles from "./Navbar.module.css";
 
 type Route = (typeof routes)[keyof typeof routes];
 
@@ -50,7 +50,7 @@ export const Navbar = () => {
             const active =
               path === "/"
                 ? currentPath === "/"
-                : currentPath === path || currentPath.startsWith(path + "/");
+                : currentPath === path || currentPath.startsWith(`${path}/`);
 
             return (
               <Link

@@ -1,7 +1,7 @@
 "use client";
 
-import { useThemeStore } from "@/shared/state/store/useThemeStore";
 import { useEffect } from "react";
+import { useThemeStore } from "@/shared/state/store/useThemeStore";
 
 export function ThemeSetup() {
   const { theme } = useThemeStore();

@@ -1,8 +1,8 @@
 import { type Locale, NextIntlClientProvider } from "next-intl";
-import { ThemeProvider } from "@/shared/state/providers/theme-provider";
 import { ThemeSetup } from "@/shared/components/features/Theme/ThemeSetup";
-import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
 import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackground";
+import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
+import { ThemeProvider } from "@/shared/state/providers/theme-provider";
 
 export default async function LocaleLayout({
   children,

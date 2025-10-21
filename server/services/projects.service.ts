@@ -1,10 +1,9 @@
 import "server-only";
 import { routing } from "@/i18n/routing";
-import type { Project } from "@/shared/types/project";
-
 // Импорты статичных JSON
 import projectDataEn from "@/server/data/projects/projects_en.json";
 import projectDataUk from "@/server/data/projects/projects_uk.json";
+import type { Project } from "@/shared/types/project";
 
 type Locale = (typeof routing.locales)[number];
 

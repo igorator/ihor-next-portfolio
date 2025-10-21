@@ -1,8 +1,8 @@
 import {
-  BsHouse,
-  BsFolder2,
   BsBriefcase,
   BsFileEarmarkText,
+  BsFolder2,
+  BsHouse,
 } from "react-icons/bs";
 
 export const routes = {

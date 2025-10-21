@@ -2,13 +2,13 @@
   /* === Apple HIG–style colors === */
   --background-light: #ffffff; /* systemBackground (light) */
   --foreground-light: #1d1d1f; /* label (light) — Apple text tone */
-  --accent-light: #0a84ff; /* systemBlue (macOS/iOS) */
+  --accent-light: #3e9eff; /* systemBlue (macOS/iOS) */
   --muted-light: #f2f2f7; /* secondary/tertiary surfaces */
   --border-light: rgba(60, 60, 67, 0.1); /* separator (light) */
 
   --background-dark: #000000; /* systemBackground (dark) */
   --foreground-dark: #f5f5f7; /* label (dark) */
-  --accent-dark: #0a84ff; /* systemBlue */
+  --accent-dark: #3e9eff; /* systemBlue */
   --muted-dark: #1c1c1e; /* secondarySystemBackground (dark) */
   --border-dark: rgba(84, 84, 88, 0.1); /* separator (dark) */
 
