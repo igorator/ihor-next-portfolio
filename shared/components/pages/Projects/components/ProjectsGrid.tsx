@@ -23,7 +23,7 @@ export const ProjectsGrid = ({
         <AnimatePresence mode="popLayout">
           {projects.map((project) => (
             <motion.div
-              key={project.id}
+              key={project.slug}
               layout
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -32,7 +32,7 @@ export const ProjectsGrid = ({
             >
               <ProjectCard
                 onTechnologyClick={onTechnologyClick}
-                id={project.id}
+                id={project.slug}
                 title={project.title}
                 description={project.description}
                 type={project.type}

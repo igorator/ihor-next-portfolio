@@ -1,4 +1,4 @@
-import { getEmployment } from "@/server/services/employment.service";
+import { getEmployment } from "@/shared/api/employment/getEmployment";
 import { EmploymentSection } from "@/shared/components/pages/Employment/Employment";
 
 export default async function Employment({

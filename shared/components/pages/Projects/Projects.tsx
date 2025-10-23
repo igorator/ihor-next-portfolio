@@ -3,10 +3,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Section } from "@/shared/components/layout/Section/Section";
-import type {
-  Project,
-  ProjectWithTechnologies,
-} from "@/shared/types/projects/project";
+import type { ProjectWithTechnologies } from "@/shared/types/projects/project";
 import type { Technology } from "@/shared/types/technology";
 import { ProjectFilters } from "./components/ProjectFilters/ProjectFilters";
 import { ProjectsGrid } from "./components/ProjectsGrid";
@@ -14,7 +11,7 @@ import { useProjectFilters } from "./hooks/useProjectFilters";
 import styles from "./Projects.module.css";
 
 interface ProjectsSectionProps {
-  projects: Project[];
+  projects: ProjectWithTechnologies[];
   technologies: Technology[];
 }
 

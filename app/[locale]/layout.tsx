@@ -1,5 +1,5 @@
 import { type Locale, NextIntlClientProvider } from "next-intl";
-import { ThemeSetup } from "@/shared/components/features/Theme/ThemeSetup";
+import { ThemeSetup } from "@/shared/components/widgets/ThemeSwitcher/ThemeSetup";
 import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackground";
 import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
 import { ThemeProvider } from "@/shared/state/providers/theme-provider";

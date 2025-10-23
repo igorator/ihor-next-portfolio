@@ -1,8 +1,7 @@
 import type { Locale } from "next-intl";
-import { getProjects } from "@/server/services/projects.service";
-import { getTechnologies } from "@/server/services/technologies.service";
+import { getProjects } from "@/shared/api/projects/getProjects";
+import { getTechnologies } from "@/shared/api/technologies/getTechnologies";
 import { ProjectsSection } from "@/shared/components/pages/Projects/Projects";
-import { mergeProjectsWithTechnologies } from "@/shared/lib/utils/data-utils";
 
 export default async function Projects({
   params,
@@ -16,12 +15,7 @@ export default async function Projects({
     getTechnologies(),
   ]);
 
-  const projectsWithTech = mergeProjectsWithTechnologies(
-    projects,
-    technologies,
-  );
+  console.log(projects);
 
-  return (
-    <ProjectsSection projects={projectsWithTech} technologies={technologies} />
-  );
+  return <ProjectsSection projects={projects} technologies={technologies} />;
 }
