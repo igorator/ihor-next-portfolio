@@ -1,64 +1,106 @@
 "use client";
-
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useAnimationControls } from "motion/react";
+import { useEffect, useState } from "react";
 import styles from "./AppLoading.module.css";
+import { useTranslations } from "next-intl";
 
-export function AppLoading() {
-  const [progress, setProgress] = useState(0);
-  const raf = useRef<number | null>(null);
+export function AppLoading({ ready = false }: { ready?: boolean }) {
+  const reduce = useReducedMotion();
+  const [value, setValue] = useState(0);
+  const fillCtl = useAnimationControls();
+  const t = useTranslations("loading");
 
-  // Плавная интерполяция до ~95%
   useEffect(() => {
-    const tick = () => {
-      setProgress((p) => {
-        const target = 95;
-        const next = p + Math.max(0.4, (target - p) * 0.06);
-        return Math.min(target, next);
+    if (ready) {
+      setValue(100);
+      fillCtl.start({
+        width: "100%",
+        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
       });
-      raf.current = requestAnimationFrame(tick);
+      return;
+    }
+    let raf = 0;
+    const tick = () => {
+      setValue((v) =>
+        v < 95 ? Math.min(95, v + (reduce ? 5 : Math.random() * 4 + 1)) : v,
+      );
+      raf = requestAnimationFrame(tick);
     };
-    raf.current = requestAnimationFrame(tick);
-    return () => {
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, []);
-
-  const rounded = Math.round(progress);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [ready, reduce, fillCtl]);
 
   return (
-    <motion.div
-      className={styles.wrapper}
+    <div
+      className={styles.screen}
       aria-busy="true"
       role="dialog"
       aria-modal="true"
-      initial={{ opacity: 0, y: 8, filter: "blur(6px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className={styles.box}>
+      {/* Blur-фон с анимированными блобами */}
+      <div className={styles.bg} aria-hidden>
+        <motion.div
+          className={styles.blob}
+          initial={{ x: "-10%", y: "-10%", scale: 0.9, opacity: 0.55 }}
+          animate={{
+            x: ["-10%", "20%", "0%"],
+            y: ["-10%", "10%", "-5%"],
+            scale: reduce ? 1 : [0.9, 1.08, 1],
+            opacity: [0.45, 0.7, 0.55],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        />
+        <motion.div
+          className={styles.blob2}
+          initial={{ x: "30%", y: "40%", scale: 1, opacity: 0.5 }}
+          animate={{
+            x: ["30%", "-10%", "15%"],
+            y: ["40%", "15%", "35%"],
+            scale: reduce ? 1 : [1, 1.1, 0.95],
+            opacity: [0.4, 0.65, 0.5],
+          }}
+          transition={{
+            duration: 7.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        />
+      </div>
+
+      {/* Карточка прогресса */}
+      <motion.div
+        className={styles.card}
+        initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      >
         <p id="loading-label" className={styles.title}>
-          Loading…
+          {t("loading")}
         </p>
 
         <div className={styles.progressWrap}>
           <progress
             className={styles.progress}
-            value={rounded}
             max={100}
+            value={value}
             aria-labelledby="loading-label"
           />
-          <span className={styles.progressStripe} />
+          <motion.span
+            className={styles.fill}
+            aria-hidden
+            animate={fillCtl}
+            style={{ width: `${value}%` }}
+            transition={!reduce ? { duration: 0.2 } : undefined}
+          />
+          <span className={styles.gloss} aria-hidden />
         </div>
-
-        <output
-          className={styles.percent}
-          htmlFor="loading-label"
-          aria-live="polite"
-        >
-          {rounded}%
-        </output>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

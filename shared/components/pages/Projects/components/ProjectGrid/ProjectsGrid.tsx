@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { ProjectWithTechnologies } from "@/shared/types/projects/project";
-import styles from "../Projects.module.css";
-import { ProjectCard } from "./ProjectCard/ProjectCard";
+import styles from "./ProjectGrid.module.css";
+import { ProjectCard } from "../ProjectCard/ProjectCard";
+import { ProjectOverviewCard } from "../ProjectOverviewCard/ProjectOverviewCard";
 
 type ProjectsGridProps = {
   projects: ProjectWithTechnologies[];
@@ -15,12 +16,13 @@ export const ProjectsGrid = ({
   projects,
   onTechnologyClick,
 }: ProjectsGridProps) => {
-  const t = useTranslations();
+  const t = useTranslations("projects_ui");
 
   return (
     <motion.div layout className={styles.projectsWrapper}>
       {projects.length > 0 ? (
         <AnimatePresence mode="popLayout">
+          <ProjectOverviewCard />
           {projects.map((project) => (
             <motion.div
               key={project.slug}
@@ -51,7 +53,7 @@ export const ProjectsGrid = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          {t("projects_ui.noMatches")}
+          {t("noMatches")}
         </motion.div>
       )}
     </motion.div>

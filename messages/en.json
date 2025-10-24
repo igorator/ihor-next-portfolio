@@ -1,4 +1,8 @@
 {
+  "loading": {
+    "loading": "Loading..."
+  },
+
   "home": {
     "greeting": "Hello",
     "introduction": "I'm Ihor",
@@ -30,6 +34,16 @@
     "links": {
       "github": "GitHub",
       "liveDemo": "Live Demo"
+    },
+    "other": {
+      "title": "Other projects",
+      "description": "Not all projects are listed here for various reasons (NDA, private repositories, unfinished releases).",
+      "tags": [
+        "10+ Webflow projects",
+        "React & Next.js",
+        "Some test tasks",
+        "Test certifications"
+      ]
     }
   },
   "cv": {

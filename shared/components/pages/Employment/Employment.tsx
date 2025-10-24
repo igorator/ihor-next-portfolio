@@ -1,6 +1,15 @@
+"use client";
+
 import { Section } from "@/shared/components/layout/Section/Section";
 import type { Employment } from "@/shared/types";
 import styles from "./Employment.module.css";
+import {
+  motion,
+  useReducedMotion,
+  cubicBezier,
+  type Variants,
+} from "motion/react";
+import { useTranslations } from "next-intl";
 
 type EmploymentSectionProps = {
   employmentHistory: Employment[];
@@ -9,35 +18,66 @@ type EmploymentSectionProps = {
 export const EmploymentSection = ({
   employmentHistory,
 }: EmploymentSectionProps) => {
-  const { useTranslations } = require("next-intl");
   const t = useTranslations();
+  const prefersReduced = useReducedMotion();
+
+  const container: Variants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: prefersReduced ? 0 : 0.12,
+        delayChildren: prefersReduced ? 0 : 0.05,
+      },
+    },
+  };
+
+  const item: Variants = {
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 18 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: prefersReduced ? 0 : 0.5,
+        ease: cubicBezier(0.22, 1, 0.36, 1),
+      },
+    },
+  };
 
   return (
     <Section className={styles.employment}>
       <h2 className={styles.title}>{t("employment.title")}</h2>
 
-      <ul className={styles.timeline}>
-        {employmentHistory.map((item) => (
-          <li key={item.id} className={styles.item}>
+      <motion.ul
+        className={styles.timeline}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {employmentHistory.map((itemData) => (
+          <motion.li key={itemData.id} className={styles.item} variants={item}>
             <article className={styles.card}>
               <header className={styles.header}>
-                <h3 className={styles.company}>{item.company}</h3>
-                <span className={styles.period}>{item.period}</span>
+                <h3 className={styles.company}>{itemData.company}</h3>
+                <span className={styles.period}>{itemData.period}</span>
               </header>
 
-              <div className={styles.type}>{item.type}</div>
+              <div className={styles.type}>{itemData.type}</div>
 
               <ul className={styles.roles}>
-                {item.roles.map((role: string) => (
-                  <li key={`${role}-${item.company}`} className={styles.role}>
+                {itemData.roles.map((role: string) => (
+                  <li
+                    key={`${role}-${itemData.company}`}
+                    className={styles.role}
+                  >
                     {role}
                   </li>
                 ))}
               </ul>
             </article>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </Section>
   );
 };

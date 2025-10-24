@@ -1,6 +1,6 @@
 "use client";
 
-import { cubicBezier, motion, type Variants } from "framer-motion";
+import { cubicBezier, motion, type Variants } from "motion/react";
 import { useTranslations } from "next-intl";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";

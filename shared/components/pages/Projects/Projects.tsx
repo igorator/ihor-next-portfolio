@@ -1,12 +1,12 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Section } from "@/shared/components/layout/Section/Section";
 import type { ProjectWithTechnologies } from "@/shared/types/projects/project";
 import type { Technology } from "@/shared/types/technology";
 import { ProjectFilters } from "./components/ProjectFilters/ProjectFilters";
-import { ProjectsGrid } from "./components/ProjectsGrid";
+import { ProjectsGrid } from "./components/ProjectGrid/ProjectsGrid";
 import { useProjectFilters } from "./hooks/useProjectFilters";
 import styles from "./Projects.module.css";
 
