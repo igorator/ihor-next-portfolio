@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import type { Locale } from "next-intl";
 
 import projectsDataEn from "@/server/data/projects/projects_en.json";

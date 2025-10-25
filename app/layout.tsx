@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { MobileOverlay } from "@/shared/components/widgets/MobileOverlay/MobileOverlay";
 
 const fontHeading = Manrope({
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
+        <SpeedInsights />
         <MobileOverlay />
         {children}
       </body>
