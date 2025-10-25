@@ -40,7 +40,6 @@ export const GlassSurface = ({
 
   radius = 9999,
 
-  padding = "0",
   blur = 3,
   tint = "rgba(255,255,255,0.1)",
   displacementScale = 150,
@@ -53,7 +52,6 @@ export const GlassSurface = ({
   const filterId = useId().replace(/:/g, "-");
 
   const wrapperRadius = useMemo(() => toCssSize(radius), [radius]);
-  const wrapperPadding = useMemo(() => toCssSize(padding), [padding]);
 
   const baseWrapperStyle: CSSProperties = {
     position: "relative",
@@ -63,7 +61,6 @@ export const GlassSurface = ({
     transition: "all 400ms",
     boxShadow: "0 2px 2px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.1)",
     borderRadius: wrapperRadius,
-    padding: wrapperPadding,
   };
 
   const effectStyle: CSSProperties = {

@@ -36,7 +36,7 @@
       "liveDemo": "Live Demo"
     },
     "other": {
-      "title": "Other projects",
+      "title": "Projects",
       "description": "Not all projects are listed here for various reasons (NDA, private repositories, unfinished releases).",
       "tags": [
         "10+ Webflow projects",
@@ -44,7 +44,9 @@
         "Some test tasks",
         "Test certifications"
       ]
-    }
+    },
+    "commercial": "Commercial",
+    "onlyCommercialProjects": "Commercial only"
   },
   "cv": {
     "title": "CV",

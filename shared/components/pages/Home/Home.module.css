@@ -141,10 +141,6 @@
   transition: transform 180ms ease;
 }
 
-.btn:hover {
-  transform: scale(var(--btn-hover-scale));
-}
-
 .btn:active {
   transform: translateY(0);
   filter: saturate(var(--btn-active-saturate))

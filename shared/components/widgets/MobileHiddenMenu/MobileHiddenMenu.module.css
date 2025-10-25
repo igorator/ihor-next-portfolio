@@ -1,0 +1,15 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--background);
+  color: var(--foreground);
+  padding: var(--space-6);
+  overflow-y: auto;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}

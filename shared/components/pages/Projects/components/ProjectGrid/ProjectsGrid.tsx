@@ -3,9 +3,9 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { ProjectWithTechnologies } from "@/shared/types/projects/project";
-import styles from "./ProjectGrid.module.css";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { ProjectOverviewCard } from "../ProjectOverviewCard/ProjectOverviewCard";
+import styles from "./ProjectGrid.module.css";
 
 type ProjectsGridProps = {
   projects: ProjectWithTechnologies[];
@@ -34,7 +34,7 @@ export const ProjectsGrid = ({
             >
               <ProjectCard
                 onTechnologyClick={onTechnologyClick}
-                id={project.slug}
+                slug={project.slug}
                 title={project.title}
                 description={project.description}
                 type={project.type}
@@ -43,6 +43,7 @@ export const ProjectsGrid = ({
                 imageUrl={project.imageUrl}
                 githubUrl={project.githubUrl}
                 demoUrl={project.demoUrl}
+                isCommercial={project.isCommercial}
               />
             </motion.div>
           ))}

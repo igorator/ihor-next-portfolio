@@ -15,7 +15,5 @@ export default async function Projects({
     getTechnologies(),
   ]);
 
-  console.log(projects);
-
   return <ProjectsSection projects={projects} technologies={technologies} />;
 }

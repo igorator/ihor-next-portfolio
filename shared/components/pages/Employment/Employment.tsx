@@ -1,15 +1,15 @@
 "use client";
 
-import { Section } from "@/shared/components/layout/Section/Section";
-import type { Employment } from "@/shared/types";
-import styles from "./Employment.module.css";
 import {
+  cubicBezier,
   motion,
   useReducedMotion,
-  cubicBezier,
   type Variants,
 } from "motion/react";
 import { useTranslations } from "next-intl";
+import { Section } from "@/shared/components/layout/Section/Section";
+import type { Employment } from "@/shared/types";
+import styles from "./Employment.module.css";
 
 type EmploymentSectionProps = {
   employmentHistory: Employment[];

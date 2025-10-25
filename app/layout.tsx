@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { MobileOverlay } from "@/shared/components/widgets/MobileOverlay/MobileOverlay";
 
 const fontHeading = Manrope({
   variable: "--font-headings",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
+        <MobileOverlay />
         {children}
       </body>
     </html>

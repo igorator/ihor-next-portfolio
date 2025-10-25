@@ -34,7 +34,6 @@ export const SortSelect = ({ value, onChange }: Props) => {
           className={`${styles.selectTrigger} glass-wrapper`}
           aria-label={t("projects.filters.sort")}
         >
-          {/* Select.Value сам подставит текст выбранного ItemText */}
           <Select.Value placeholder={t("projects.filters.sort")} />
           <Select.Icon className={styles.selectIcon}>
             <BsChevronDown className={styles.chevronIcon} aria-hidden="true" />

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { ProjectWithTechnologies } from "@/shared/types/projects/project";
 import type { Technology } from "@/shared/types/technology";
 
-type MatchMode = "any" | "all"; // any = ИЛИ, all = И
+type MatchMode = "any" | "all";
 
 export const useProjectFilters = (
   projects: ProjectWithTechnologies[],
@@ -12,7 +12,8 @@ export const useProjectFilters = (
   const [sortBy, setSortBy] = useState<"newest" | "oldest" | "az" | "za">(
     "newest",
   );
-  const [matchMode, setMatchMode] = useState<MatchMode>("all"); // <-- ключевой переключатель
+  const [matchMode, setMatchMode] = useState<MatchMode>("all");
+  const [commercialOnly, setCommercialOnly] = useState(false); // <-- добавлено
 
   const toggleTech = (id: string) => {
     setSelectedTechs((prev) =>
@@ -43,6 +44,12 @@ export const useProjectFilters = (
       });
     }
 
+    if (commercialOnly) {
+      filtered = filtered.filter((project) =>
+        Boolean((project as ProjectWithTechnologies).isCommercial),
+      );
+    }
+
     return [...filtered].sort((a, b) => {
       switch (sortBy) {
         case "newest":
@@ -57,7 +64,7 @@ export const useProjectFilters = (
           return 0;
       }
     });
-  }, [projects, selectedTechs, sortBy, matchMode]);
+  }, [projects, selectedTechs, sortBy, matchMode, commercialOnly]);
 
   const availableTechnologies = useMemo(() => {
     const projectHasTech = (project: ProjectWithTechnologies, techId: string) =>
@@ -69,17 +76,17 @@ export const useProjectFilters = (
   }, [projects, technologies]);
 
   return {
-    // состояние
     selectedTechs,
     sortBy,
     matchMode,
+    commercialOnly,
     filteredProjects,
     availableTechnologies,
-    // экшены
     toggleTech,
     setOnlyTechnology,
     clearTechnologies,
     setSortBy,
-    setMatchMode, // можно вывести в UI переключатель AND/OR
+    setMatchMode,
+    setCommercialOnly,
   };
 };

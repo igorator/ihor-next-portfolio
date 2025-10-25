@@ -10,18 +10,34 @@ import type { Technology } from "@/shared/types/technology";
 const technologies = technologiesData as Technology[];
 
 const PROJECTS_BY_LANG: Record<Locale, Project[]> = {
-  en: projectsDataEn,
-  uk: projectsDataUk,
+  en: projectsDataEn as unknown as Project[],
+  uk: projectsDataUk as unknown as Project[],
 };
 
-export async function GET(request: Request) {
+type RouteParams = {
+  params: { slug: string };
+};
+
+export async function GET(request: Request, { params }: RouteParams) {
   const { searchParams } = new URL(request.url);
   const locale = (searchParams.get("locale") as Locale) || "en";
-  const projects = PROJECTS_BY_LANG[locale];
-  const projectsWithTechnologies = mergeProjectsWithTechnologies(
-    projects,
+  const slug = params.slug;
+
+  // fallback на en, если передали неизвестную локаль
+  const projects = PROJECTS_BY_LANG[locale] ?? PROJECTS_BY_LANG.en;
+
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) {
+    return NextResponse.json(
+      { error: "Project not found", slug, locale },
+      { status: 404 },
+    );
+  }
+
+  const [projectWithTech] = mergeProjectsWithTechnologies(
+    [project],
     technologies,
   );
 
-  return NextResponse.json(projectsWithTechnologies);
+  return NextResponse.json(projectWithTech);
 }

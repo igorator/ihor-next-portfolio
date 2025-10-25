@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
+import type { Locale } from "next-intl";
 import employmentDataEn from "@/server/data/employment/employment_en.json";
 import employmentDataUk from "@/server/data/employment/employment_uk.json";
-import type { Locale } from "next-intl";
 import type { Employment } from "@/shared/types";
 
 const EMPLOYMENT_BY_LANG: Record<Locale, Employment[]> = {

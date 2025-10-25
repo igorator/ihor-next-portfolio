@@ -12,6 +12,7 @@ export type Project = {
   imageUrl: string;
   githubUrl?: string | null;
   demoUrl?: string | null;
+  isCommercial?: boolean;
 };
 
 export type ProjectWithTechnologies = Omit<Project, "technologiesIds"> & {

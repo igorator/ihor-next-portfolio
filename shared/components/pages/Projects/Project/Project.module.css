@@ -1,0 +1,240 @@
+.wrap {
+  --r: 12px;
+  --gap: clamp(12px, 2vw, 20px);
+  --card-bg: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--glass-bg, #0b1220) 78%, transparent),
+    color-mix(in oklab, var(--glass-bg, #0b1220) 52%, transparent)
+  );
+  --card-border: color-mix(in oklab, var(--border) 70%, transparent);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* NEW: верхняя плашка с "назад" */
+
+.backRow {
+  margin-bottom: 12px;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.backIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.header {
+  margin-bottom: clamp(14px, 2.4vw, 22px);
+}
+
+.title {
+  margin: 0 0 8px;
+  font:
+    800 clamp(22px, 3.4vw, 34px) / 1.15 var(--font-headings, system-ui),
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: color-mix(in oklab, var(--foreground) 84%, var(--accent) 10%);
+}
+
+.badge,
+.badgeAlt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font: 600 12px / 1 var(--font-text, system-ui);
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: color-mix(in oklab, var(--accent) 9%, transparent);
+}
+.badgeAlt {
+  background: color-mix(in oklab, var(--accent) 4%, transparent);
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--foreground) 70%, transparent);
+}
+.year {
+  opacity: 0.9;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr;
+  align-items: start; /* NEW: не растягивать по высоте */
+}
+
+@media (min-width: 780px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+    /* grid-auto-rows: 1fr;  УБРАНО: чтобы карточки были по контенту */
+  }
+  .imageCard {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+    /* min-height: 420px;  УБРАНО: чтобы не тянуть высоту */
+  }
+  .descCard {
+    grid-column: 1 / span 1;
+  }
+  .metaCard,
+  .techCard,
+  .linksCard {
+    grid-column: 2 / span 1;
+  }
+}
+
+.card {
+  position: relative;
+  padding: clamp(14px, 2.2vw, 18px);
+  border-radius: var(--r);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px) saturate(140%);
+  height: fit-content; /* NEW: карточки по контенту */
+  align-self: start; /* на всякий случай фиксируем выравнивание */
+}
+
+.cardTitle {
+  margin: 0 0 10px;
+  font:
+    700 clamp(14px, 2.2vw, 18px) / 1.2 var(--font-headings, system-ui),
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--foreground);
+}
+
+/* IMAGE CARD */
+.imageWrap {
+  position: relative;
+  overflow: clip;
+  border-radius: calc(var(--r) - 2px);
+  aspect-ratio: 16 / 9;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.imageGloss {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+.imageMeta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.date {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: color-mix(in oklab, var(--accent) 5%, transparent);
+  font: 600 12px / 1 var(--font-text, system-ui);
+  color: color-mix(in oklab, var(--foreground) 90%, var(--accent) 10%);
+}
+
+/* META LIST */
+.metaList {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 10px;
+  column-gap: 12px;
+  align-items: baseline;
+}
+.metaItem {
+}
+.metaLabel {
+  color: color-mix(in oklab, var(--foreground) 70%, transparent);
+  font: 600 12px / 1 var(--font-text, system-ui);
+}
+.metaValue {
+  color: var(--foreground);
+  font: 600 13px / 1.2 var(--font-text, system-ui);
+}
+
+/* DESCRIPTION */
+.description {
+  margin: 0;
+  color: color-mix(in oklab, var(--foreground) 92%, var(--accent) 8%);
+  font: 500 clamp(14px, 2.2vw, 16px) / 1.6 var(--font-text, system-ui);
+}
+
+/* TECH CHIPS */
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.techChip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
+  font: 600 12px / 1 var(--font-text, system-ui);
+  color: color-mix(in oklab, var(--foreground) 92%, var(--accent) 8%);
+}
+
+/* LINKS */
+.linksRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font: 700 14px / 1 var(--font-text, system-ui);
+  text-decoration: none;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btnPrimary {
+  background: color-mix(in oklab, var(--accent) 24%, transparent);
+  color: color-mix(in oklab, var(--foreground) 96%, var(--accent) 10%);
+}
+.btnGhost {
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
+  color: color-mix(in oklab, var(--foreground) 92%, var(--accent) 8%);
+}
+
+.muted {
+  color: color-mix(in oklab, var(--foreground) 65%, transparent);
+}

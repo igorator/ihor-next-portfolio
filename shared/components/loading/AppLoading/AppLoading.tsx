@@ -1,8 +1,8 @@
 "use client";
-import { motion, useReducedMotion, useAnimationControls } from "motion/react";
+import { motion, useAnimationControls, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import styles from "./AppLoading.module.css";
-import { useTranslations } from "next-intl";
 
 export function AppLoading({ ready = false }: { ready?: boolean }) {
   const reduce = useReducedMotion();
