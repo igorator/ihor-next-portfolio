@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import type { Locale } from "next-intl";
+
 import projectsDataEn from "@/server/data/projects/projects_en.json";
 import projectsDataUk from "@/server/data/projects/projects_uk.json";
 import technologiesData from "@/server/data/technologies/technologies.json";
@@ -14,16 +15,17 @@ const PROJECTS_BY_LANG: Record<Locale, Project[]> = {
   uk: projectsDataUk as unknown as Project[],
 };
 
-type RouteParams = {
-  params: { slug: string };
+type RouteContext = {
+  params: Promise<{ slug: string }>;
 };
 
-export async function GET(request: Request, { params }: RouteParams) {
-  const { searchParams } = new URL(request.url);
-  const locale = (searchParams.get("locale") as Locale) || "en";
-  const slug = params.slug;
+export async function GET(request: NextRequest, { params }: RouteContext) {
+  const { slug } = await params;
 
-  // fallback на en, если передали неизвестную локаль
+  // locale из query (?locale=en|uk), fallback -> "en"
+  const qp = request.nextUrl.searchParams.get("locale") as Locale | null;
+  const locale: Locale = qp && qp in PROJECTS_BY_LANG ? qp : "en";
+
   const projects = PROJECTS_BY_LANG[locale] ?? PROJECTS_BY_LANG.en;
 
   const project = projects.find((p) => p.slug === slug);
