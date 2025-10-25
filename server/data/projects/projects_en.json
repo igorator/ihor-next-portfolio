@@ -26,7 +26,7 @@
     "imageUrl": "/projects/doido-market.png",
     "githubUrl": "https://github.com/igorator",
     "demoUrl": "https://t.me/doido_marketplace_bot/gifts",
-    "isCommercial": "true"
+    "isCommercial": true
   },
   {
     "slug": "zycsel-store-bot",
@@ -40,7 +40,7 @@
     "imageUrl": "/projects/zycsel-store-bot.png",
     "githubUrl": "https://github.com/igorator/zycsel_bot",
     "demoUrl": null,
-    "isCommercial": "true"
+    "isCommercial": true
   },
   {
     "slug": "studio-dashboard",
@@ -62,7 +62,7 @@
     "imageUrl": "/projects/studio-dashboard.png",
     "githubUrl": "https://github.com/igorator/studio-dashboard",
     "demoUrl": null,
-    "isCommercial": "true"
+    "isCommercial": true
   },
   {
     "slug": "3mpq-studio-lite",
@@ -84,7 +84,7 @@
     "imageUrl": "/projects/3mpq-studio-lite.png",
     "githubUrl": "https://github.com/igorator/3mpq-Studio-lite",
     "demoUrl": null,
-    "isCommercial": "true"
+    "isCommercial": true
   },
   {
     "slug": "webwise",
@@ -106,7 +106,7 @@
     "imageUrl": "/projects/webwise.png",
     "githubUrl": null,
     "demoUrl": "https://webwise.logics7.com/",
-    "isCommercial": "true"
+    "isCommercial": true
   },
   {
     "slug": "turbota-liqpay",
@@ -120,6 +120,6 @@
     "imageUrl": "/projects/turbota-liqpay.png",
     "githubUrl": null,
     "demoUrl": null,
-    "isCommercial": "true"
+    "isCommercial": true
   }
 ]
