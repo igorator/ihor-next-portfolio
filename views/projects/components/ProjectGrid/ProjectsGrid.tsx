@@ -22,15 +22,7 @@ export const ProjectsGrid = ({
     <div className={styles.projectsWrapper}>
       {projects.length > 0 ? (
         <AnimatePresence>
-          <motion.div
-            key="overview"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-          >
-            <ProjectOverviewCard />
-          </motion.div>
+          <ProjectOverviewCard />
 
           {projects.map((project) => (
             <motion.div
