@@ -24,7 +24,7 @@ export async function generateMetadata({
     title,
     description: siteConfig.pages.employment.description,
     alternates: { canonical },
-    openGraph: { url: canonical },
+    openGraph: { url: canonical, images: [{ url: siteConfig.og.image }] },
   };
 }
 

@@ -25,10 +25,12 @@ export async function generateMetadata({
       url: canonical,
       title: siteConfig.pages.home.title,
       description: siteConfig.pages.home.description,
+      images: [{ url: siteConfig.og.image }],
     },
     twitter: {
       title: siteConfig.pages.home.title,
       description: siteConfig.pages.home.description,
+      images: [siteConfig.og.image],
     },
   };
 }

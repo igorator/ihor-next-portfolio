@@ -42,12 +42,14 @@ export async function generateMetadata({
       url: canonical,
       title,
       description,
-      images: project.cover ? [{ url: project.cover, alt: title }] : undefined,
+      images: project.cover
+        ? [{ url: project.cover, alt: title }]
+        : [{ url: siteConfig.og.image }],
     },
     twitter: {
       title,
       description,
-      images: project.cover ? [project.cover] : undefined,
+      images: project.cover ? [project.cover] : [siteConfig.og.image],
     },
   };
 }

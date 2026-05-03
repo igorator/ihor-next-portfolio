@@ -41,11 +41,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     type: "website",
     locale: "en_US",
+    images: [{ url: siteConfig.og.image }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [siteConfig.og.image],
   },
 };
 

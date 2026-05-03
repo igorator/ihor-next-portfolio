@@ -44,5 +44,6 @@ export const siteConfig = {
   og: {
     brand: "Ihor Kliushnyk",
     subtitle: "Developer",
+    image: "/opengraph-image.png",
   },
 } as const;
