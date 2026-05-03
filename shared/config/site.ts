@@ -30,15 +30,15 @@ export const siteConfig = {
     projects: {
       title: "Projects",
       description:
-        "Frontend projects by Ihor Kliushnyk — React apps, Next.js sites, and modern web development with TypeScript.",
+        "My projects — React apps, Next.js sites, and modern web development with TypeScript.",
     },
     project: {
       fallbackDescription:
-        "A frontend project by Ihor Kliushnyk built with React, Next.js, and TypeScript.",
+        "One of my projects built with React, Next.js, and TypeScript.",
     },
     employment: {
       description:
-        "Work history of Ihor Kliushnyk — Developer with hands-on experience in React, Next.js, TypeScript, and performance optimization.",
+        "My work history — Developer with hands-on experience in React, Next.js, TypeScript, and performance optimization.",
     },
   },
   og: {
