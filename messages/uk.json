@@ -32,6 +32,7 @@
   "projects_ui": {
     "back": "Назад",
     "backToProjectsAria": "Назад до проєктів",
+    "viewProjectAria": "Переглянути проєкт {title}",
     "technologiesTitle": "Технології",
     "linksTitle": "Посилання",
     "type": "Тип",

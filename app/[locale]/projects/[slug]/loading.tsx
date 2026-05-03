@@ -1,4 +1,4 @@
-import ProjectLoading from "@/shared/components/loading/PageLoading/ProjectLoading";
+import ProjectLoading from "@/shared/ui/PageLoading/ProjectLoading";
 
 export default function LoadingProject() {
   return <ProjectLoading />;

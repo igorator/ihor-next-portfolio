@@ -172,6 +172,10 @@ body {
   scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
+body[data-scroll-locked="true"] {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -224,6 +228,12 @@ button {
   line-height: normal;
   font-family: var(--font-headings);
   font-weight: 600;
+}
+
+:focus-visible {
+  outline: 1.5px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 a {

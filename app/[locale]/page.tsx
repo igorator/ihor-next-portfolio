@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { HomeSection } from "@/shared/components/pages/Home/Home";
+import { HomeSection } from "@/views/home/Home";
 import { siteConfig } from "@/shared/config/site";
 import type { LocalePageProps } from "@/shared/types/page";
 
@@ -13,18 +13,45 @@ export async function generateMetadata({
   params,
 }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "home" });
+  await getTranslations({ locale, namespace: "home" });
 
   const canonical = locale === routing.defaultLocale ? "/" : `/${locale}`;
 
   return {
-    title: t("title"),
+    title: { absolute: siteConfig.pages.home.title },
     description: siteConfig.pages.home.description,
     alternates: { canonical },
-    openGraph: { url: canonical },
+    openGraph: {
+      url: canonical,
+      title: siteConfig.pages.home.title,
+      description: siteConfig.pages.home.description,
+    },
+    twitter: {
+      title: siteConfig.pages.home.title,
+      description: siteConfig.pages.home.description,
+    },
   };
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.author,
+  url: siteConfig.url,
+  jobTitle: siteConfig.og.subtitle,
+  email: `mailto:${siteConfig.socials.email}`,
+  sameAs: [
+    siteConfig.socials.github,
+    siteConfig.socials.linkedin,
+    siteConfig.socials.upwork,
+  ],
+};
+
 export default function Home() {
-  return <HomeSection />;
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
+      <HomeSection />
+    </>
+  );
 }

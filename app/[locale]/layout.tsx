@@ -1,7 +1,7 @@
 import { type Locale, NextIntlClientProvider } from "next-intl";
-import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackground";
-import { MobileHiddenMenuButton } from "@/shared/components/widgets/MobileHiddenMenu/MobileHiddenMenuButton/MobileHiddenMenuButton";
-import { Navbar } from "@/shared/components/widgets/Navbar/Navbar";
+import { AppBackground } from "@/shared/ui/AppBackground/AppBackground";
+import { MobileHiddenMenuButton } from "@/widgets/mobile-hidden-menu/MobileHiddenMenuButton/MobileHiddenMenuButton";
+import { Navbar } from "@/widgets/navbar/Navbar";
 
 export default async function LocaleLayout({
   children,

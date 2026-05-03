@@ -1,0 +1,111 @@
+"use client";
+
+import {
+  cubicBezier,
+  motion,
+  useReducedMotion,
+  type Variants,
+} from "motion/react";
+import { useTranslations } from "next-intl";
+import { BsArrowRight } from "react-icons/bs";
+import { Link } from "@/i18n/navigation";
+import { Section } from "@/shared/ui/Section/Section";
+import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
+import { routes } from "@/shared/config/routes";
+import styles from "./Home.module.css";
+
+const getHeroLinks = (t: ReturnType<typeof useTranslations>) => ({
+  projects: { label: t("navigation.projects"), href: routes.projects.path },
+  employment: {
+    label: t("navigation.employment"),
+    href: routes.employment.path,
+  },
+});
+
+export const HomeSection = () => {
+  const t = useTranslations();
+  const heroLinks = getHeroLinks(t);
+  const prefersReduced = useReducedMotion();
+
+  const titleContainer: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: prefersReduced ? 0 : 0.12,
+        delayChildren: prefersReduced ? 0 : 0.1,
+      },
+    },
+  };
+
+  const titleLine: Variants = {
+    hidden: {
+      opacity: 0,
+      y: prefersReduced ? 0 : 18,
+      filter: prefersReduced ? "blur(0px)" : "blur(6px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: prefersReduced ? 0 : 0.6,
+        ease: cubicBezier(0.22, 1, 0.36, 1),
+      },
+    },
+  };
+
+  const buttonsWrap: Variants = {
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: prefersReduced ? 0 : 0.5,
+        delay: prefersReduced ? 0 : 0.1,
+        ease: cubicBezier(0.22, 1, 0.36, 1),
+      },
+    },
+  };
+
+  return (
+    <Section className={styles.home}>
+      <div className={styles.content}>
+        <motion.h1
+          className={styles.title}
+          variants={titleContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <motion.span className={styles.greeting} variants={titleLine}>
+            {t("home.greeting")}
+          </motion.span>
+          <motion.span className={styles.name} variants={titleLine}>
+            {t("home.introduction")}
+          </motion.span>
+          <motion.span className={styles.role} variants={titleLine}>
+            {t("home.role")}
+          </motion.span>
+        </motion.h1>
+
+        <motion.div
+          variants={buttonsWrap}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+          className={styles.navigationWrapper}
+        >
+          <div className={styles.navigationList}>
+            {Object.values(heroLinks).map(({ href, label }) => (
+              <GlassSurface key={href}>
+                <Link href={href} className={styles.navigationLink}>
+                  <span>{label}</span> <BsArrowRight />
+                </Link>
+              </GlassSurface>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </Section>
+  );
+};

@@ -52,6 +52,7 @@
     "onlyCommercialProjects": "Commercial only",
     "back": "Back",
     "backToProjectsAria": "Back to projects",
+    "viewProjectAria": "View project {title}",
     "technologiesTitle": "Technologies",
     "linksTitle": "Links",
     "type": "Type",
