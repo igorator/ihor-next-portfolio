@@ -12,10 +12,29 @@
 }
 
 .highlighted {
-  --highlight-glow: color-mix(in oklab, white 22%, transparent);
+  --highlight-glow: color-mix(in oklab, white 13%, transparent);
   box-shadow:
     0 -6px 16px 2px var(--highlight-glow),
     var(--shadow-md);
+  animation: highlightPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow-md);
+  }
+  50% {
+    box-shadow:
+      0 -6px 16px 2px var(--highlight-glow),
+      var(--shadow-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlighted {
+    animation: none;
+  }
 }
 
 :root[data-theme="light"] .highlighted {

@@ -7,7 +7,8 @@
     "title": "Портфоліо",
     "greeting": "Вітаю",
     "introduction": "Я Ігор",
-    "role": "Веб-розробник"
+    "rolePrefix": "і я",
+    "role": "Розробник"
   },
   "navigation": {
     "root": "Головна",

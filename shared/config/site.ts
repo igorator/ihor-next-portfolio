@@ -5,9 +5,9 @@ export const siteConfig = {
   name: "Ihor Kliushnyk",
   author: "Ihor Kliushnyk",
   description:
-    "Frontend Developer specializing in React, Next.js, and TypeScript — building fast, accessible, production-grade web applications.",
+    "Developer specializing in React, Next.js, and TypeScript — building fast, accessible, production-grade web applications.",
   keywords: [
-    "Frontend Developer",
+    "Developer",
     "React",
     "Next.js",
     "TypeScript",
@@ -23,9 +23,9 @@ export const siteConfig = {
   },
   pages: {
     home: {
-      title: "Ihor Kliushnyk — Frontend Developer",
+      title: "Ihor Kliushnyk — Developer",
       description:
-        "Frontend Developer specializing in React, Next.js, and TypeScript. Building performant, accessible web applications and modern UI.",
+        "Developer specializing in React, Next.js, and TypeScript. Building performant, accessible web applications and modern UI.",
     },
     projects: {
       title: "Projects",
@@ -38,11 +38,11 @@ export const siteConfig = {
     },
     employment: {
       description:
-        "Work history of Ihor Kliushnyk — Frontend Developer with hands-on experience in React, Next.js, TypeScript, and performance optimization.",
+        "Work history of Ihor Kliushnyk — Developer with hands-on experience in React, Next.js, TypeScript, and performance optimization.",
     },
   },
   og: {
     brand: "Ihor Kliushnyk",
-    subtitle: "Frontend Developer",
+    subtitle: "Developer",
   },
 } as const;

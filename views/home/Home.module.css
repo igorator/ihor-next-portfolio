@@ -8,13 +8,15 @@
   --content-max-width-viewport: 92vw;
   --content-gap: clamp(16px, 3vw, 28px);
 
-  --title-gap: clamp(12px, 1.2vw, 16px);
+  --title-gap: clamp(8px, 1vw, 12px);
+  --title-gap-large: clamp(4px, 0.6vw, 8px);
   --line-height-tight: 1.05;
-  --letter-spacing-tight: -0.02em;
+  --letter-spacing-tight: -0.03em;
 
-  --greeting-font-size: clamp(34px, 3.6vw, 40px);
-  --name-font-size: clamp(52px, 9.5vw, 108px);
-  --role-font-size: clamp(42px, 5.2vw, 58px);
+  --greeting-font-size: clamp(16px, 1.6vw, 20px);
+  --name-font-size: clamp(52px, 9.5vw, 116px);
+  --role-prefix-font-size: clamp(15px, 1.5vw, 18px);
+  --role-font-size: clamp(38px, 4.8vw, 58px);
 
   --navigation-gap: var(--space-2);
   --navigation-link-min-width: 120px;
@@ -66,6 +68,10 @@
 .greeting {
   font-weight: 500;
   font-size: var(--greeting-font-size);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--foreground-muted);
+  opacity: 0.85;
 }
 
 .name {
@@ -96,10 +102,32 @@
   color: color-mix(in srgb, var(--foreground, #1f2937) 92%, #000);
 }
 
+:global(:root[data-theme="light"]) .greeting,
+:global(:root[data-theme="light"]) .rolePrefix {
+  color: color-mix(in srgb, var(--foreground, #1f2937) 55%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  :global(:root:not([data-theme])) .greeting,
+  :global(:root:not([data-theme])) .rolePrefix {
+    color: color-mix(in srgb, var(--foreground, #1f2937) 55%, transparent);
+  }
+}
+
+.rolePrefix {
+  font-size: var(--role-prefix-font-size);
+  font-weight: 400;
+  color: var(--foreground-muted);
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+  margin-top: var(--title-gap-large);
+}
+
 .role {
   color: var(--foreground-strong);
   font-weight: 700;
   font-size: var(--role-font-size);
+  letter-spacing: -0.02em;
   opacity: var(--role-opacity);
 }
 
