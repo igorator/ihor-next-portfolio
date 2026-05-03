@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Section } from "@/shared/ui/Section/Section";
@@ -17,9 +18,32 @@ export const ErrorSection = ({ reset }: ErrorSectionProps) => {
   return (
     <Section id="error" className={styles.error}>
       <div className={styles.content}>
-        <h1 className={styles.code}>500</h1>
-        <p className={styles.message}>{t("title")}</p>
-        <div className={styles.actions}>
+        <motion.div
+          className={styles.codeWrap}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className={styles.code} aria-hidden="true">
+            500
+          </span>
+        </motion.div>
+
+        <motion.div
+          className={styles.textBlock}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className={styles.message}>{t("title")}</p>
+        </motion.div>
+
+        <motion.div
+          className={styles.actions}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
           <GlassSurface>
             <button onClick={reset} className={styles.btn}>
               {t("tryAgain")}
@@ -30,7 +54,7 @@ export const ErrorSection = ({ reset }: ErrorSectionProps) => {
               {t("backHome")}
             </Link>
           </GlassSurface>
-        </div>
+        </motion.div>
       </div>
     </Section>
   );

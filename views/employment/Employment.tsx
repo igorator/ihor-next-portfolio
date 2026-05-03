@@ -28,25 +28,31 @@ export const EmploymentSection = ({
     if (emp.period) return emp.period;
     if (!emp.startDate) return null;
 
-    const toDate = (str: string) => {
+    const toDate = (str: string): Date | null => {
       const [year, month] = str.split("-").map(Number);
-      return new Date(year!, month! - 1, 1);
+      if (!year || !month || isNaN(year) || isNaN(month)) return null;
+      return new Date(year, month - 1, 1);
     };
 
-    const startStr = format.dateTime(toDate(emp.startDate), {
-      month: "short",
-      year: "numeric",
-    });
+    const formatDate = (str: string): string | null => {
+      const date = toDate(str);
+      if (!date || isNaN(date.getTime())) return null;
+      try {
+        return format.dateTime(date, { month: "short", year: "numeric" });
+      } catch {
+        return null;
+      }
+    };
+
+    const startStr = formatDate(emp.startDate);
+    if (!startStr) return null;
 
     if (!emp.endDate) return startStr;
     if (emp.endDate === "present")
       return `${startStr} — ${t("employment.present")}`;
 
-    const endStr = format.dateTime(toDate(emp.endDate), {
-      month: "short",
-      year: "numeric",
-    });
-    return `${startStr} — ${endStr}`;
+    const endStr = formatDate(emp.endDate);
+    return endStr ? `${startStr} — ${endStr}` : startStr;
   };
 
   const container: Variants = {
@@ -92,7 +98,14 @@ export const EmploymentSection = ({
               <article className={styles.card}>
                 <header className={styles.header}>
                   <h3 className={styles.company}>{itemData.company}</h3>
-                  <span className={styles.typeBadge}>{itemData.type}</span>
+                  <div className={styles.badgesGroup}>
+                    <span className={styles.typeBadge}>{itemData.type}</span>
+                    {itemData.category && (
+                      <span className={styles.categoryBadge}>
+                        {itemData.category}
+                      </span>
+                    )}
+                  </div>
                   {itemData.position && (
                     <span className={styles.position}>{itemData.position}</span>
                   )}
@@ -118,6 +131,7 @@ export const EmploymentSection = ({
                         {t("employment.linkedProjects", {
                           default: "Linked projects",
                         })}
+                        :
                       </div>
                       <ul className={styles.projects}>
                         {itemData.linkedProjects.map((linkedProject) => (

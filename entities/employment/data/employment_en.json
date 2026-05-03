@@ -1,43 +1,45 @@
 {
   "doido-market": {
     "type": "startup",
+    "category": "E-commerce",
     "position": "Co-founder & Full-Stack Developer",
     "roles": [
-      "Designed Telegram NFT marketplace application architecture",
-      "Developed client-side with TON payments integration",
-      "Developed backend and payment processing logic",
-      "Integrated Telegram Mini Apps and Telegram bot",
-      "Developed and tested smart contracts with Jest",
-      "Deployed the application"
+      "Architected a Telegram NFT marketplace from scratch: tech stack selection and system design",
+      "Built client-side app with TON payment integration",
+      "Built backend for payment processing and TON transaction handling",
+      "Integrated Telegram Mini App and bot for user-facing functionality",
+      "Covered smart contract logic with Jest tests",
+      "Took the project from development to production independently"
     ]
   },
   "tresor-tech": {
     "type": "outsource",
-    "position": "Front-End Developer",
+    "position": "Front-End / Webflow Developer",
     "roles": [
-      "Developed React & Webflow websites",
-      "Optimized existing projects and implemented new features",
-      "Integrated APIs, CRMs, and payment systems",
-      "Communicated directly with clients and provided consulting",
-      "Performance optimization according to Web Vitals",
-      "Passed Webflow Partner certification",
-      "Collaborated with UI/UX and backend developers"
+      "Built React and Webflow websites for client projects",
+      "Integrated APIs, CRMs & payment systems into client projects",
+      "Handled client communication: requirements gathering & technical consulting",
+      "Improved Core Web Vitals through image optimization, lazy loading & code splitting",
+      "Automated client workflows with Make",
+      "Earned Webflow Partner certification",
+      "Worked in cross-functional teams with designers and backend developers"
     ]
   },
   "3mpq-studio": {
     "type": "startup",
+    "category": "Digital agency",
     "position": "Co-founder & Full-Stack Developer",
     "roles": [
-      "Developed Telegram bot with Supabase integration and deployment",
-      "Built internal dashboard: client-side, server-side, and deployment",
-      "Developed website with internationalization and form submission API",
-      "Collaborated with UI/UX designer",
-      "Performance optimization according to Web Vitals"
+      "Built and deployed a Telegram bot with Supabase integration",
+      "Built a full-stack internal dashboard: frontend, backend API & deployment",
+      "Built a website with internationalization & a custom form submission API",
+      "Implemented UI from Figma designs in collaboration with the designer",
+      "Optimized Core Web Vitals across all projects"
     ]
   },
   "nocorny-agency": {
     "type": "freelance",
-    "position": "Front-End Developer",
+    "position": "Webflow Developer",
     "roles": [
       "Webflow Developed websites",
       "Collaborated on client projects and implemented design ideas"
@@ -45,22 +47,22 @@
   },
   "logics7": {
     "type": "on demand",
-    "position": "Webflow / Front-end Developer",
+    "position": "Front-end / Webflow Developer",
     "roles": [
-      "Developed Next.js website: client-side, Spline 3D integration, performance optimization, CRM integration",
-      "Integrated payment API for a charity website",
-      "Designed Webflow websites",
-      "Cross-browser compatibility",
-      "Performance optimization according to Web Vitals"
+      "Built Webflow websites to client specifications",
+      "Built a Next.js website with 3D Spline & CRM integration",
+      "Enabled online donations for a charity by integrating a payment API",
+      "Improved Lighthouse scores and Core Web Vitals across projects",
+      "Maintained cross-browser compatibility across projects"
     ]
   },
-  "upwork-freelance": {
+  "freelance": {
     "type": "freelance",
     "position": "Front-End Developer",
     "roles": [
-      "Developing client projects as an independent developer",
-      "Client communication and requirements gathering",
-      "Collaboration with teams of designers and developers"
+      "Developing & editing client projects with React, Next.js",
+      "Client communication & requirements gathering",
+      "Collaboration with teams of designers & developers"
     ]
   }
 }
