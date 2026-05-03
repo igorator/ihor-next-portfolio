@@ -15,7 +15,7 @@ import { resolveLocale } from "@/shared/server/locale";
 
 type LocalizedMap = Record<
   string,
-  { type: string; position?: string; roles: string[] }
+  { type: string; category?: string; position?: string; roles: string[] }
 >;
 
 const EMPLOYMENT_BY_LANG: Record<Locale, LocalizedMap> = {
@@ -54,6 +54,7 @@ function fetchEmployment(locale: Locale): Employment[] {
     return {
       ...baseItem,
       type: localizedEntry?.type ?? "unknown",
+      category: localizedEntry?.category,
       position: localizedEntry?.position,
       roles: localizedEntry?.roles ?? [],
       linkedProjects,

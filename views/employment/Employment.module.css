@@ -66,16 +66,31 @@
 }
 
 .header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  column-gap: var(--space-3);
-  row-gap: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
   margin-bottom: var(--space-2);
+}
+
+.badgesGroup {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+  .company {
+    flex: 0 0 100%;
+  }
 }
 
 /* ИЗМЕНЕНО: защита от переполнения */
 .company {
+  flex: 1;
   font-weight: 700;
   font-size: var(--tl-company-fs);
   color: var(--accent);
@@ -88,12 +103,26 @@
 .typeBadge {
   display: inline-flex;
   align-items: center;
-  justify-self: end;
   padding: 2px 10px;
   border-radius: var(--radius-full);
   border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
   background: color-mix(in oklab, var(--accent) 10%, transparent);
   color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in oklab, var(--foreground) 15%, transparent);
+  background: color-mix(in oklab, var(--foreground) 6%, transparent);
+  color: color-mix(in oklab, var(--foreground) 60%, transparent);
   font-size: var(--text-xs);
   font-weight: 600;
   text-transform: capitalize;
@@ -110,7 +139,7 @@
 }
 
 .position {
-  grid-column: 1 / -1;
+  flex: 0 0 100%;
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-muted);

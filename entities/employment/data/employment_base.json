@@ -34,9 +34,9 @@
     "projects": ["pss", "dovira", "easm", "webwise", "turbota-liqpay"]
   },
   {
-    "id": "upwork-freelance",
-    "company": "Freelance",
-    "period": "On & Off",
+    "id": "freelance",
+    "company": "Self-Employment",
+    "startDate": "~",
     "projects": ["anyway", "custom-globe"]
   }
 ]

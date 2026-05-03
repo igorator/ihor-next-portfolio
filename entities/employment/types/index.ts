@@ -5,6 +5,7 @@ export type Employment = {
   startDate?: string;
   endDate?: string;
   type: string;
+  category?: string;
   position?: string;
   roles: string[];
   projects: string[];
