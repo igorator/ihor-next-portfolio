@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { getProjects } from "@/server/lib/projects";
-import { getTechnologies } from "@/server/lib/technologies";
-import { ProjectsSection } from "@/shared/components/pages/Projects/Projects";
+import { getProjects } from "@/entities/project/api";
+import { getTechnologies } from "@/entities/technology/api";
+import { ProjectsSection } from "@/views/projects/Projects";
+import { AppLoading } from "@/shared/ui/AppLoading/AppLoading";
 import { siteConfig } from "@/shared/config/site";
 import type { LocalePageProps } from "@/shared/types/page";
 
@@ -39,7 +40,7 @@ export default async function Projects({ params }: LocalePageProps) {
   ]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<AppLoading />}>
       <ProjectsSection projects={projects} technologies={technologies} />
     </Suspense>
   );

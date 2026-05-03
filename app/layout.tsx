@@ -5,7 +5,7 @@ import { Inter, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
-import { AppPortal } from "@/shared/components/layout/AppPortal/AppPortal";
+import { AppPortal } from "@/shared/ui/AppPortal/AppPortal";
 import { siteConfig } from "@/shared/config/site";
 
 type ThemeSetting = "light" | "dark" | "system";
@@ -31,13 +31,21 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: "%s",
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author, url: siteConfig.url }],
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     siteName: siteConfig.name,
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
   },
 };
 

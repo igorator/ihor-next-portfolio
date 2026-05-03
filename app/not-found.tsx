@@ -1,11 +1,14 @@
-import { AppBackground } from "@/shared/components/layout/AppBackground/AppBackground";
-import { NotFoundSection } from "@/shared/components/pages/NotFound/NotFoundSection";
+import { getTranslations } from "next-intl/server";
+import { AppBackground } from "@/shared/ui/AppBackground/AppBackground";
+import { NotFoundSection } from "@/views/not-found/NotFoundSection";
 
-export default function AppNotFound() {
+export default async function AppNotFound() {
+  const t = await getTranslations("notFound");
+
   return (
     <>
       <AppBackground />
-      <NotFoundSection />
+      <NotFoundSection title={t("title")} backHome={t("backHome")} />
     </>
   );
 }

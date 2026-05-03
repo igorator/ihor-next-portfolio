@@ -4,22 +4,41 @@ export const siteConfig = {
     "https://igorator.site",
   name: "Ihor Kliushnyk",
   author: "Ihor Kliushnyk",
-  description: "Frontend Developer portfolio",
+  description:
+    "Frontend Developer specializing in React, Next.js, and TypeScript — building fast, accessible, production-grade web applications.",
+  keywords: [
+    "Frontend Developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Web Development",
+    "UI Engineer",
+    "JavaScript",
+  ] as string[],
+  socials: {
+    github: "https://github.com/igorator",
+    linkedin: "https://www.linkedin.com/in/ihor-kliushnyk/",
+    upwork: "https://upwork.com/freelancers/ihorkliushnyk",
+    email: "ihor.kliushnyk@gmail.com",
+  },
   pages: {
     home: {
-      title: "Home",
+      title: "Ihor Kliushnyk — Frontend Developer",
       description:
-        "Frontend Developer specializing in React, Next.js, and TypeScript.",
+        "Frontend Developer specializing in React, Next.js, and TypeScript. Building performant, accessible web applications and modern UI.",
     },
     projects: {
       title: "Projects",
-      description: "Selected projects and case studies.",
+      description:
+        "Frontend projects by Ihor Kliushnyk — React apps, Next.js sites, and modern web development with TypeScript.",
     },
     project: {
-      fallbackDescription: "Project details.",
+      fallbackDescription:
+        "A frontend project by Ihor Kliushnyk built with React, Next.js, and TypeScript.",
     },
     employment: {
-      description: "Employment history and work experience.",
+      description:
+        "Work history of Ihor Kliushnyk — Frontend Developer with hands-on experience in React, Next.js, TypeScript, and performance optimization.",
     },
   },
   og: {

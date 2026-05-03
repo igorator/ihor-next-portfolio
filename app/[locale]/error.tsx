@@ -1,6 +1,6 @@
 "use client";
 
-import { ErrorSection } from "@/shared/components/pages/Error/ErrorSection";
+import { ErrorSection } from "@/views/error/ErrorSection";
 
 export default function ErrorPage({
   reset,

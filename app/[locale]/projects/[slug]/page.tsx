@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import projectBase from "@/server/data/projects/project_base.json";
-import { getProjectBySlug } from "@/server/lib/projects";
-import { ProjectSection } from "@/shared/components/pages/Projects/Project/Project";
+import projectBase from "@/entities/project/data/project_base.json";
+import { getProjectBySlug } from "@/entities/project/api";
+import { ProjectSection } from "@/views/project-detail/Project";
 import { siteConfig } from "@/shared/config/site";
 import type { SlugPageProps } from "@/shared/types/page";
 
@@ -40,6 +40,13 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       url: canonical,
+      title,
+      description,
+      images: project.cover ? [{ url: project.cover, alt: title }] : undefined,
+    },
+    twitter: {
+      title,
+      description,
       images: project.cover ? [project.cover] : undefined,
     },
   };
@@ -51,18 +58,48 @@ export default async function ProjectPage({ params }: SlugPageProps) {
 
   if (!project) notFound();
 
+  const isDefaultLocale = locale === routing.defaultLocale;
+  const baseUrl = siteConfig.url;
+  const projectUrl = `${baseUrl}${isDefaultLocale ? "" : `/${locale}`}/projects/${slug}`;
+  const projectsUrl = `${baseUrl}${isDefaultLocale ? "" : `/${locale}`}/projects`;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: projectsUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: projectUrl,
+      },
+    ],
+  };
+
   return (
-    <ProjectSection
-      title={project.title}
-      description={project.description}
-      type={project.type}
-      category={project.category}
-      date={project.date}
-      cover={project.cover ?? ""}
-      technologies={project.technologies}
-      githubUrl={project.githubUrl}
-      demoUrl={project.demoUrl}
-      screens={project.screens ?? []}
-    />
+    <>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbJsonLd)}
+      </script>
+      <ProjectSection
+        title={project.title}
+        description={project.description}
+        type={project.type}
+        category={project.category}
+        date={project.date}
+        cover={project.cover ?? ""}
+        technologies={project.technologies}
+        githubUrl={project.githubUrl}
+        demoUrl={project.demoUrl}
+        screens={project.screens ?? []}
+      />
+    </>
   );
 }

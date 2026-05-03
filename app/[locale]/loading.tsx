@@ -1,4 +1,4 @@
-import { AppLoading } from "@/shared/components/loading/AppLoading/AppLoading";
+import { AppLoading } from "@/shared/ui/AppLoading/AppLoading";
 
 export default function Loading() {
   return <AppLoading />;
