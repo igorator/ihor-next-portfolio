@@ -27,7 +27,7 @@
     "slug": "this-website",
     "date": "2025-10",
     "isCommercial": false,
-    "technologiesIds": ["nextjs", "css", "framer-motion", "i18n"],
+    "technologiesIds": ["nextjs", "css", "framer-motion", "i18n", "radix"],
     "demoUrl": "https://www.igorator.site",
     "githubUrl": "https://github.com/igorator/ihor-next-portfolio"
   },

@@ -122,6 +122,14 @@
     "priority": 2
   },
   {
+    "id": "radix",
+    "name": "Radix UI",
+    "color": "#1C2024",
+    "textColor": "#ffffff",
+    "category": "UI Libraries",
+    "priority": 3
+  },
+  {
     "id": "css",
     "name": "CSS",
     "color": "#264de4",

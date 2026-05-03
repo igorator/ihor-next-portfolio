@@ -39,12 +39,10 @@ export const HomeSection = () => {
 
   const titleLine: Variants = {
     hidden: {
-      opacity: 0,
       y: prefersReduced ? 0 : 18,
       filter: prefersReduced ? "blur(0px)" : "blur(6px)",
     },
     visible: {
-      opacity: 1,
       y: 0,
       filter: "blur(0px)",
       transition: {
@@ -61,7 +59,7 @@ export const HomeSection = () => {
       y: 0,
       transition: {
         duration: prefersReduced ? 0 : 0.5,
-        delay: prefersReduced ? 0 : 0.1,
+        delay: prefersReduced ? 0 : 0.55,
         ease: cubicBezier(0.22, 1, 0.36, 1),
       },
     },
@@ -74,8 +72,7 @@ export const HomeSection = () => {
           className={styles.title}
           variants={titleContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.6 }}
+          animate="visible"
         >
           <motion.span className={styles.greeting} variants={titleLine}>
             {t("home.greeting")}
@@ -91,8 +88,7 @@ export const HomeSection = () => {
         <motion.div
           variants={buttonsWrap}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.6 }}
+          animate="visible"
           className={styles.navigationWrapper}
         >
           <div className={styles.navigationList}>
