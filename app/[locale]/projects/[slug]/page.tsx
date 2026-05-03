@@ -35,7 +35,7 @@ export async function generateMetadata({
       : `/${locale}/projects/${slug}`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     openGraph: {

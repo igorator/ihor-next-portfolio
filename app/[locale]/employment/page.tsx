@@ -21,7 +21,7 @@ export async function generateMetadata({
     locale === routing.defaultLocale ? "/employment" : `/${locale}/employment`;
 
   return {
-    title,
+    title: { absolute: title },
     description: siteConfig.pages.employment.description,
     alternates: { canonical },
     openGraph: { url: canonical, images: [{ url: siteConfig.og.image }] },
