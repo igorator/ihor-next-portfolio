@@ -14,7 +14,8 @@ export const mergeProjectsWithTechnologies = (
     const { technologiesIds, ...rest } = project;
     const techs = technologiesIds
       .map((id) => techMap.get(id))
-      .filter((t): t is Technology => t !== undefined);
+      .filter((t): t is Technology => t !== undefined)
+      .sort((a, b) => a.priority - b.priority);
     return { ...rest, technologies: techs };
   });
 };

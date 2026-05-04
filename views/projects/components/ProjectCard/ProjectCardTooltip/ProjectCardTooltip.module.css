@@ -1,7 +1,4 @@
 .commercialBadge {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
   display: flex;
   align-items: center;
   justify-content: center;

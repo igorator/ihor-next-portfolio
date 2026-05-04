@@ -24,6 +24,7 @@ export type ProjectCardProps = {
   isCommercial?: boolean;
   isHighlighted?: boolean;
   onTechnologyClick?: (techId: string) => void;
+  viewMode?: "grid" | "list";
 };
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -39,6 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   isCommercial,
   isHighlighted,
   onTechnologyClick,
+  viewMode = "grid",
 }) => {
   const t = useTranslations();
   const format = useFormatter();
@@ -53,8 +55,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`${styles.projectCard} glass-card ${isHighlighted ? ` ${styles.highlighted}` : ""}`}
+      className={`${styles.projectCard} glass-card${isHighlighted ? ` ${styles.highlighted}` : ""}${viewMode === "list" ? ` ${styles.listCard}` : ""}`}
     >
+      {/* Always first in DOM — CSS hides in grid mode, shows in list mode */}
+      <div className={styles.listBadgeSlot}>
+        <ProjectCardTooltip isCommercial={isCommercial} />
+      </div>
+
       {(date || isCommercial) && (
         <div className={styles.meta}>
           {date ? (
@@ -64,7 +71,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : (
             <span />
           )}
-          <ProjectCardTooltip isCommercial={isCommercial} />
+          {/* Wrapped so it can be hidden in list mode without affecting grid view */}
+          <div className={styles.metaTooltipWrapper}>
+            <ProjectCardTooltip isCommercial={isCommercial} />
+          </div>
         </div>
       )}
 

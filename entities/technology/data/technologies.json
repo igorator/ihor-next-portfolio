@@ -1,20 +1,5 @@
 [
   {
-    "id": "nextjs",
-    "name": "Next.js",
-    "color": "#000000",
-    "textColor": "#ffffff",
-    "category": "Frameworks",
-    "priority": 1
-  },
-  {
-    "id": "react",
-    "name": "React",
-    "color": "#61DAFB",
-    "category": "Frameworks",
-    "priority": 2
-  },
-  {
     "id": "typescript",
     "name": "TypeScript",
     "color": "#3178C6",
@@ -29,11 +14,68 @@
     "priority": 2
   },
   {
+    "id": "css",
+    "name": "CSS",
+    "color": "#264de4",
+    "category": "Styling & UI",
+    "priority": 3
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "color": "#61DAFB",
+    "category": "Frameworks",
+    "priority": 4
+  },
+  {
+    "id": "nextjs",
+    "name": "Next.js",
+    "color": "#000000",
+    "textColor": "#ffffff",
+    "category": "Frameworks",
+    "priority": 5
+  },
+  {
+    "id": "vue",
+    "name": "Vue",
+    "color": "#3eb27c",
+    "category": "Frameworks",
+    "priority": 6
+  },
+  {
     "id": "nodejs",
     "name": "Node.js",
     "color": "#339933",
     "category": "Backend & Server",
-    "priority": 1
+    "priority": 7
+  },
+  {
+    "id": "vite",
+    "name": "Vite",
+    "color": "#fdd027",
+    "category": "Bundlers",
+    "priority": 9
+  },
+  {
+    "id": "react-router-v7",
+    "name": "React Router v7",
+    "color": "#CA4245",
+    "category": "Routing",
+    "priority": 9
+  },
+  {
+    "id": "redux",
+    "name": "Redux Toolkit",
+    "color": "#764ABC",
+    "category": "State Management",
+    "priority": 10
+  },
+  {
+    "id": "zustand",
+    "name": "Zustand",
+    "color": "#FFD700",
+    "category": "State Management",
+    "priority": 11
   },
   {
     "id": "express",
@@ -41,77 +83,42 @@
     "color": "#353535",
     "textColor": "#ffffff",
     "category": "Backend & Server",
-    "priority": 2
-  },
-  {
-    "id": "typeorm",
-    "name": "TypeORM",
-    "color": "#E83524",
-    "category": "Databases",
-    "priority": 3
+    "priority": 12
   },
   {
     "id": "postgres",
     "name": "PostgreSQL",
     "color": "#336791",
     "category": "Databases",
-    "priority": 2
+    "priority": 13
+  },
+  {
+    "id": "typeorm",
+    "name": "TypeORM",
+    "color": "#E83524",
+    "category": "Databases",
+    "priority": 14
   },
   {
     "id": "supabase",
     "name": "Supabase",
     "color": "#3ECF8E",
     "category": "Databases",
-    "priority": 4
+    "priority": 15
   },
   {
-    "id": "telegram",
-    "name": "Telegram API",
-    "color": "#0088CC",
-    "category": "Integrations",
-    "priority": 1
-  },
-  {
-    "id": "ton",
-    "name": "TON Blockchain",
-    "color": "#0098EA",
-    "category": "Integrations",
-    "priority": 2
-  },
-  {
-    "id": "grammy",
-    "name": "GrammY",
-    "color": "#00BFFF",
-    "category": "Integrations",
-    "priority": 3
-  },
-  {
-    "id": "redux",
-    "name": "Redux Toolkit",
-    "color": "#764ABC",
-    "category": "State Management",
-    "priority": 1
-  },
-  {
-    "id": "zustand",
-    "name": "Zustand",
-    "color": "#FFD700",
-    "category": "State Management",
-    "priority": 2
-  },
-  {
-    "id": "react-router-v7",
-    "name": "React Router v7",
-    "color": "#CA4245",
-    "category": "Routing",
-    "priority": 1
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "color": "#06B6D4",
+    "category": "Styling & UI",
+    "priority": 16
   },
   {
     "id": "antd",
     "name": "Ant Design",
     "color": "#1677FF",
     "category": "UI Libraries",
-    "priority": 1
+    "priority": 17
   },
   {
     "id": "shadcn",
@@ -119,7 +126,7 @@
     "color": "#000000",
     "textColor": "#ffffff",
     "category": "UI Libraries",
-    "priority": 2
+    "priority": 18
   },
   {
     "id": "radix",
@@ -127,125 +134,118 @@
     "color": "#1C2024",
     "textColor": "#ffffff",
     "category": "UI Libraries",
-    "priority": 3
-  },
-  {
-    "id": "css",
-    "name": "CSS",
-    "color": "#264de4",
-    "category": "Styling & UI",
-    "priority": 1
-  },
-  {
-    "id": "tailwind",
-    "name": "Tailwind CSS",
-    "color": "#06B6D4",
-    "category": "Styling & UI",
-    "priority": 1
-  },
-  {
-    "id": "framer-motion",
-    "name": "Framer Motion",
-    "color": "#E30B5C",
-    "category": "Animation",
-    "priority": 1
+    "priority": 19
   },
   {
     "id": "react-hook-form",
     "name": "React Hook Form",
     "color": "#EC5990",
     "category": "Forms & Validation",
-    "priority": 1
+    "priority": 20
   },
   {
-    "id": "i18n",
-    "name": "i18n",
-    "color": "#0070F3",
-    "category": "Localization",
-    "priority": 1
-  },
-  {
-    "id": "spline3d",
-    "name": "Spline 3D",
-    "color": "#00C8FF",
-    "category": "3D & Design",
-    "priority": 1
-  },
-  {
-    "id": "zoho",
-    "name": "Zoho CRM",
-    "color": "#E74C3C",
-    "category": "Integrations",
-    "priority": 4
-  },
-  {
-    "id": "liqpay",
-    "name": "LiqPay",
-    "color": "#00B140",
-    "category": "Payments",
-    "priority": 1
-  },
-  {
-    "id": "jest",
-    "name": "Jest",
-    "color": "#C21325",
-    "category": "Testing",
-    "priority": 1
-  },
-  {
-    "id": "docker",
-    "name": "Docker",
-    "color": "#2496ED",
-    "category": "Tools & DevOps",
-    "priority": 1
-  },
-  {
-    "id": "git",
-    "name": "Git",
-    "color": "#F05032",
-    "category": "Tools & DevOps",
-    "priority": 2
-  },
-  {
-    "id": "webflow",
-    "name": "Webflow",
-    "color": "#146EF5",
-    "category": "Low / No code",
-    "priority": 4
-  },
-  {
-    "id": "threejs",
-    "name": "Three.js",
-    "color": "#146EF5",
-    "category": "3D & Design",
-    "priority": 2
-  },
-  {
-    "id": "vue",
-    "name": "Vue",
-    "color": "#3eb27c",
-    "category": "Frameworks",
-    "priority": 1
-  },
-  {
-    "id": "vite",
-    "name": "Vite",
-    "color": "#fdd027",
-    "category": "Bundlers",
-    "priority": 3
+    "id": "framer-motion",
+    "name": "Framer Motion",
+    "color": "#E30B5C",
+    "category": "Animation",
+    "priority": 21
   },
   {
     "id": "gsap",
     "name": "GSAP",
     "color": "#88CE02",
     "category": "Animation",
-    "priority": 2
+    "priority": 22
+  },
+  {
+    "id": "i18n",
+    "name": "i18n",
+    "color": "#0070F3",
+    "category": "Localization",
+    "priority": 23
+  },
+  {
+    "id": "jest",
+    "name": "Jest",
+    "color": "#C21325",
+    "category": "Testing",
+    "priority": 24
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "color": "#2496ED",
+    "category": "Tools & DevOps",
+    "priority": 25
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "color": "#F05032",
+    "category": "Tools & DevOps",
+    "priority": 26
+  },
+  {
+    "id": "telegram",
+    "name": "Telegram API",
+    "color": "#0088CC",
+    "category": "Integrations",
+    "priority": 27
+  },
+  {
+    "id": "ton",
+    "name": "TON Blockchain",
+    "color": "#0098EA",
+    "category": "Integrations",
+    "priority": 28
+  },
+  {
+    "id": "grammy",
+    "name": "GrammY",
+    "color": "#00BFFF",
+    "category": "Integrations",
+    "priority": 29
+  },
+  {
+    "id": "liqpay",
+    "name": "LiqPay",
+    "color": "#00B140",
+    "category": "Payments",
+    "priority": 30
+  },
+  {
+    "id": "zoho",
+    "name": "Zoho CRM",
+    "color": "#E74C3C",
+    "category": "Integrations",
+    "priority": 31
+  },
+  {
+    "id": "threejs",
+    "name": "Three.js",
+    "color": "#146EF5",
+    "category": "3D & Design",
+    "priority": 32
   },
   {
     "id": "leaflet",
     "name": "Leaflet",
     "color": "#199900",
     "category": "Libraries",
-    "priority": 3
+    "priority": 33
+  },
+  {
+    "id": "spline3d",
+    "name": "Spline 3D",
+    "color": "#00C8FF",
+    "category": "3D & Design",
+    "priority": 34
+  },
+  {
+    "id": "webflow",
+    "name": "Webflow",
+    "color": "#146EF5",
+    "category": "Low / No code",
+    "priority": 8
   }
 ]

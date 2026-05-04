@@ -139,9 +139,11 @@ export const useProjectFilters = (
     const projectHasTech = (project: ProjectWithTechnologies, techId: string) =>
       (project.technologies ?? []).some((tech) => tech.id === techId);
 
-    return technologies.filter((tech) =>
-      projects.some((project) => projectHasTech(project, tech.id)),
-    );
+    return technologies
+      .filter((tech) =>
+        projects.some((project) => projectHasTech(project, tech.id)),
+      )
+      .sort((a, b) => a.priority - b.priority);
   }, [projects, technologies]);
 
   return {

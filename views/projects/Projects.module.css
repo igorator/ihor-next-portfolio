@@ -1,3 +1,6 @@
+.projectSection {
+}
+
 .title {
   font-size: var(--text-3xl);
   font-weight: 700;
@@ -5,32 +8,85 @@
   text-align: center;
 }
 
-.filtersContainer {
+/* ===== Filter bar ===== */
+
+.filtersBar {
   display: flex;
-  gap: var(--component-gap);
-  margin-bottom: var(--space-6);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) var(--scrollbar-track);
-  padding: var(--space-2);
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-weight: 500;
 }
 
-.filtersContainer::-webkit-scrollbar {
-  height: var(--scrollbar-size);
+.filtersBar > * {
+  flex: 1 1 260px;
+  min-width: 220px;
 }
 
-.filtersContainer::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+.filterClearButtonWrapper,
+.viewToggleWrapper {
+  min-width: unset;
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
 }
 
-.filtersContainer::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
-  border-radius: var(--radius-xs);
+.technologySelectWrapper,
+.commercialSwitchWrapper,
+.sortSelectWrapper {
+  width: fit-content;
+  flex: 0 0 auto;
 }
 
-.filterGroup {
-  flex-shrink: 0;
-  min-width: 200px;
+/* ===== Мобилка ===== */
+@media (max-width: 720px) {
+  .viewToggleWrapper {
+    display: none;
+  }
+
+  .filtersBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "tech tech"
+      "comm sort"
+      "clear clear";
+    gap: var(--space-2);
+  }
+
+  .technologySelectWrapper {
+    grid-area: tech;
+    width: 100%;
+  }
+  .commercialSwitchWrapper {
+    grid-area: comm;
+    width: 100%;
+  }
+  .sortSelectWrapper {
+    grid-area: sort;
+    width: 100%;
+  }
+  .filterClearButtonWrapper {
+    grid-area: clear;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .filtersBar > * {
+    min-width: 0;
+  }
+
+  .filterClearButtonWrapper :where(button, a) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .filtersBar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tech"
+      "comm"
+      "sort"
+      "clear";
+  }
 }

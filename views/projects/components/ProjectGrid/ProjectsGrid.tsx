@@ -10,19 +10,23 @@ import styles from "./ProjectGrid.module.css";
 type ProjectsGridProps = {
   projects: ProjectWithTechnologies[];
   onTechnologyClick?: (techId: string) => void;
+  viewMode?: "grid" | "list";
 };
 
 export const ProjectsGrid = ({
   projects,
   onTechnologyClick,
+  viewMode = "grid",
 }: ProjectsGridProps) => {
   const t = useTranslations("projects_ui");
 
   return (
-    <div className={styles.projectsWrapper}>
+    <div
+      className={`${styles.projectsWrapper} ${viewMode === "list" ? styles.listView : ""}`}
+    >
       {projects.length > 0 ? (
         <AnimatePresence>
-          <ProjectOverviewCard />
+          {viewMode === "grid" && <ProjectOverviewCard />}
 
           {projects.map((project) => (
             <motion.div
@@ -45,6 +49,7 @@ export const ProjectsGrid = ({
                 demoUrl={project.demoUrl}
                 isCommercial={project.isCommercial}
                 isHighlighted={project.isHighlighted}
+                viewMode={viewMode}
               />
             </motion.div>
           ))}
