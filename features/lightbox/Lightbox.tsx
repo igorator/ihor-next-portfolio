@@ -5,10 +5,11 @@ import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { LightboxButton } from "./LightboxButton";
 import { LightboxToolbar } from "./LightboxToolbar";
+import type { MediaItem } from "./types";
 import styles from "./Lightbox.module.css";
 
 type LightboxProps = {
-  images: string[];
+  items: MediaItem[];
   index: number;
   setIndex: Dispatch<SetStateAction<number>>;
   onClose: () => void;
@@ -16,19 +17,20 @@ type LightboxProps = {
 };
 
 export const Lightbox = ({
-  images,
+  items,
   index,
   setIndex,
   onClose,
   title,
 }: LightboxProps) => {
   const t = useTranslations("projects_ui.lightbox");
-  const total = images.length;
+  const total = items.length;
+  const current = items[index];
 
   const navigate = useCallback(
     (delta: number) => {
-      setIndex((currentIndex) => {
-        const next = (currentIndex + delta) % total;
+      setIndex((i) => {
+        const next = (i + delta) % total;
         return next < 0 ? next + total : next;
       });
     },
@@ -93,16 +95,29 @@ export const Lightbox = ({
 
       <div className={styles.stage} aria-live="polite">
         <div className={styles.figure}>
-          <Image
-            key={images[index]}
-            src={images[index]!}
-            alt={t("imageAlt", { title, current: index + 1, total })}
-            fill
-            sizes="(min-width: 1158px) 1100px, 95vw"
-            className={styles.image}
-            priority
-            onClick={onClose}
-          />
+          {current?.type === "video" ? (
+            <video
+              key={current.url}
+              src={current.url}
+              controls
+              playsInline
+              className={styles.video}
+              aria-label={t("imageAlt", { title, current: index + 1, total })}
+              onClick={stopPropagation}
+              onPointerDown={stopPropagation}
+            />
+          ) : (
+            <Image
+              key={current?.url}
+              src={current?.url ?? ""}
+              alt={t("imageAlt", { title, current: index + 1, total })}
+              fill
+              sizes="(min-width: 1158px) 1100px, 95vw"
+              className={styles.image}
+              priority
+              onClick={onClose}
+            />
+          )}
         </div>
       </div>
 
@@ -110,7 +125,7 @@ export const Lightbox = ({
         title={title}
         index={index}
         total={total}
-        imageUrl={images[index]!}
+        item={current ?? { type: "image", url: "" }}
         onInteraction={stopPropagation}
       />
     </div>,

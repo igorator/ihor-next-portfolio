@@ -21,6 +21,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://cdn.jsdelivr.net",
       "font-src 'self' data:",
+      "media-src 'self' https://cdn.jsdelivr.net",
       "connect-src 'self' https://cdn.jsdelivr.net https://data.jsdelivr.com https://api.github.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",

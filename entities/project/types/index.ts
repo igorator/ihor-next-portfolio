@@ -10,6 +10,7 @@ export type Project = {
   technologiesIds: string[];
   cover?: string;
   screens?: string[];
+  video?: string;
   githubUrl?: string | null;
   demoUrl?: string | null;
   isCommercial?: boolean;

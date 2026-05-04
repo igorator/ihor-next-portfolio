@@ -36,6 +36,18 @@
   cursor: inherit;
 }
 
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  cursor: default;
+}
+
 .controlButton {
   position: fixed;
   top: 50%;

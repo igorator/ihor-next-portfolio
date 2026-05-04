@@ -9,6 +9,7 @@ import { Section } from "@/shared/ui/Section/Section";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { routes } from "@/shared/config/routes";
 import type { Technology } from "@/entities/technology/types";
+import type { MediaItem } from "@/features/lightbox/types";
 import { Lightbox } from "@/features/lightbox/Lightbox";
 import { OverviewCard } from "./components/OverviewCard/OverviewCard";
 import { StackCard } from "./components/StackCard/StackCard";
@@ -28,6 +29,7 @@ type ProjectSectionProps = {
   githubUrl?: string | null;
   demoUrl?: string | null;
   screens?: string[];
+  video?: string;
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -48,25 +50,29 @@ export function ProjectSection({
   githubUrl,
   demoUrl,
   screens = [],
+  video,
 }: ProjectSectionProps) {
   const t = useTranslations("projects_ui");
   const router = useRouter();
 
-  const images = useMemo(
-    () => [cover, ...screens].filter(Boolean),
-    [cover, screens],
-  );
+  const items = useMemo<MediaItem[]>(() => {
+    const result: MediaItem[] = [];
+    if (cover) result.push({ type: "image", url: cover });
+    if (video) result.push({ type: "video", url: video });
+    screens.forEach((url) => result.push({ type: "image", url }));
+    return result;
+  }, [cover, video, screens]);
 
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  const hasMany = images.length > 1;
+  const hasMany = items.length > 1;
 
   const goTo = (next: number) => {
     if (!hasMany) return;
-    const normalizedIndex = (next + images.length) % images.length;
-    setDir(next > idx || (idx === images.length - 1 && next === 0) ? 1 : -1);
+    const normalizedIndex = (next + items.length) % items.length;
+    setDir(next > idx || (idx === items.length - 1 && next === 0) ? 1 : -1);
     setIdx(normalizedIndex);
   };
   const next = () => goTo(idx + 1);
@@ -127,7 +133,7 @@ export function ProjectSection({
         <LinksCard demoUrl={demoUrl} githubUrl={githubUrl} />
 
         <ImageCard
-          images={images}
+          items={items}
           idx={idx}
           dir={dir}
           hasMany={hasMany}
@@ -143,9 +149,9 @@ export function ProjectSection({
 
       <div className="proxy"></div>
 
-      {lightboxOpen && images.length > 0 && (
+      {lightboxOpen && items.length > 0 && (
         <Lightbox
-          images={images}
+          items={items}
           index={idx}
           setIndex={setIdx}
           onClose={() => setLightboxOpen(false)}

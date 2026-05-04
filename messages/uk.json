@@ -42,6 +42,7 @@
     "descriptionTitle": "Опис",
     "noTechnologies": "Технології не вказані.",
     "openImageAria": "Відкрити зображення в лайтбоксі",
+    "openVideoAria": "Відкрити відео в лайтбоксі",
     "imageAltCover": "{title} — обкладинка",
     "noMatches": "Жоден проект не відповідає фільтрам",
     "links": {
@@ -74,6 +75,7 @@
       "previousAria": "Попереднє",
       "nextAria": "Наступне",
       "openOriginal": "Відкрити оригінал",
+      "openOriginalVideo": "Відкрити відео",
       "imageAlt": "{title} — зображення {current} з {total}"
     }
   },

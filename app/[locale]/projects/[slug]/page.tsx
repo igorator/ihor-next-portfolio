@@ -101,6 +101,7 @@ export default async function ProjectPage({ params }: SlugPageProps) {
         githubUrl={project.githubUrl}
         demoUrl={project.demoUrl}
         screens={project.screens ?? []}
+        video={project.video}
       />
     </>
   );

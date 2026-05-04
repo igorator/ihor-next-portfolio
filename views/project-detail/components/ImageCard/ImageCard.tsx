@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { Spinner } from "@/shared/ui/Spinner/Spinner";
+import type { MediaItem } from "@/features/lightbox/types";
 import layout from "../../Project.module.css";
 import styles from "./ImageCard.module.css";
 
@@ -30,7 +31,7 @@ const slideVariants: Variants = {
 };
 
 type Props = {
-  images: string[];
+  items: MediaItem[];
   idx: number;
   dir: number;
   hasMany: boolean;
@@ -42,7 +43,7 @@ type Props = {
 };
 
 export function ImageCard({
-  images,
+  items,
   idx,
   dir,
   hasMany,
@@ -54,14 +55,19 @@ export function ImageCard({
 }: Props) {
   const t = useTranslations("projects_ui");
   const [loading, setLoading] = useState(true);
+  const current = items[idx];
 
   useEffect(() => {
-    setLoading(true);
-  }, [idx]);
+    if (current?.type === "video") {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [idx, current?.type]);
 
   return (
     <motion.article className={`${layout.card} ${layout.imageCard}`}>
-      {images.length === 0 ? (
+      {items.length === 0 ? (
         <div
           className={styles.emptyState}
           role="img"
@@ -71,14 +77,14 @@ export function ImageCard({
         </div>
       ) : (
         <div className={styles.imageWrapper}>
-          {loading && (
+          {loading && current?.type !== "video" && (
             <div className={styles.loadingOverlay}>
               <Spinner size={16} />
             </div>
           )}
           <motion.button
             type="button"
-            key={images[idx]}
+            key={current?.url}
             custom={dir}
             variants={slideVariants}
             initial="enter"
@@ -86,19 +92,36 @@ export function ImageCard({
             exit="exit"
             className={styles.imageButton}
             onClick={() => onOpenLightbox(idx)}
-            aria-label={t("openImageAria")}
+            aria-label={
+              current?.type === "video"
+                ? t("openVideoAria")
+                : t("openImageAria")
+            }
           >
-            <Image
-              className={styles.image}
-              src={images[idx]!}
-              alt={t("imageAltCover", { title })}
-              fill
-              sizes="(min-width: 980px) 66vw, 100vw"
-              priority
-              placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgZmlsbD0iI2NjYyIgLz4="
-              onLoad={() => setLoading(false)}
-            />
+            {current?.type === "video" ? (
+              <video
+                src={current.url}
+                muted
+                loop
+                playsInline
+                autoPlay
+                className={styles.image}
+                aria-label={t("imageAltCover", { title })}
+                tabIndex={-1}
+              />
+            ) : (
+              <Image
+                className={styles.image}
+                src={current?.url ?? ""}
+                alt={t("imageAltCover", { title })}
+                fill
+                sizes="(min-width: 980px) 66vw, 100vw"
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgZmlsbD0iI2NjYyIgLz4="
+                onLoad={() => setLoading(false)}
+              />
+            )}
             <div className={styles.imageGradient} aria-hidden />
           </motion.button>
 
@@ -122,9 +145,9 @@ export function ImageCard({
               </button>
 
               <div className={styles.indicators}>
-                {images.map((src, dotIndex) => (
+                {items.map((item, dotIndex) => (
                   <button
-                    key={`${src}-dot`}
+                    key={`${item.url}-dot`}
                     type="button"
                     className={`${styles.indicator} ${
                       dotIndex === idx ? styles.indicatorActive : ""

@@ -7,6 +7,7 @@ import projectsUk from "@/entities/project/data/projects_uk.json";
 import technologiesData from "@/entities/technology/data/technologies.json";
 
 import { listProjectImages } from "./images";
+import { listProjectVideo } from "./videos";
 import type {
   Project,
   ProjectWithTechnologies,
@@ -75,12 +76,16 @@ async function fetchProjectBySlug(
     technologies,
   );
   if (!projectWithTech) return null;
-  const images = await listProjectImages(slug);
+  const [images, video] = await Promise.all([
+    listProjectImages(slug),
+    listProjectVideo(slug),
+  ]);
 
   return {
     ...projectWithTech,
     cover: images.cover ?? undefined,
     screens: images.screens,
+    video: video ?? undefined,
   };
 }
 
