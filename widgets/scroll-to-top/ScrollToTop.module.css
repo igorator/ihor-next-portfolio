@@ -1,0 +1,46 @@
+/* Fixed variant — mobile only (desktop uses inline in navbar) */
+.positioner {
+  position: fixed;
+  z-index: 50;
+  right: var(--space-4);
+  bottom: calc(
+    var(--navbar-height) + var(--space-4) * 2 + env(safe-area-inset-bottom)
+  );
+}
+
+@media (min-width: 721px) {
+  .positioner {
+    display: none;
+  }
+}
+
+/* Inline variant — lives inside the navbar flex row */
+.inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.surface {
+  width: 44px;
+  height: 44px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.surface:hover .icon {
+  color: var(--accent);
+}

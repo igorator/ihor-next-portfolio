@@ -85,7 +85,8 @@
 @media (max-width: 720px) {
   .socialsWrapper,
   .themeSwitcherWrapper,
-  .languageSelectWrapper {
+  .languageSelectWrapper,
+  .scrollToTopWrapper {
     display: none !important;
   }
 

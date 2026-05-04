@@ -11,12 +11,14 @@ type ProjectsGridProps = {
   projects: ProjectWithTechnologies[];
   onTechnologyClick?: (techId: string) => void;
   viewMode?: "grid" | "list";
+  hasActiveFilters?: boolean;
 };
 
 export const ProjectsGrid = ({
   projects,
   onTechnologyClick,
   viewMode = "grid",
+  hasActiveFilters = false,
 }: ProjectsGridProps) => {
   const t = useTranslations("projects_ui");
 
@@ -26,7 +28,7 @@ export const ProjectsGrid = ({
     >
       {projects.length > 0 ? (
         <AnimatePresence>
-          {viewMode === "grid" && <ProjectOverviewCard />}
+          {viewMode === "grid" && !hasActiveFilters && <ProjectOverviewCard />}
 
           {projects.map((project) => (
             <motion.div

@@ -8,9 +8,8 @@ import {
 } from "motion/react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Section } from "@/shared/ui/Section/Section";
-import { Link } from "@/i18n/navigation";
-import { BsFolder2 } from "react-icons/bs";
 import type { Employment } from "@/entities/employment/types";
+import { EmploymentCard } from "./components/EmploymentCard/EmploymentCard";
 import styles from "./Employment.module.css";
 
 type EmploymentSectionProps = {
@@ -87,74 +86,14 @@ export const EmploymentSection = ({
         initial="hidden"
         animate="show"
       >
-        {employmentHistory.map((itemData) => {
-          const period = formatPeriod(itemData);
-          return (
-            <motion.li
-              key={itemData.id}
-              className={styles.item}
-              variants={item}
-            >
-              <article className={styles.card}>
-                <header className={styles.header}>
-                  <h3 className={styles.company}>{itemData.company}</h3>
-                  <div className={styles.badgesGroup}>
-                    <span className={styles.typeBadge}>{itemData.type}</span>
-                    {itemData.category && (
-                      <span className={styles.categoryBadge}>
-                        {itemData.category}
-                      </span>
-                    )}
-                  </div>
-                  {itemData.position && (
-                    <span className={styles.position}>{itemData.position}</span>
-                  )}
-                </header>
-
-                {period && <div className={styles.period}>{period}</div>}
-
-                <ul className={styles.roles}>
-                  {itemData.roles.map((role: string) => (
-                    <li
-                      key={`${role}-${itemData.company}`}
-                      className={styles.role}
-                    >
-                      {role}
-                    </li>
-                  ))}
-                </ul>
-
-                {itemData.linkedProjects &&
-                  itemData.linkedProjects.length > 0 && (
-                    <div className={styles.projectsBlock}>
-                      <div className={styles.projectsLabel}>
-                        {t("employment.linkedProjects", {
-                          default: "Linked projects",
-                        })}
-                        :
-                      </div>
-                      <ul className={styles.projects}>
-                        {itemData.linkedProjects.map((linkedProject) => (
-                          <li key={linkedProject.slug}>
-                            <Link
-                              className={styles.projectBadge}
-                              href={`/projects/${linkedProject.slug}`}
-                            >
-                              <BsFolder2
-                                className={styles.projectBadgeIcon}
-                                aria-hidden="true"
-                              />
-                              <span>{linkedProject.title}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-              </article>
-            </motion.li>
-          );
-        })}
+        {employmentHistory.map((itemData) => (
+          <motion.li key={itemData.id} className={styles.item} variants={item}>
+            <EmploymentCard
+              employment={itemData}
+              period={formatPeriod(itemData)}
+            />
+          </motion.li>
+        ))}
       </motion.ul>
     </Section>
   );

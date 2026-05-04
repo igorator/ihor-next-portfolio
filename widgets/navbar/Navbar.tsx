@@ -3,6 +3,7 @@ import { NavbarLinks } from "@/widgets/navbar/NavbarLinks/NavbarLinks";
 import { ThemeSwitch } from "@/widgets/theme-switcher/ThemeSwitcher";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { Socials } from "@/widgets/socials/Socials";
+import { ScrollToTop } from "@/widgets/scroll-to-top/ScrollToTop";
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
@@ -23,6 +24,8 @@ export const Navbar = () => {
       <GlassSurface className={styles.languageSelectWrapper}>
         <LanguageSelect />
       </GlassSurface>
+
+      <ScrollToTop variant="inline" className={styles.scrollToTopWrapper} />
     </nav>
   );
 };

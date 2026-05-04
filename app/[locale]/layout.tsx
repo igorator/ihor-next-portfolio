@@ -2,6 +2,7 @@ import { type Locale, NextIntlClientProvider } from "next-intl";
 import { AppBackground } from "@/shared/ui/AppBackground/AppBackground";
 import { MobileHiddenMenuButton } from "@/widgets/mobile-hidden-menu/MobileHiddenMenuButton/MobileHiddenMenuButton";
 import { Navbar } from "@/widgets/navbar/Navbar";
+import { ScrollToTop } from "@/widgets/scroll-to-top/ScrollToTop";
 
 export default async function LocaleLayout({
   children,
@@ -19,6 +20,7 @@ export default async function LocaleLayout({
       <AppBackground />
       <MobileHiddenMenuButton />
       <Navbar />
+      <ScrollToTop />
       <main className="page-wrapper">
         <div className="content">{children}</div>
       </main>

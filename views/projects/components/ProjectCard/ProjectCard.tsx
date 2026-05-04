@@ -98,24 +98,29 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {!!technologies?.length && (
         <div className={styles.technologies}>
-          {technologies.map((tech) => (
-            <button
-              key={tech.id}
-              className={styles.tech}
-              style={{
-                color: tech.textColor ?? tech.color,
-                background: tech.textColor
-                  ? tech.color
-                  : `color-mix(in srgb, ${tech.color} 12%, transparent)`,
-                borderColor: `color-mix(in srgb, ${tech.color} 42%, transparent)`,
-              }}
-              onClick={() => onTechnologyClick?.(tech.id)}
-              type="button"
-              title={tech.name}
-            >
-              {tech.name}
-            </button>
-          ))}
+          {(viewMode === "list" ? technologies.slice(0, 4) : technologies).map(
+            (tech) => (
+              <button
+                key={tech.id}
+                className={styles.tech}
+                style={{
+                  color: tech.textColor ?? tech.color,
+                  background: tech.textColor
+                    ? tech.color
+                    : `color-mix(in srgb, ${tech.color} 12%, transparent)`,
+                  borderColor: `color-mix(in srgb, ${tech.color} 42%, transparent)`,
+                }}
+                onClick={() => onTechnologyClick?.(tech.id)}
+                type="button"
+                title={tech.name}
+              >
+                {tech.name}
+              </button>
+            ),
+          )}
+          {viewMode === "list" && technologies.length > 4 && (
+            <span className={styles.techMore}>+{technologies.length - 4}</span>
+          )}
         </div>
       )}
 

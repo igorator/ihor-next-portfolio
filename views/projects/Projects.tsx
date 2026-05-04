@@ -56,8 +56,8 @@ export const ProjectsSection = ({
 
   const techs = availableTechnologies ?? technologies;
   const loading = !techs || techs.length === 0;
-  const isPristine =
-    selectedTechs.length === 0 && sortBy === "newest" && commercialOnly;
+  const hasActiveFilters =
+    selectedTechs.length > 0 || sortBy !== "newest" || !commercialOnly;
 
   return (
     <Section className={styles.projectSection}>
@@ -102,7 +102,7 @@ export const ProjectsSection = ({
         >
           <FilterClearButton
             onClear={clearAll}
-            disabled={isPristine}
+            disabled={!hasActiveFilters}
             loading={loading}
           />
         </GlassSurface>
@@ -112,6 +112,7 @@ export const ProjectsSection = ({
         projects={filteredProjects}
         onTechnologyClick={setOnlyTechnology}
         viewMode={viewMode}
+        hasActiveFilters={hasActiveFilters}
       />
     </Section>
   );
