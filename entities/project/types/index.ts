@@ -15,6 +15,7 @@ export type Project = {
   demoUrl?: string | null;
   isCommercial?: boolean;
   isHighlighted?: boolean;
+  isHidden?: boolean;
 };
 
 export type ProjectWithTechnologies = Omit<Project, "technologiesIds"> & {

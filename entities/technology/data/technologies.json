@@ -247,5 +247,27 @@
     "color": "#146EF5",
     "category": "Low / No code",
     "priority": 8
+  },
+  {
+    "id": "graphql",
+    "name": "GraphQL",
+    "color": "#E535AB",
+    "category": "Backend & Server",
+    "priority": 35
+  },
+  {
+    "id": "apollo",
+    "name": "Apollo Server",
+    "color": "#311C87",
+    "textColor": "#ffffff",
+    "category": "Backend & Server",
+    "priority": 36
+  },
+  {
+    "id": "vitest",
+    "name": "Vitest",
+    "color": "#6E9F18",
+    "category": "Testing",
+    "priority": 37
   }
 ]

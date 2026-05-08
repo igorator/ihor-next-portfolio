@@ -1,4 +1,10 @@
 {
+  "tenthousand-test": {
+    "title": "TenThousand Test Task",
+    "description": "Full-stack Google Forms clone: React + Redux Toolkit + GraphQL client frontend; Apollo Server backend with type-safe auto-generated types; Vitest test coverage for form building and response handling.",
+    "type": "test task",
+    "category": "fullstack"
+  },
   "perion-test": {
     "title": "Perion Test",
     "description": "Landing page for a test task with advanced animations using GSAP.",

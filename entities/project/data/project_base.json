@@ -1,5 +1,24 @@
 [
   {
+    "slug": "tenthousand-test",
+    "date": "2026-05",
+    "isCommercial": false,
+    "isHidden": true,
+    "technologiesIds": [
+      "typescript",
+      "react",
+      "redux",
+      "graphql",
+      "apollo",
+      "vite",
+      "tailwind",
+      "vitest",
+      "nodejs"
+    ],
+    "demoUrl": null,
+    "githubUrl": "https://github.com/igorator/TenThousand-test-task"
+  },
+  {
     "slug": "perion-test",
     "date": "2026-02",
     "isCommercial": false,

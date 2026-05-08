@@ -49,6 +49,7 @@ function fetchProjects(locale: Locale): ProjectWithTechnologies[] {
 
   const merged = bases
     .map((base) => buildProject(base, i18n))
+    .filter((p) => !p.isHidden)
     .sort((a, b) => b.date.localeCompare(a.date));
 
   return mergeProjectsWithTechnologies(merged, technologies);
@@ -68,7 +69,7 @@ async function fetchProjectBySlug(
   >;
 
   const base = bases.find((p) => p.slug === slug);
-  if (!base) return null;
+  if (!base || base.isHidden) return null;
 
   const project = buildProject(base, i18n);
   const [projectWithTech] = mergeProjectsWithTechnologies(

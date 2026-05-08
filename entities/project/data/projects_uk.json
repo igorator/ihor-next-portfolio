@@ -1,4 +1,10 @@
 {
+  "tenthousand-test": {
+    "title": "Тестове завдання TenThousand",
+    "description": "Full-stack клон Google Forms: фронтенд на React, Redux Toolkit і GraphQL; бекенд на Apollo Server з типо-безпечною кодогенерацією; тести через Vitest для логіки форм і обробки відповідей.",
+    "type": "тестове завдання",
+    "category": "фулстек"
+  },
   "perion-test": {
     "title": "Тестове завдання Perion",
     "description": "Лендінг для тестового завдання з розширеними анімаціями за допомогою GSAP.",
