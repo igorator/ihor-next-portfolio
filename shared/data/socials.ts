@@ -28,7 +28,7 @@ export const socials = {
   },
 
   cv: {
-    url: "https://cdn.jsdelivr.net/gh/igorator/portfolio-assets@main/cv/CV_KLIUSHNYK_FRONTEND.pdf",
+    url: "https://cdn.jsdelivr.net/gh/igorator/portfolio-assets@main/cv/Ihor_Kliushnyk_Frontend_Developer_CV.pdf",
     icon: BsFileEarmarkPerson,
     label: "CV",
   },
