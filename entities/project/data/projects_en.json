@@ -7,7 +7,7 @@
   },
   "perion-test": {
     "title": "Perion Test",
-    "description": "Landing page for a test task with advanced animations using GSAP.",
+    "description": "Test task landing page with rich scroll-driven and entrance animations built with GSAP.",
     "type": "frontend",
     "category": "test task"
   },
@@ -25,13 +25,13 @@
   },
   "this-website": {
     "title": "This Website",
-    "description": "My portfolio website",
+    "description": "Personal developer portfolio built with Next.js, CSS Modules, Framer Motion, and next-intl (EN/UK); features projects showcase, employment history, downloadable CV, and links to GitHub, LinkedIn, and Upwork.",
     "type": "startup",
     "category": "portfolio"
   },
   "doido-market": {
     "title": "DOIDO Market",
-    "description": "NFT/Gift marketplace: client-side built with React, Redux Toolkit, and React Router v7; backend with Node.js, Express, and TypeORM; integration of TON payments, Telegram authentication, and Telegram bot.",
+    "description": "Web3 NFT marketplace for Telegram Gifts available as a browser app and Telegram Mini App; frontend with React, Redux Toolkit, and React Router v7; backend with Node.js, Express, and TypeORM; TON payments, Telegram auth, Telegram bot, and smart contract development and testing via the Blueprint framework.",
     "type": "startup",
     "category": "NFT marketplace"
   },
@@ -43,37 +43,37 @@
   },
   "studio-dashboard": {
     "title": "Studio Dashboard",
-    "description": "Admin panel built with React, TypeScript, Redux Toolkit, and Ant Design; backend with Node.js, Express, and PostgreSQL.",
+    "description": "Internal CMS for 3mpq Studio built with React, TypeScript, Redux Toolkit, and Ant Design; backend with Node.js, Express, and PostgreSQL.",
     "type": "internal tool",
     "category": "dashboard"
   },
   "3mpq-studio-lite": {
     "title": "3mpq Studio Lite",
-    "description": "Showcase website built with Next.js, Tailwind, Zustand, next-intl, and React Hook Form; smooth animations using Framer Motion.",
-    "type": "showcase",
+    "description": "Agency website for 3mpq Studio built with Next.js, Tailwind, and Zustand; multi-language support via next-intl, contact forms with React Hook Form, and smooth animations using Framer Motion.",
+    "type": "agency",
     "category": "landing"
   },
   "webwise": {
     "title": "Webwise by Logics7",
-    "description": "Marketing landing page built with Next.js, Tailwind, and Spline 3D; integrated with Zoho CRM.",
+    "description": "Company website for Logics7 — an international IT agency offering web development, mobile apps, game development, and digital marketing; features case studies, team overview, and workflow presentation. Built with Next.js, Tailwind, and Spline 3D; integrated with Zoho CRM.",
     "type": "business",
     "category": "landing"
   },
   "turbota-liqpay": {
     "title": "Turbota — LiqPay Integration",
-    "description": "LiqPay payment integration for the Turbota service, implemented with Node.js and Express via the LiqPay API.",
-    "type": "service",
+    "description": "LiqPay donation payment integration for Turbota — a charitable Webflow website supporting orphans; implemented with Node.js and Express via the LiqPay API.",
+    "type": "charity",
     "category": "integration"
   },
   "anyway": {
     "title": "Anyway",
-    "description": "Modern website for a video production team: works, services, and process. Built in Webflow.",
+    "description": "Website for Anyway — a creative agency specializing in animated video production for tech companies; showcases a portfolio of product demos, explainer videos, and ads, with client case studies and a five-step production workflow. Built in Webflow.",
     "type": "business",
     "category": "landing"
   },
   "custom-globe": {
     "title": "Custom Three.js Globe for Website",
-    "description": "Interactive globe component built with Three.js for web use.",
+    "description": "Custom 3D globe built with Three.js as an animated background element for a client's Webflow website, commissioned via Upwork.",
     "type": "3D",
     "category": "integration"
   },
@@ -97,19 +97,19 @@
   },
   "easm": {
     "title": "EASM by Logics7",
-    "description": "Corporate landing page in Webflow for the EASM service by Logics7.",
+    "description": "Landing page for EASM — a network security program by Logics7 focused on external attack surface management. Built in Webflow.",
     "type": "digital security",
     "category": "landing"
   },
   "pss": {
     "title": "PSS by Logics7",
-    "description": "Business website for parking and security systems with Google Maps API, built in Webflow.",
-    "type": "business",
+    "description": "Website for PSS — a Ukrainian manufacturer of military training simulators; features product catalog with Google Maps integration. Built in Webflow.",
+    "type": "defense",
     "category": "landing"
   },
   "dovira": {
     "title": "Dovira by Logics7",
-    "description": "Website for the Dovira initiative in the UK, built in Webflow with custom animations.",
+    "description": "Website for the Dovira initiative — a Ukrainian mental health platform offering free online consultations with psychologists, video content, stream therapy sessions, and assessment tools for civilians and military personnel affected by the war. Built in Webflow.",
     "type": "psychology",
     "category": "landing"
   },

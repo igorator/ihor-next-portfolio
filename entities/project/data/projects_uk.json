@@ -7,7 +7,7 @@
   },
   "perion-test": {
     "title": "Тестове завдання Perion",
-    "description": "Лендінг для тестового завдання з розширеними анімаціями за допомогою GSAP.",
+    "description": "Лендінг для тестового завдання з насиченими скрол-анімаціями та анімаціями появи елементів, зроблено на GSAP.",
     "type": "фронтенд",
     "category": "тестове завдання"
   },
@@ -25,13 +25,13 @@
   },
   "this-website": {
     "title": "Цей вебсайт",
-    "description": "Мій портфоліо-сайт",
+    "description": "Особисте портфоліо розробника на Next.js, CSS Modules, Framer Motion і next-intl (EN/UK); секції з проектами, досвідом роботи, завантаженням CV та посиланнями на GitHub, LinkedIn і Upwork.",
     "type": "стартап",
     "category": "портфоліо"
   },
   "doido-market": {
     "title": "DOIDO Market",
-    "description": "NFT/Gift маркетплейс: клієнтська частина на React, Redux Toolkit і React Router v7; бекенд на Node.js, Express і TypeORM; інтеграція TON-платежів, Telegram-авторизації та Telegram-бот.",
+    "description": "Web3 NFT-маркетплейс для Telegram Gifts у браузері та як Telegram Mini App; фронтенд на React, Redux Toolkit і React Router v7; бекенд на Node.js, Express і TypeORM; TON-платежі, Telegram-авторизація, Telegram-бот, а також розробка та тестування смарт-контрактів через фреймворк Blueprint.",
     "type": "стартап",
     "category": "NFT маркетплейс"
   },
@@ -43,37 +43,37 @@
   },
   "studio-dashboard": {
     "title": "Studio Dashboard",
-    "description": "Адмін-панель на React, TypeScript, Redux Toolkit і Ant Design; бекенд на Node.js, Express і PostgreSQL.",
+    "description": "Внутрішня CMS для студії 3mpq на React, TypeScript, Redux Toolkit і Ant Design; бекенд на Node.js, Express і PostgreSQL.",
     "type": "внутрішній інструмент",
     "category": "дашборд"
   },
   "3mpq-studio-lite": {
     "title": "3mpq Studio Lite",
-    "description": "Сайт-вітрина на Next.js із Tailwind, Zustand, next-intl і React Hook Form; плавні анімації через Framer Motion.",
-    "type": "вітрина",
+    "description": "Сайт агентства 3mpq Studio на Next.js, Tailwind і Zustand; мультимовність через next-intl, форми зворотнього зв'язку на React Hook Form і плавні анімації через Framer Motion.",
+    "type": "агентство",
     "category": "лендінг"
   },
   "webwise": {
     "title": "Webwise by Logics7",
-    "description": "Маркетинговий лендінг на Next.js, Tailwind і Spline 3D; інтеграція із CRM Zoho.",
+    "description": "Корпоративний сайт компанії Logics7 — міжнародне IT-агентство з послугами веб-розробки, мобільних застосунків, геймдеву та digital-маркетингу; кейси, команда та презентація процесу. Зроблено на Next.js, Tailwind і Spline 3D; інтеграція із CRM Zoho.",
     "type": "бізнес",
     "category": "лендінг"
   },
   "turbota-liqpay": {
     "title": "Turbota — інтеграція LiqPay",
-    "description": "Інтеграція платежів LiqPay для сервісу Turbota, реалізована на Node.js і Express через API LiqPay.",
-    "type": "сервіс",
+    "description": "Інтеграція донат-платежів LiqPay для Turbota — благодійного Webflow-сайту на підтримку сиріт; реалізовано на Node.js і Express через API LiqPay.",
+    "type": "благодійність",
     "category": "інтеграція"
   },
   "anyway": {
     "title": "Anyway",
-    "description": "Сучасний сайт для відеопродакшен команди: роботи, послуги та процес. Зроблено у Webflow.",
+    "description": "Сайт для Anyway — креативна агенція з анімаційного відеовиробництва для tech-компаній; портфоліо продуктових демо, explainer-відео та реклами, кейси клієнтів і п'ятикроковий процес виробництва. Зроблено у Webflow.",
     "type": "бізнес",
     "category": "лендінг"
   },
   "custom-globe": {
     "title": "Кастомний Three.js глобус для сайту",
-    "description": "Інтерактивний компонент глобуса на Three.js для вебсайту.",
+    "description": "Кастомний 3D-глобус на Three.js як анімований фоновий елемент для Webflow-сайту клієнта, замовлення через Upwork.",
     "type": "3D",
     "category": "інтеграція"
   },
@@ -98,19 +98,19 @@
   },
   "easm": {
     "title": "EASM by Logics7",
-    "description": "Корпоративний лендінг у Webflow для сервісу EASM від компанії Logics7.",
-    "type": "Цифрова безпека",
+    "description": "Лендінг для EASM — програми мережевої безпеки від Logics7 з управління зовнішньою поверхнею атак. Зроблено у Webflow.",
+    "type": "цифрова безпека",
     "category": "лендінг"
   },
   "pss": {
     "title": "PSS by Logics7",
-    "description": "Бізнес-сайт для систем паркування та безпеки з Google Maps API, створений у Webflow.",
-    "type": "бізнес",
+    "description": "Сайт для PSS — українського виробника військових тренажерів; каталог продукції з інтерактивною картою Google Maps. Зроблено у Webflow.",
+    "type": "оборона",
     "category": "лендінг"
   },
   "dovira": {
     "title": "Dovira by Logics7",
-    "description": "Сайт ініціативи Dovira у Великій Британії, створений у Webflow з кастомними анімаціями.",
+    "description": "Сайт ініціативи Dovira — українська платформа психологічної підтримки з безкоштовними онлайн-консультаціями, відеоконтентом, стрим-сесіями та тестами для цивільних і військових, постраждалих від війни. Зроблено у Webflow.",
     "type": "психологія",
     "category": "лендінг"
   },
