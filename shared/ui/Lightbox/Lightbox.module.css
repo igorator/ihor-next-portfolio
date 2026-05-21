@@ -5,7 +5,7 @@
   display: grid;
   grid-template-rows: 1fr auto;
   overflow: hidden;
-  backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
 }
 
 .stage {
