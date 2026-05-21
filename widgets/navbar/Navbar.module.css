@@ -105,8 +105,9 @@
   }
 
   .navbarLinksWrapper {
-    flex: 1 1 auto;
-    max-width: 680px;
+    flex: 0 1 auto;
+    max-width: 280px;
+    width: 100%;
   }
 
   .navbarControls {

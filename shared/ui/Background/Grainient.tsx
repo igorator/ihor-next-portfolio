@@ -212,10 +212,11 @@ export const Grainient: React.FC<GrainientProps> = ({
     ctxMap.set(container, { renderer, program, mesh });
 
     const setSize = () => {
-      const rect = container.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
+      const w = Math.max(1, Math.floor(window.innerWidth));
+      const h = Math.max(1, Math.floor(window.innerHeight));
       renderer.setSize(w, h);
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
       const res = (program.uniforms.iResolution as { value: Float32Array })
         .value;
       res[0] = gl.drawingBufferWidth;
@@ -225,6 +226,7 @@ export const Grainient: React.FC<GrainientProps> = ({
 
     const ro = new ResizeObserver(setSize);
     ro.observe(container);
+    window.visualViewport?.addEventListener("resize", setSize);
     setSize();
 
     let raf = 0;
@@ -275,6 +277,7 @@ export const Grainient: React.FC<GrainientProps> = ({
       tryStop();
       ro.disconnect();
       io.disconnect();
+      window.visualViewport?.removeEventListener("resize", setSize);
       document.removeEventListener("visibilitychange", onVisibility);
       ctxMap.delete(container);
       try {
