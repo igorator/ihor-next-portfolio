@@ -34,7 +34,9 @@
   border-radius: var(--radius-full);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: all var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
 }
 
 .navItem:hover:not(:active) {
@@ -77,9 +79,13 @@
 
 @media (prefers-reduced-motion: reduce) {
   .navItem {
-    transition: color var(--transition-fast);
+    transition: none;
     transform: none;
   }
+}
+
+.langTrigger {
+  padding-inline: var(--space-2);
 }
 
 @media (max-width: 720px) {
@@ -100,10 +106,9 @@
 
   .navbarLinksWrapper {
     flex: 1 1 auto;
-    max-width: 680px; /* опционально, чтобы не расползалось */
+    max-width: 680px;
   }
 
-  /* если есть .navbarControls — скрыть тоже */
   .navbarControls {
     display: none !important;
   }

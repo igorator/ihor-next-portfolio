@@ -1,0 +1,14 @@
+.controlBox {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.controlBox:has(:focus-visible) {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}

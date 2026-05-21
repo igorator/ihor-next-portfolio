@@ -58,12 +58,10 @@
     grid-column: 1;
     grid-row: 3;
   }
-
   .imageCard {
     grid-column: 2;
     grid-row: 1 / span 3;
   }
-
   .descriptionCard {
     grid-column: 3;
     grid-row: 1 / span 3;
@@ -75,25 +73,19 @@
   }
 }
 
-.card {
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
-  background: linear-gradient(
-    135deg,
-    var(--glass-bg) 0%,
-    color-mix(in srgb, var(--glass-bg) 50%, transparent) 100%
-  );
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-3);
-}
-
 .cardTitle {
   font-size: var(--text-sm);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
   margin-bottom: var(--space-2);
+}
+
+.overviewCard,
+.stackCard,
+.linksCard,
+.descriptionCard {
+  padding: var(--space-3);
 }
 
 .imageCard {
@@ -179,14 +171,9 @@
   }
 }
 
-/* ====== Mobile ≤ 720px ====== */
 @media (max-width: 720px) {
   .section {
     gap: var(--space-2);
-  }
-
-  .card {
-    padding: var(--space-3);
   }
 
   .screensGrid {
@@ -195,14 +182,12 @@
   }
 }
 
-/* ====== Very small ≤ 420px ====== */
 @media (max-width: 420px) {
   .screensGrid {
     --min: 150px;
   }
 }
 
-/* ====== Motion prefs ====== */
 @media (prefers-reduced-motion: reduce) {
   .screenThumbnail,
   .backLink {

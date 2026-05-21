@@ -1,56 +1,55 @@
-﻿"use client";
+"use client";
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import styles from "./LanguageSelect.module.css";
+import { Select } from "@/shared/ui/Select";
 
-const localeLabels = { en: "English", uk: "Українська" } as const;
+type Locale = (typeof routing.locales)[number];
 
-type Props = {
-  side?: "top" | "bottom" | "left" | "right";
-  align?: "start" | "center" | "end";
+const localeNames: Partial<Record<Locale, string>> = {
+  en: "English",
+  uk: "Українська",
+};
+const localeTriggerLabels: Partial<Record<Locale, string>> = {
+  en: "EN",
+  uk: "UA",
 };
 
-export function LanguageSelect({ side = "top", align = "end" }: Props) {
+const localeOptions = routing.locales.map((loc) => ({
+  id: loc,
+  name: localeNames[loc] ?? loc.toUpperCase(),
+  triggerLabel: localeTriggerLabels[loc],
+}));
+
+type Props = {
+  triggerClassName?: string;
+  contentAlign?: "start" | "center" | "end";
+  sideOffset?: number;
+};
+
+export function LanguageSelect({
+  triggerClassName,
+  contentAlign = "center",
+  sideOffset = 16,
+}: Props) {
   const locale = useLocale();
   const t = useTranslations("a11y");
   const router = useRouter();
   const pathname = usePathname();
 
-  const onChange = (nextLocale: string) => {
-    router.replace(pathname, { locale: nextLocale });
-  };
-
   return (
-    <DropdownMenu.Root modal={false}>
-      <DropdownMenu.Trigger
-        className={styles.selectTrigger}
-        aria-label={t("language")}
-      >
-        <div className={styles.selectLabel}>{locale.toUpperCase()}</div>
-      </DropdownMenu.Trigger>
-
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className={`${styles.selectContent} glass-card`}
-          side={side}
-          align={align}
-          sideOffset={12}
-        >
-          {routing.locales.map((loc) => (
-            <DropdownMenu.Item
-              key={loc}
-              className={styles.selectItem}
-              onSelect={() => onChange(loc)}
-              data-state={locale === loc ? "checked" : "unchecked"}
-            >
-              {localeLabels[loc]}
-            </DropdownMenu.Item>
-          ))}
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+    <Select
+      value={locale}
+      onChange={(nextLocale) =>
+        router.replace(pathname, { locale: nextLocale })
+      }
+      options={localeOptions}
+      ariaLabel={t("language")}
+      hideChevron
+      contentAlign={contentAlign}
+      sideOffset={sideOffset}
+      triggerClassName={triggerClassName}
+    />
   );
 }

@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaUpwork } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { BsFileEarmarkPerson } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
@@ -19,12 +19,6 @@ export const socials = {
     url: "https://www.linkedin.com/in/ihor-kliushnyk/",
     icon: FaLinkedin,
     label: "LinkedIn",
-  },
-
-  upwork: {
-    url: "https://upwork.com/freelancers/ihorkliushnyk",
-    icon: FaUpwork,
-    label: "Upwork",
   },
 
   cv: {

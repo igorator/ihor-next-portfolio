@@ -13,7 +13,7 @@ import type {
   ProjectWithTechnologies,
 } from "@/entities/project/types";
 import type { Technology } from "@/entities/technology/types";
-import { mergeProjectsWithTechnologies } from "@/shared/server/utils/mergeProjectsWithTechnologies";
+import { mergeProjectsWithTechnologies } from "./mergeProjectsWithTechnologies";
 import { resolveLocale } from "@/shared/server/locale";
 
 const technologies = technologiesData as Technology[];
@@ -50,7 +50,7 @@ function fetchProjects(locale: Locale): ProjectWithTechnologies[] {
   const merged = bases
     .map((base) => buildProject(base, i18n))
     .filter((p) => !p.isHidden)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .toSorted((a, b) => b.date.localeCompare(a.date));
 
   return mergeProjectsWithTechnologies(merged, technologies);
 }

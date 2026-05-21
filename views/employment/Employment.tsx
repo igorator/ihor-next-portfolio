@@ -89,7 +89,12 @@ export const EmploymentSection = ({
         {employmentHistory.map((itemData) => (
           <motion.li key={itemData.id} className={styles.item} variants={item}>
             <EmploymentCard
-              employment={itemData}
+              company={itemData.company}
+              type={itemData.type}
+              category={itemData.category}
+              position={itemData.position}
+              roles={itemData.roles}
+              linkedProjects={itemData.linkedProjects}
               period={formatPeriod(itemData)}
             />
           </motion.li>

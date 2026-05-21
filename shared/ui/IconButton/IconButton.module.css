@@ -1,0 +1,48 @@
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-3);
+  color: var(--foreground);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition:
+    background-color var(--transition-normal),
+    opacity var(--transition-normal);
+}
+
+.button:hover:not(:disabled) .icon {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.loading {
+  pointer-events: none;
+  cursor: default;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.icon {
+  width: var(--space-4);
+  height: var(--space-4);
+  transition: transform var(--transition-fast);
+  aspect-ratio: 1 / 1;
+}

@@ -1,16 +1,6 @@
 .card {
   grid-column: 3;
   padding: var(--tl-card-pad);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
-  background: linear-gradient(
-    135deg,
-    var(--glass-bg) 0%,
-    color-mix(in srgb, var(--glass-bg) 50%, transparent) 100%
-  );
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
 }
 
 .header {
@@ -152,7 +142,6 @@
   transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast),
-    color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
 

@@ -1,16 +1,12 @@
-.hiddenMenuButtonWrapper {
+.wrapper {
   position: fixed;
   top: var(--space-3);
   right: var(--space-3);
   z-index: 1000;
-
-  /* по умолчанию показываем */
-  display: flex;
 }
 
-/* скрыть на планшетах и десктопах */
 @media (min-width: 768px) {
-  .hiddenMenuButtonWrapper {
+  .wrapper {
     display: none;
   }
 }

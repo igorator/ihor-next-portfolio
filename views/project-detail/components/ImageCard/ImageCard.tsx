@@ -3,10 +3,11 @@
 import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { Spinner } from "@/shared/ui/Spinner/Spinner";
-import type { MediaItem } from "@/features/lightbox/types";
+import { Spinner } from "@/shared/loading";
+import type { MediaItem } from "@/shared/ui/Lightbox/types";
+import { Card } from "@/shared/ui/Card";
 import layout from "../../Project.module.css";
 import styles from "./ImageCard.module.css";
 
@@ -54,19 +55,12 @@ export function ImageCard({
   onOpenLightbox,
 }: Props) {
   const t = useTranslations("projects_ui");
-  const [loading, setLoading] = useState(true);
+  const [loadedIdx, setLoadedIdx] = useState<number | null>(null);
   const current = items[idx];
-
-  useEffect(() => {
-    if (current?.type === "video") {
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  }, [idx, current?.type]);
+  const loading = current?.type !== "video" && loadedIdx !== idx;
 
   return (
-    <motion.article className={`${layout.card} ${layout.imageCard}`}>
+    <Card className={layout.imageCard}>
       {items.length === 0 ? (
         <div
           className={styles.emptyState}
@@ -77,9 +71,9 @@ export function ImageCard({
         </div>
       ) : (
         <div className={styles.imageWrapper}>
-          {loading && current?.type !== "video" && (
+          {loading && (
             <div className={styles.loadingOverlay}>
-              <Spinner size={16} />
+              <Spinner size={20} />
             </div>
           )}
           <motion.button
@@ -119,7 +113,7 @@ export function ImageCard({
                 priority
                 placeholder="blur"
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgZmlsbD0iI2NjYyIgLz4="
-                onLoad={() => setLoading(false)}
+                onLoad={() => setLoadedIdx(idx)}
               />
             )}
             <div className={styles.imageGradient} aria-hidden />
@@ -161,7 +155,7 @@ export function ImageCard({
           )}
         </div>
       )}
-    </motion.article>
+    </Card>
   );
 }
 

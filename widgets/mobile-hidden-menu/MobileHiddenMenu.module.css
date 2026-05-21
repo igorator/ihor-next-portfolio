@@ -53,6 +53,14 @@
   margin-bottom: var(--space-4);
 }
 
+.langTrigger {
+  aspect-ratio: 1 / 1;
+  padding: var(--space-1);
+  font-size: var(--text-xs);
+  min-width: unset;
+  width: 28px;
+}
+
 .closeBtn {
   appearance: none;
   border: 0;
@@ -80,7 +88,6 @@
   transform: scale(0.96);
 }
 
-/* Видимый фокус для клавиатуры */
 .closeBtn:focus-visible,
 .menu :where(button, a, [role="button"]):focus-visible {
   outline: 2px solid color-mix(in oklab, var(--foreground) 60%, transparent);
@@ -88,7 +95,6 @@
   border-radius: var(--radius-md);
 }
 
-/* Контент меню */
 .content {
   display: flex;
   flex-direction: column;
@@ -96,8 +102,6 @@
   gap: var(--space-4);
   flex-grow: 1;
 }
-
-/* Анимации */
 
 @keyframes mhm-fade-in {
   from {
@@ -108,7 +112,6 @@
   }
 }
 
-/* Уважение reduce-motion */
 @media (prefers-reduced-motion: reduce) {
   .layer {
     animation: none;
@@ -120,8 +123,6 @@
   }
 }
 
-/* (Опционально) чуть более «десктопное» поведение после 768px:
-   делаем меню уже и приподнимаем от низа */
 @media (min-width: 768px) {
   .menu {
     max-width: 560px;
@@ -131,7 +132,6 @@
   }
 }
 
-/* Скрытый заголовок, если используешь .sr-only в разметке */
 .sr-only {
   position: absolute;
   width: 1px;

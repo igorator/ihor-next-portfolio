@@ -7,6 +7,9 @@
 html,
 body {
   max-width: 100vw;
+}
+
+html {
   overflow-y: scroll;
 }
 
@@ -20,6 +23,7 @@ body {
   font-weight: var(--default-font-weight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 :root {
@@ -78,7 +82,7 @@ body {
   --radius-full: 9999px;
 
   --backdrop-blur: 20px;
-  --glass-bg: color-mix(in srgb, var(--background) 95%, transparent);
+  --glass-bg: color-mix(in srgb, var(--background) 55%, transparent);
   --glass-border: color-mix(in srgb, var(--foreground) 10%, transparent);
   --glass-shine: color-mix(in srgb, var(--foreground) 5%, transparent);
 
@@ -172,7 +176,7 @@ body {
   scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
-body[data-scroll-locked="true"] {
+html[data-scroll-locked] {
   overflow: hidden;
 }
 
@@ -251,6 +255,9 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: stretch;
+  max-width: 1440px;
+  margin-inline: auto;
+  width: 100%;
 }
 
 .content {
@@ -268,11 +275,7 @@ a:hover {
 }
 
 .glass-card {
-  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
-  background: linear-gradient(
-    135deg,
-    var(--glass-bg) 0%,
-    color-mix(in srgb, var(--glass-bg) 50%, transparent) 100%
-  );
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(120%);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
 }

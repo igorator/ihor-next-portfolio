@@ -13,18 +13,20 @@ export const MobileHiddenMenuButton = () => {
 
   return (
     <>
-      <GlassSurface className={styles.hiddenMenuButtonWrapper}>
-        <button
-          type="button"
-          className={styles.hiddenMenuButton}
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          aria-label={t("openMenu")}
-          onClick={() => setOpen(true)}
-        >
-          <MdMenu size={20} />
-        </button>
-      </GlassSurface>
+      <div className={styles.wrapper}>
+        <GlassSurface>
+          <button
+            type="button"
+            className={styles.hiddenMenuButton}
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            aria-label={t("openMenu")}
+            onClick={() => setOpen(true)}
+          >
+            <MdMenu size={20} />
+          </button>
+        </GlassSurface>
+      </div>
 
       <MobileHiddenMenu open={open} onClose={() => setOpen(false)} />
     </>

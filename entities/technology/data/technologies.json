@@ -54,14 +54,14 @@
     "name": "Vite",
     "color": "#fdd027",
     "category": "Bundlers",
-    "priority": 9
+    "priority": 12.5
   },
   {
     "id": "react-router-v7",
     "name": "React Router v7",
     "color": "#CA4245",
     "category": "Routing",
-    "priority": 9
+    "priority": 12.3
   },
   {
     "id": "redux",

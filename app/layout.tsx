@@ -5,7 +5,8 @@ import { Inter, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
-import { AppPortal } from "@/shared/ui/AppPortal/AppPortal";
+import { AppPortal } from "@/shared/portals/AppPortal";
+import { AppBackground } from "@/shared/ui/Background3D/AppBackground";
 import { siteConfig } from "@/shared/config/site";
 
 type ThemeSetting = "light" | "dark" | "system";
@@ -67,6 +68,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} {...htmlAttrs} suppressHydrationWarning>
       <body className={`${fontHeading.variable} ${fontText.variable}`}>
+        <AppBackground />
         <Analytics />
         <SpeedInsights />
         {children}

@@ -1,13 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Card } from "@/shared/ui/Card";
 import styles from "./ProjectOverviewCard.module.css";
 
 export const ProjectOverviewCard = () => {
   const t = useTranslations("projects_ui.other");
 
   return (
-    <article className={styles.card} aria-label={t("title")}>
+    <Card className={styles.card} aria-label={t("title")}>
       <h3 className={styles.title}>{t("title")}</h3>
 
       <p className={styles.description}>
@@ -23,6 +24,6 @@ export const ProjectOverviewCard = () => {
           </li>
         ))}
       </ul>
-    </article>
+    </Card>
   );
 };

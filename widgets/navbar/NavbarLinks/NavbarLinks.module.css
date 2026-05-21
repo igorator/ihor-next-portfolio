@@ -1,5 +1,3 @@
-/* shared/components/layout/Navbar/NavbarLinks.module.css */
-
 .navbarLinks {
   width: 100%;
   display: flex;
@@ -27,7 +25,9 @@
   border-radius: var(--radius-full);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: all var(--transition-fast);
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
 }
 
 .navItem:hover:not(:active):not(.isActive) {
@@ -46,7 +46,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .navItem {
-    transition: color var(--transition-fast);
+    transition: none;
     transform: none;
   }
 }

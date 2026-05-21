@@ -31,6 +31,16 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
+  experimental: {
+    optimizePackageImports: [
+      "react-icons",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-select",
+      "@radix-ui/react-switch",
+      "@radix-ui/react-tooltip",
+    ],
+  },
   async headers() {
     return [
       {

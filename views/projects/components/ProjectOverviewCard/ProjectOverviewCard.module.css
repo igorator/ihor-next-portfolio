@@ -4,16 +4,6 @@
   justify-content: flex-start;
   gap: var(--space-3, 12px);
   padding: var(--space-6, 24px);
-  border-radius: var(--radius-lg, 16px);
-  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.15));
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--glass-bg, rgba(10, 12, 16, 0.6)) 80%, transparent)
-      0%,
-    color-mix(in srgb, var(--glass-bg, rgba(10, 12, 16, 0.6)) 40%, transparent)
-      100%
-  );
-  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
   height: 100%;
   text-align: left;
   min-height: 40vh;

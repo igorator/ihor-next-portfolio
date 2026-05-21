@@ -2,15 +2,15 @@
 
 import { motion, type Variants } from "motion/react";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link, useRouter } from "@/i18n/navigation";
 import { Section } from "@/shared/ui/Section/Section";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { routes } from "@/shared/config/routes";
 import type { Technology } from "@/entities/technology/types";
-import type { MediaItem } from "@/features/lightbox/types";
-import { Lightbox } from "@/features/lightbox/Lightbox";
+import type { MediaItem } from "@/shared/ui/Lightbox/types";
+import { Lightbox } from "@/shared/ui/Lightbox/Lightbox";
 import { OverviewCard } from "./components/OverviewCard/OverviewCard";
 import { StackCard } from "./components/StackCard/StackCard";
 import { LinksCard } from "./components/LinksCard/LinksCard";
@@ -55,13 +55,10 @@ export function ProjectSection({
   const t = useTranslations("projects_ui");
   const router = useRouter();
 
-  const items = useMemo<MediaItem[]>(() => {
-    const result: MediaItem[] = [];
-    if (cover) result.push({ type: "image", url: cover });
-    if (video) result.push({ type: "video", url: video });
-    screens.forEach((url) => result.push({ type: "image", url }));
-    return result;
-  }, [cover, video, screens]);
+  const items: MediaItem[] = [];
+  if (cover) items.push({ type: "image", url: cover });
+  if (video) items.push({ type: "video", url: video });
+  screens.forEach((url) => items.push({ type: "image", url }));
 
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(0);

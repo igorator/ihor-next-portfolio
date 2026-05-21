@@ -22,7 +22,7 @@ export const Navbar = () => {
       </GlassSurface>
 
       <GlassSurface className={styles.languageSelectWrapper}>
-        <LanguageSelect />
+        <LanguageSelect triggerClassName={styles.langTrigger} />
       </GlassSurface>
 
       <ScrollToTop variant="inline" className={styles.scrollToTopWrapper} />

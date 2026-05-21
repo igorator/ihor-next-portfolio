@@ -1,0 +1,63 @@
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  width: 100%;
+  font-size: var(--text-sm);
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading {
+  pointer-events: none;
+}
+
+.skeletonText {
+  display: block;
+  height: 14px;
+  width: 100px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 0%,
+    color-mix(in srgb, var(--foreground) 18%, transparent) 50%,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonSwitch {
+  display: block;
+  width: 42px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 0%,
+    color-mix(in srgb, var(--foreground) 18%, transparent) 50%,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.label {
+  color: var(--foreground);
+  user-select: none;
+}

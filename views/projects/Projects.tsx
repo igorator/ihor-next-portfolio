@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { Section } from "@/shared/ui/Section/Section";
-import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
+import { Card } from "@/shared/ui/Card";
+import { InputWrapper } from "@/shared/ui/InputWrapper";
 import type { ProjectWithTechnologies } from "@/entities/project/types";
 import type { Technology } from "@/entities/technology/types";
 import { TechnologyMultiSelect } from "./filters/TechnologyMultiSelect/TechnologyMultiSelect";
@@ -59,54 +61,58 @@ export const ProjectsSection = ({
   const hasActiveFilters =
     selectedTechs.length > 0 || sortBy !== "newest" || !commercialOnly;
 
+  const didMount = useRef(false);
+  const selectedTechsKey = selectedTechs.join(",");
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [selectedTechsKey, sortBy, commercialOnly]);
+
   return (
     <Section className={styles.projectSection}>
       <h2 className={styles.title}>{t("title")}</h2>
 
-      <div className={styles.filtersBar} aria-busy={loading}>
-        <GlassSurface className={styles.technologySelectWrapper}>
+      <Card className={styles.filtersBar} aria-busy={loading}>
+        <InputWrapper className={styles.technologySelectWrapper}>
           <TechnologyMultiSelect
             technologies={techs}
             selectedTechnologies={selectedTechs}
             onToggle={toggleTech}
             loading={loading}
           />
-        </GlassSurface>
+        </InputWrapper>
 
-        <GlassSurface className={styles.sortSelectWrapper}>
+        <InputWrapper className={styles.sortSelectWrapper}>
           <SortSelect value={sortBy} onChange={setSortBy} loading={loading} />
-        </GlassSurface>
+        </InputWrapper>
 
-        <GlassSurface className={styles.commercialSwitchWrapper}>
+        <InputWrapper className={styles.commercialSwitchWrapper}>
           <CommercialSwitch
             value={commercialOnly}
             onChange={setCommercialOnly}
             loading={loading}
           />
-        </GlassSurface>
+        </InputWrapper>
 
-        <GlassSurface
-          className={styles.viewToggleWrapper}
-          style={{ "--gs-width": "auto" }}
-        >
+        <InputWrapper className={styles.viewToggleWrapper}>
           <ViewToggleButton
             viewMode={viewMode}
             onToggle={toggleViewMode}
             loading={loading}
           />
-        </GlassSurface>
+        </InputWrapper>
 
-        <GlassSurface
-          className={styles.filterClearButtonWrapper}
-          style={{ "--gs-width": "auto" }}
-        >
+        <InputWrapper className={styles.filterClearButtonWrapper}>
           <FilterClearButton
             onClear={clearAll}
             disabled={!hasActiveFilters}
             loading={loading}
           />
-        </GlassSurface>
-      </div>
+        </InputWrapper>
+      </Card>
 
       <ProjectsGrid
         projects={filteredProjects}

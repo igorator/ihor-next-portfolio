@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { BsX } from "react-icons/bs";
-import { AppPortal } from "@/shared/ui/AppPortal/AppPortal";
+import { AppPortal } from "@/shared/portals/AppPortal";
 import { LanguageSelect } from "@/widgets/language-select/LanguageSelect";
 import { Socials } from "@/widgets/socials/Socials";
 import { ThemeSwitch } from "@/widgets/theme-switcher/ThemeSwitcher";
@@ -25,10 +25,10 @@ export const MobileHiddenMenu: React.FC<Props> = ({ open, onClose }) => {
   }, [open, onClose]);
 
   useEffect(() => {
-    const body = document.body;
-    if (open) body.setAttribute("data-scroll-locked", "true");
-    else body.removeAttribute("data-scroll-locked");
-    return () => body.removeAttribute("data-scroll-locked");
+    const html = document.documentElement;
+    if (open) html.setAttribute("data-scroll-locked", "true");
+    else html.removeAttribute("data-scroll-locked");
+    return () => html.removeAttribute("data-scroll-locked");
   }, [open]);
 
   if (!open) return null;
@@ -54,7 +54,11 @@ export const MobileHiddenMenu: React.FC<Props> = ({ open, onClose }) => {
         onKeyDown={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>
-          <LanguageSelect side="bottom" align="start" />
+          <LanguageSelect
+            triggerClassName={styles.langTrigger}
+            contentAlign="start"
+            sideOffset={8}
+          />
           <button
             type="button"
             className={styles.closeBtn}

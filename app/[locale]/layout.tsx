@@ -1,5 +1,7 @@
-import { type Locale, NextIntlClientProvider } from "next-intl";
-import { AppBackground } from "@/shared/ui/AppBackground/AppBackground";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 import { MobileHiddenMenuButton } from "@/widgets/mobile-hidden-menu/MobileHiddenMenuButton/MobileHiddenMenuButton";
 import { Navbar } from "@/widgets/navbar/Navbar";
 import { ScrollToTop } from "@/widgets/scroll-to-top/ScrollToTop";
@@ -9,21 +11,20 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
+  setRequestLocale(locale);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      <AppBackground />
+    <NextIntlClientProvider>
       <MobileHiddenMenuButton />
       <Navbar />
       <ScrollToTop />
-      <main className="page-wrapper">
-        <div className="content">{children}</div>
-      </main>
+      <main className="page-wrapper">{children}</main>
     </NextIntlClientProvider>
   );
 }

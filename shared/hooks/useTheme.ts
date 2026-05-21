@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
-import { getEffectiveTheme } from "@/shared/lib/utils/theme";
-
+import { useSyncExternalStore } from "react";
 export type ThemeSetting = "light" | "dark" | "system";
-type Effective = "light" | "dark";
+type Effective = Exclude<ThemeSetting, "system">;
 
 function readSetting(): ThemeSetting {
   const attr = document.documentElement.getAttribute("data-theme");
@@ -12,43 +10,40 @@ function readSetting(): ThemeSetting {
   return "system";
 }
 
-function readEffective(setting: ThemeSetting): Effective {
-  return getEffectiveTheme(setting) as Effective;
+function readEffective(): Effective {
+  const setting = readSetting();
+  if (setting !== "system") return setting;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
+function subscribe(callback: () => void): () => void {
+  const obs = new MutationObserver(callback);
+  obs.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+  mq?.addEventListener("change", callback);
+  return () => {
+    obs.disconnect();
+    mq?.removeEventListener("change", callback);
+  };
+}
+
+const getSetting = (): ThemeSetting => readSetting();
+const getEffective = (): Effective => readEffective();
+const getServerSetting = (): ThemeSetting => "system";
+const getServerEffective = (): Effective => "dark";
+
 export function useTheme() {
-  const [setting, setSetting] = useState<ThemeSetting>("system");
-  const [effective, setEffective] = useState<Effective>("dark");
+  const setting = useSyncExternalStore(subscribe, getSetting, getServerSetting);
+  const effective = useSyncExternalStore(
+    subscribe,
+    getEffective,
+    getServerEffective,
+  );
 
-  useLayoutEffect(() => {
-    const s = readSetting();
-    setSetting(s);
-    setEffective(readEffective(s));
-  }, []);
-
-  useEffect(() => {
-    const html = document.documentElement;
-    const obs = new MutationObserver(() => {
-      const s = readSetting();
-      setSetting(s);
-      setEffective(readEffective(s));
-    });
-
-    obs.observe(html, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (setting !== "system") return;
-    const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
-    if (!mq) return;
-
-    const onChange = () => setEffective(mq.matches ? "dark" : "light");
-    mq.addEventListener?.("change", onChange);
-    return () => mq.removeEventListener?.("change", onChange);
-  }, [setting]);
-
-  const isDark = effective === "dark";
-
-  return { setting, effective, isDark };
+  return { setting, effective, isDark: effective === "dark" };
 }

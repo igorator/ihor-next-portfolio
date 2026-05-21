@@ -5,7 +5,7 @@ import type { Technology } from "@/entities/technology/types";
 const technologies = technologiesData as Technology[];
 
 function fetchTechnologies(): Technology[] {
-  return [...technologies].sort((a, b) => {
+  return technologies.toSorted((a, b) => {
     if (a.category !== b.category) {
       return a.category.localeCompare(b.category);
     }
