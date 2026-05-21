@@ -1,5 +1,5 @@
-import { AppLoading } from "@/shared/ui/AppLoading/AppLoading";
+import { PageLoading } from "@/shared/loading";
 
 export default function Loading() {
-  return <AppLoading />;
+  return <PageLoading />;
 }

@@ -1,5 +1,5 @@
-import ProjectLoading from "@/shared/ui/PageLoading/ProjectLoading";
+import { PageLoading } from "@/shared/loading";
 
 export default function LoadingProject() {
-  return <ProjectLoading />;
+  return <PageLoading />;
 }

@@ -1,21 +1,11 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { CSSProperties } from "react";
 import type { Technology } from "@/entities/technology/types";
+import { Card } from "@/shared/ui/Card";
 import layout from "../../Project.module.css";
 import styles from "./StackCard.module.css";
-
-const cardItem: Variants = {
-  hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 type TechWithColor = Technology & { color?: string };
 
@@ -32,10 +22,7 @@ export function StackCard({ technologies }: Props) {
   const t = useTranslations("projects_ui");
 
   return (
-    <motion.article
-      className={`${layout.card} ${layout.stackCard}`}
-      variants={cardItem}
-    >
+    <Card className={layout.stackCard}>
       <h2 className={layout.cardTitle}>{t("technologiesTitle")}</h2>
       {technologies?.length ? (
         <ul
@@ -66,7 +53,7 @@ export function StackCard({ technologies }: Props) {
       ) : (
         <span className={styles.emptyState}>{t("noTechnologies")}</span>
       )}
-    </motion.article>
+    </Card>
   );
 }
 

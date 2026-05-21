@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { getEmployment } from "@/entities/employment/api";
 import { EmploymentSection } from "@/views/employment/Employment";
@@ -30,6 +30,7 @@ export async function generateMetadata({
 
 export default async function Employment({ params }: LocalePageProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   const employmentHistory = await getEmployment(locale);
 

@@ -3,6 +3,7 @@
 import { useFormatter, useTranslations } from "next-intl";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";
+import { Card } from "@/shared/ui/Card";
 import { ProjectCardTooltip } from "./ProjectCardTooltip/ProjectCardTooltip";
 import styles from "./ProjectCard.module.css";
 
@@ -38,7 +39,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   githubUrl,
   demoUrl,
   isCommercial,
-  isHighlighted,
   onTechnologyClick,
   viewMode = "grid",
 }) => {
@@ -54,10 +54,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <div
-      className={`${styles.projectCard} glass-card${isHighlighted ? ` ${styles.highlighted}` : ""}${viewMode === "list" ? ` ${styles.listCard}` : ""}`}
+    <Card
+      className={`${styles.projectCard}${viewMode === "list" ? ` ${styles.listCard}` : ""}`}
     >
-      {/* Always first in DOM — CSS hides in grid mode, shows in list mode */}
       <div className={styles.listBadgeSlot}>
         <ProjectCardTooltip isCommercial={isCommercial} />
       </div>
@@ -71,7 +70,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : (
             <span />
           )}
-          {/* Wrapped so it can be hidden in list mode without affecting grid view */}
           <div className={styles.metaTooltipWrapper}>
             <ProjectCardTooltip isCommercial={isCommercial} />
           </div>
@@ -98,29 +96,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {!!technologies?.length && (
         <div className={styles.technologies}>
-          {(viewMode === "list" ? technologies.slice(0, 4) : technologies).map(
-            (tech) => (
-              <button
-                key={tech.id}
-                className={styles.tech}
-                style={{
-                  color: tech.textColor ?? tech.color,
-                  background: tech.textColor
+          {technologies.slice(0, viewMode === "list" ? 4 : 6).map((tech) => (
+            <button
+              key={tech.id}
+              className={styles.tech}
+              style={
+                {
+                  "--tech-color": tech.color,
+                  "--tech-text": tech.textColor ?? tech.color,
+                  "--tech-bg": tech.textColor
                     ? tech.color
                     : `color-mix(in srgb, ${tech.color} 12%, transparent)`,
-                  borderColor: `color-mix(in srgb, ${tech.color} 42%, transparent)`,
-                }}
-                onClick={() => onTechnologyClick?.(tech.id)}
-                type="button"
-                title={tech.name}
-              >
-                {tech.name}
-              </button>
-            ),
-          )}
-          {viewMode === "list" && technologies.length > 4 && (
-            <span className={styles.techMore}>+{technologies.length - 4}</span>
-          )}
+                } as React.CSSProperties
+              }
+              onClick={() => onTechnologyClick?.(tech.id)}
+              type="button"
+              title={tech.name}
+            >
+              {tech.name}
+            </button>
+          ))}
+          {(() => {
+            const limit = viewMode === "list" ? 4 : 6;
+            const overflow = technologies.length - limit;
+            return overflow > 0 ? (
+              <span className={styles.techMore}>+{overflow}</span>
+            ) : null;
+          })()}
         </div>
       )}
 
@@ -146,6 +148,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <BsArrowRight size={20} aria-hidden="true" />
         </Link>
       </div>
-    </div>
+    </Card>
   );
 };

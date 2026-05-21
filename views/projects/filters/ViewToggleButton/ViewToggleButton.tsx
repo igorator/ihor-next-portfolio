@@ -1,11 +1,11 @@
 "use client";
 
 import { BsGrid3X3Gap, BsListUl } from "react-icons/bs";
-import styles from "../FilterClearButton/FilterClearButton.module.css";
+import { IconButton } from "@/shared/ui/IconButton";
 
 type ViewMode = "grid" | "list";
 
-type ViewToggleButtonProps = {
+type Props = {
   viewMode: ViewMode;
   onToggle: () => void;
   loading?: boolean;
@@ -15,23 +15,16 @@ export const ViewToggleButton = ({
   viewMode,
   onToggle,
   loading = false,
-}: ViewToggleButtonProps) => {
+}: Props) => {
   const toList = viewMode === "grid";
 
   return (
-    <button
-      type="button"
-      className={`${styles.clearButton} ${loading ? styles.loading : ""}`}
+    <IconButton
+      icon={toList ? <BsListUl aria-hidden /> : <BsGrid3X3Gap aria-hidden />}
       onClick={onToggle}
-      disabled={loading}
-      aria-pressed={viewMode === "list"}
+      loading={loading}
+      pressed={viewMode === "list"}
       title={toList ? "List view" : "Grid view"}
-    >
-      {toList ? (
-        <BsListUl className={styles.clearIcon} aria-hidden="true" />
-      ) : (
-        <BsGrid3X3Gap className={styles.clearIcon} aria-hidden="true" />
-      )}
-    </button>
+    />
   );
 };

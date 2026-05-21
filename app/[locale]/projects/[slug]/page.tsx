@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import projectBase from "@/entities/project/data/project_base.json";
 import { getProjectBySlug } from "@/entities/project/api";
@@ -56,6 +57,8 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: SlugPageProps) {
   const { slug, locale } = await params;
+  setRequestLocale(locale);
+
   const project = await getProjectBySlug(slug, locale);
 
   if (!project) notFound();

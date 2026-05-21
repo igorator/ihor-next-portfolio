@@ -1,9 +1,9 @@
 "use client";
 
-import * as Switch from "@radix-ui/react-switch";
 import { useTranslations } from "next-intl";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { useTheme } from "@/shared/hooks/useTheme";
+import { Switch } from "@/shared/ui/Switch";
 import styles from "./ThemeSwitcher.module.css";
 
 type Theme = "light" | "dark";
@@ -35,14 +35,11 @@ export const ThemeSwitch = () => {
   return (
     <div className={styles.themeSwitch}>
       <BsMoon className={styles.themeIcon} aria-hidden="true" />
-      <Switch.Root
-        className={styles.switchRoot}
+      <Switch
         checked={effective === "light"}
-        onCheckedChange={handleThemeToggle}
-        aria-label={t("toggleTheme")}
-      >
-        <Switch.Thumb className={styles.switchThumb} />
-      </Switch.Root>
+        onChange={handleThemeToggle}
+        ariaLabel={t("toggleTheme")}
+      />
       <BsSun className={styles.themeIcon} aria-hidden="true" />
     </div>
   );

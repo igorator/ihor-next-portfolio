@@ -1,68 +1,113 @@
-.glass {
-  --gs-radius: var(--radius-full);
-  --gs-padding: 0;
-  --gs-blur: 6px;
-  --gs-tint: var(--glass-tint, rgba(255, 255, 255, 0.08));
-  --gs-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 0, 0, 0.1);
-  --gs-shine: 1;
+.wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--gs-padding);
-  border-radius: var(--gs-radius);
-  box-shadow: var(--gs-shadow);
-  width: var(--gs-width, fit-content);
-
-  transition:
-    box-shadow var(--transition-slow),
-    transform var(--transition-slow),
-    filter var(--transition-slow);
   overflow: hidden;
+  transition: opacity 0.26s ease-out;
 }
 
-.effect,
-.tint,
-.shine,
-.content {
+.filterSvg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-}
-
-.effect {
-  backdrop-filter: blur(var(--gs-blur));
-  filter: var(--gs-filter, none);
-  overflow: hidden;
-}
-
-.tint {
-  background: var(--gs-tint);
-}
-
-.shine {
-  box-shadow:
-    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
-  opacity: calc(var(--gs-shine) * 1);
-  pointer-events: none;
+  opacity: 0;
+  z-index: -1;
 }
 
 .content {
-  position: relative;
-
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   border-radius: inherit;
+  position: relative;
+  z-index: 1;
 }
 
-.hiddenSvg {
-  display: none;
+/* background and backdrop-filter are set via inline styles from props */
+.svg {
+  border: 1px solid
+    light-dark(
+      color-mix(in oklch, black, transparent 82%),
+      color-mix(in oklch, white, transparent 78%)
+    );
+  box-shadow:
+    0 0 2px 1px
+      light-dark(
+        color-mix(in oklch, black, transparent 78%),
+        color-mix(in oklch, white, transparent 58%)
+      )
+      inset,
+    0 0 14px 5px
+      light-dark(
+        color-mix(in oklch, black, transparent 84%),
+        color-mix(in oklch, white, transparent 78%)
+      )
+      inset,
+    0px 4px 16px rgba(17, 17, 26, 0.08),
+    0px 8px 24px rgba(17, 17, 26, 0.08),
+    0px 16px 56px rgba(17, 17, 26, 0.08);
 }
 
-.glass.noShine {
-  --gs-shine: 0;
+.fallback {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.2),
+    0 2px 16px 0 rgba(31, 38, 135, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .fallback {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .fallback {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .fallback::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: inherit;
+    z-index: -1;
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  @media (prefers-color-scheme: dark) {
+    .fallback {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .fallback::before {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+.wrapper:focus-visible {
+  outline: 2px solid light-dark(#007aff, #0a84ff);
+  outline-offset: 2px;
 }

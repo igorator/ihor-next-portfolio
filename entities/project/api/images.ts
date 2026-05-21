@@ -30,7 +30,7 @@ async function fetchProjectImages(slug: string) {
 
   const screenFiles = files
     .filter((f) => /^screen-\d+\./i.test(f.name) && hasImageExt(f.name))
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const na = parseInt(a.name.match(/\d+/)?.[0] ?? "0", 10);
       const nb = parseInt(b.name.match(/\d+/)?.[0] ?? "0", 10);
       return na - nb;

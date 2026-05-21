@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { HomeSection } from "@/views/home/Home";
 import { siteConfig } from "@/shared/config/site";
@@ -42,14 +42,13 @@ const personJsonLd = {
   url: siteConfig.url,
   jobTitle: siteConfig.og.subtitle,
   email: `mailto:${siteConfig.socials.email}`,
-  sameAs: [
-    siteConfig.socials.github,
-    siteConfig.socials.linkedin,
-    siteConfig.socials.upwork,
-  ],
+  sameAs: [siteConfig.socials.github, siteConfig.socials.linkedin],
 };
 
-export default function Home() {
+export default async function Home({ params }: LocalePageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>

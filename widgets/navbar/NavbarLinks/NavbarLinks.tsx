@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo } from "react";
 import { routing } from "@/i18n/routing";
 import { routes } from "@/shared/config/routes";
 import { LinkTooltip } from "@/shared/ui/LinkTooltip/LinkTooltip";
@@ -29,7 +28,7 @@ export const NavbarLinks = () => {
   };
 
   const currentPath = stripLocale(normalized);
-  const items: Route[] = useMemo(() => Object.values(routes), []);
+  const items: Route[] = Object.values(routes);
 
   return (
     <nav className={styles.navbarLinks}>
@@ -54,14 +53,18 @@ export const NavbarLinks = () => {
             label={label}
             className={styles.navItemWrapper}
             trigger={
-              <Link
-                href={href}
-                className={`${styles.navItem} ${active ? styles.isActive : ""}`}
-                aria-current={active ? "page" : undefined}
-                prefetch
-              >
-                <Icon className={styles.icon} aria-hidden="true" />
-              </Link>
+              active ? (
+                <span
+                  className={`${styles.navItem} ${styles.isActive}`}
+                  aria-current="page"
+                >
+                  <Icon className={styles.icon} aria-hidden="true" />
+                </span>
+              ) : (
+                <Link href={href} className={styles.navItem} prefetch>
+                  <Icon className={styles.icon} aria-hidden="true" />
+                </Link>
+              )
             }
           />
         );

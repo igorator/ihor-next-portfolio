@@ -1,4 +1,3 @@
-/* Fixed variant — mobile only (desktop uses inline in navbar) */
 .positioner {
   position: fixed;
   z-index: 50;
@@ -14,7 +13,6 @@
   }
 }
 
-/* Inline variant — lives inside the navbar flex row */
 .inline {
   display: flex;
   align-items: center;
@@ -38,7 +36,6 @@
   width: 18px;
   height: 18px;
   color: var(--text-muted);
-  transition: color var(--transition-fast);
 }
 
 .surface:hover .icon {

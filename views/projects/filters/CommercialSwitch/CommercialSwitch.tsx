@@ -1,10 +1,9 @@
 "use client";
 
-import * as Switch from "@radix-ui/react-switch";
 import { useTranslations } from "next-intl";
-import styles from "./CommercialSwitch.module.css";
+import { LabeledSwitch } from "@/shared/ui/LabeledSwitch";
 
-type CommercialSwitchProps = {
+type Props = {
   value: boolean;
   onChange: (value: boolean) => void;
   disabled?: boolean;
@@ -16,36 +15,18 @@ export const CommercialSwitch = ({
   onChange,
   disabled = false,
   loading = false,
-}: CommercialSwitchProps) => {
+}: Props) => {
   const t = useTranslations();
 
   return (
-    <div
-      className={`${styles.commercialSwitch} ${loading ? styles.loading : disabled ? styles.disabled : ""}`}
-    >
-      {loading ? (
-        <>
-          <span className={styles.skeletonText} aria-hidden />
-          <span className={styles.skeletonSwitch} aria-hidden />
-        </>
-      ) : (
-        <>
-          <span className={styles.text}>
-            {t("projects_ui.onlyCommercialProjects", {
-              default: "Commercial only",
-            })}
-          </span>
-          <Switch.Root
-            id="commercial-switch"
-            checked={value}
-            onCheckedChange={onChange}
-            className={styles.switchRoot}
-            disabled={disabled}
-          >
-            <Switch.Thumb className={styles.switchThumb} />
-          </Switch.Root>
-        </>
-      )}
-    </div>
+    <LabeledSwitch
+      label={t("projects_ui.onlyCommercialProjects", {
+        default: "Commercial only",
+      })}
+      checked={value}
+      onChange={onChange}
+      disabled={disabled}
+      loading={loading}
+    />
   );
 };

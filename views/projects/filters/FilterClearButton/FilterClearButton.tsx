@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { MdOutlineClear } from "react-icons/md";
-import styles from "./FilterClearButton.module.css";
+import { IconButton } from "@/shared/ui/IconButton";
 
-type FilterClearButtonProps = {
+type Props = {
   onClear: () => void;
   disabled?: boolean;
   loading?: boolean;
@@ -14,18 +14,16 @@ export const FilterClearButton = ({
   onClear,
   disabled,
   loading = false,
-}: FilterClearButtonProps) => {
+}: Props) => {
   const t = useTranslations();
 
   return (
-    <button
-      type="button"
-      className={`${styles.clearButton} ${loading ? styles.loading : ""}`}
+    <IconButton
+      icon={<MdOutlineClear aria-hidden />}
       onClick={onClear}
-      disabled={disabled || loading}
+      disabled={disabled}
+      loading={loading}
       title={t("projects.filters.clear", { default: "Clear filters" })}
-    >
-      <MdOutlineClear className={styles.clearIcon} aria-hidden="true" />
-    </button>
+    />
   );
 };

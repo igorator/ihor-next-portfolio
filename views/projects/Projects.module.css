@@ -1,6 +1,3 @@
-.projectSection {
-}
-
 .title {
   font-size: var(--text-3xl);
   font-weight: 700;
@@ -8,14 +5,18 @@
   text-align: center;
 }
 
-/* ===== Filter bar ===== */
-
 .filtersBar {
   display: flex;
   align-items: stretch;
   flex-wrap: wrap;
   gap: var(--space-3);
   font-weight: 500;
+  padding: var(--space-3);
+  width: fit-content;
+  margin-inline: auto;
+  position: sticky;
+  top: var(--space-4);
+  z-index: 20;
 }
 
 .filtersBar > * {
@@ -27,7 +28,6 @@
 .viewToggleWrapper {
   min-width: unset;
   flex: 0 0 auto;
-  aspect-ratio: 1 / 1;
 }
 
 .technologySelectWrapper,
@@ -37,14 +37,15 @@
   flex: 0 0 auto;
 }
 
-/* ===== Мобилка ===== */
 @media (max-width: 720px) {
   .viewToggleWrapper {
     display: none;
   }
 
   .filtersBar {
+    position: static;
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "tech tech"

@@ -11,35 +11,3 @@
   width: 1rem;
   height: 1rem;
 }
-
-.switchRoot {
-  all: unset;
-  width: 42px;
-  height: 25px;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color var(--transition-normal);
-}
-
-.switchRoot[data-state="checked"] {
-  background-color: var(--accent);
-}
-
-.switchThumb {
-  display: block;
-  width: 21px;
-  height: 21px;
-  background-color: white;
-  border-radius: var(--radius-full);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-normal);
-  transform: translateX(2px);
-  will-change: transform;
-}
-
-.switchThumb[data-state="checked"] {
-  transform: translateX(19px);
-}

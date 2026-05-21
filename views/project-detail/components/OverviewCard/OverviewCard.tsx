@@ -1,19 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
 import { useFormatter, useTranslations } from "next-intl";
+import { Card } from "@/shared/ui/Card";
 import layout from "../../Project.module.css";
 import styles from "./OverviewCard.module.css";
-
-const cardItem: Variants = {
-  hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 type Props = {
   title: string;
@@ -35,10 +25,7 @@ export function OverviewCard({ title, type, category, date }: Props) {
   };
 
   return (
-    <motion.article
-      className={`${layout.card} ${layout.overviewCard}`}
-      variants={cardItem}
-    >
+    <Card className={layout.overviewCard}>
       <h1 className={styles.projectTitle}>{title}</h1>
       <ul className={styles.metaList}>
         <li className={styles.metaItem}>
@@ -56,7 +43,7 @@ export function OverviewCard({ title, type, category, date }: Props) {
           </time>
         </li>
       </ul>
-    </motion.article>
+    </Card>
   );
 }
 

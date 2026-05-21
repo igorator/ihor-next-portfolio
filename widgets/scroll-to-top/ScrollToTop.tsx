@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { startTransition, useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { BsArrowUp } from "react-icons/bs";
 import styles from "./ScrollToTop.module.css";
@@ -16,7 +16,8 @@ export const ScrollToTop = ({ variant = "fixed", className }: Props) => {
   const prefersReduced = useReducedMotion();
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 300);
+    const onScroll = () =>
+      startTransition(() => setVisible(window.scrollY > 300));
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -50,18 +51,16 @@ export const ScrollToTop = ({ variant = "fixed", className }: Props) => {
   }
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          className={styles.positioner}
-          initial={{ opacity: 0, scale: prefersReduced ? 1 : 0.75 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: prefersReduced ? 1 : 0.75 }}
-          transition={{ duration: prefersReduced ? 0 : 0.18 }}
-        >
-          {surface}
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <motion.div
+      className={styles.positioner}
+      animate={{
+        opacity: visible ? 1 : 0,
+        scale: prefersReduced ? 1 : visible ? 1 : 0.75,
+        pointerEvents: visible ? "auto" : "none",
+      }}
+      transition={{ duration: prefersReduced ? 0 : 0.18 }}
+    >
+      {surface}
+    </motion.div>
   );
 };

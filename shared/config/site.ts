@@ -18,7 +18,6 @@ export const siteConfig = {
   socials: {
     github: "https://github.com/igorator",
     linkedin: "https://www.linkedin.com/in/ihor-kliushnyk/",
-    upwork: "https://upwork.com/freelancers/ihorkliushnyk",
     email: "ihor.kliushnyk@gmail.com",
   },
   pages: {
