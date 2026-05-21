@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
 import { AppPortal } from "@/shared/portals/AppPortal";
-import { AppBackground } from "@/shared/ui/Background3D/AppBackground";
+import { AppBackground } from "@/shared/ui/Background/AppBackground";
 import { siteConfig } from "@/shared/config/site";
 
 type ThemeSetting = "light" | "dark" | "system";
