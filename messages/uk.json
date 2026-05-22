@@ -43,7 +43,7 @@
     "noTechnologies": "Технології не вказані.",
     "openImageAria": "Відкрити зображення в лайтбоксі",
     "openVideoAria": "Відкрити відео в лайтбоксі",
-    "imageAltCover": "{title} — обкладинка",
+    "imageAltCover": "{title}: обкладинка",
     "noMatches": "Жоден проект не відповідає фільтрам",
     "links": {
       "github": "GitHub",
@@ -51,7 +51,8 @@
     },
     "other": {
       "title": "Проєкти",
-      "description": "Не всі проєкти вказані тут з різних причин (NDA, приватні репозиторії, незавершені релізи).",
+      "description": "Це каталог моїх проектів, від комерційних до особистих. Не всі роботи представлені тут з різних причин:",
+      "reasons": ["NDA", "приватні репозиторії", "незавершені релізи"],
       "tags": [
         "Webflow 10+ сайтів",
         "React & Next.js проєкти",
@@ -76,7 +77,7 @@
       "nextAria": "Наступне",
       "openOriginal": "Відкрити оригінал",
       "openOriginalVideo": "Відкрити відео",
-      "imageAlt": "{title} — зображення {current} з {total}"
+      "imageAlt": "{title}: зображення {current} з {total}"
     }
   },
   "employment": {

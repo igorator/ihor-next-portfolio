@@ -11,11 +11,22 @@ export const ProjectOverviewCard = () => {
     <Card className={styles.card} aria-label={t("title")}>
       <h3 className={styles.title}>{t("title")}</h3>
 
-      <p className={styles.description}>
-        {t.rich("description", {
-          strong: (chunk) => <strong className={styles.strong}>{chunk}</strong>,
-        })}
-      </p>
+      <div className={styles.descriptionBlock}>
+        <p className={styles.description}>
+          {t.rich("description", {
+            strong: (chunk) => (
+              <strong className={styles.strong}>{chunk}</strong>
+            ),
+          })}
+        </p>
+        <ul className={styles.reasonsList}>
+          {t.raw("reasons").map((reason: string) => (
+            <li key={reason} className={styles.reasonsItem}>
+              {reason}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <ul className={styles.metaList} aria-label={t("stackHighlightsAria")}>
         {t.raw("tags").map((tag: string) => (

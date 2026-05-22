@@ -18,15 +18,36 @@
   margin-bottom: var(--space-3);
 }
 
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
 .description {
-  font-size: var(--text-base, 16px);
+  font-size: var(--text-lg, 18px);
   color: color-mix(in srgb, var(--foreground, #fff) 90%, transparent);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
 
 .strong {
   font-weight: 700;
+}
+
+.reasonsList {
+  padding-left: var(--space-5, 20px);
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.reasonsItem {
+  font-size: var(--text-base, 16px);
+  color: color-mix(in srgb, var(--foreground, #fff) 75%, transparent);
+  line-height: 1.5;
 }
 
 .metaList {

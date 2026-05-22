@@ -38,7 +38,8 @@
     },
     "other": {
       "title": "Projects",
-      "description": "Not all projects are listed here for various reasons (NDA, private repositories, unfinished releases).",
+      "description": "This is a catalog of my projects, from commercial to personal. Not all work is listed here for various reasons:",
+      "reasons": ["NDA", "private repositories", "unfinished releases"],
       "tags": [
         "10+ Webflow projects",
         "React & Next.js",
@@ -63,7 +64,7 @@
     "noTechnologies": "No technologies listed.",
     "openImageAria": "Open image in lightbox",
     "openVideoAria": "Open video in lightbox",
-    "imageAltCover": "{title} — cover",
+    "imageAltCover": "{title}: cover",
     "previousImageAria": "Previous image",
     "nextImageAria": "Next image",
     "goToImageAria": "Go to image {index}",
@@ -76,7 +77,7 @@
       "nextAria": "Next",
       "openOriginal": "Open original",
       "openOriginalVideo": "Open video",
-      "imageAlt": "{title} — image {current} of {total}"
+      "imageAlt": "{title}: image {current} of {total}"
     }
   },
   "employment": {

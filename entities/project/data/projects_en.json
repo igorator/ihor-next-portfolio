@@ -55,19 +55,19 @@
   },
   "webwise": {
     "title": "Webwise by Logics7",
-    "description": "Company website for Logics7 — an international IT agency offering web development, mobile apps, game development, and digital marketing; features case studies, team overview, and workflow presentation. Built with Next.js, Tailwind, and Spline 3D; integrated with Zoho CRM.",
+    "description": "Company website for Logics7, an international IT agency offering web development, mobile apps, game development, and digital marketing; features case studies, team overview, and workflow presentation. Built with Next.js, Tailwind, and Spline 3D; integrated with Zoho CRM.",
     "type": "business",
     "category": "landing"
   },
   "turbota-liqpay": {
-    "title": "Turbota — LiqPay Integration",
-    "description": "LiqPay donation payment integration for Turbota — a charitable Webflow website supporting orphans; implemented with Node.js and Express via the LiqPay API.",
+    "title": "Turbota: LiqPay Integration",
+    "description": "LiqPay donation payment integration for Turbota, a charitable Webflow website supporting orphans; implemented with Node.js and Express via the LiqPay API.",
     "type": "charity",
     "category": "integration"
   },
   "anyway": {
     "title": "Anyway",
-    "description": "Website for Anyway — a creative agency specializing in animated video production for tech companies; showcases a portfolio of product demos, explainer videos, and ads, with client case studies and a five-step production workflow. Built in Webflow.",
+    "description": "Website for Anyway, a creative agency specializing in animated video production for tech companies; showcases a portfolio of product demos, explainer videos, and ads, with client case studies and a five-step production workflow. Built in Webflow.",
     "type": "business",
     "category": "landing"
   },
@@ -97,19 +97,19 @@
   },
   "easm": {
     "title": "EASM by Logics7",
-    "description": "Landing page for EASM — a network security program by Logics7 focused on external attack surface management. Built in Webflow.",
+    "description": "Landing page for EASM, a network security program by Logics7 focused on external attack surface management. Built in Webflow.",
     "type": "digital security",
     "category": "landing"
   },
   "pss": {
     "title": "PSS by Logics7",
-    "description": "Website for PSS — a Ukrainian manufacturer of military training simulators; features product catalog with Google Maps integration. Built in Webflow.",
+    "description": "Website for PSS, a Ukrainian manufacturer of military training simulators; features product catalog with Google Maps integration. Built in Webflow.",
     "type": "defense",
     "category": "landing"
   },
   "dovira": {
     "title": "Dovira by Logics7",
-    "description": "Website for the Dovira initiative — a Ukrainian mental health platform offering free online consultations with psychologists, video content, stream therapy sessions, and assessment tools for civilians and military personnel affected by the war. Built in Webflow.",
+    "description": "Website for the Dovira initiative, a Ukrainian mental health platform offering free online consultations with psychologists, video content, stream therapy sessions, and assessment tools for civilians and military personnel affected by the war. Built in Webflow.",
     "type": "psychology",
     "category": "landing"
   },

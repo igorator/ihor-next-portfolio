@@ -48,10 +48,10 @@ export const EmploymentSection = ({
 
     if (!emp.endDate) return startStr;
     if (emp.endDate === "present")
-      return `${startStr} — ${t("employment.present")}`;
+      return `${startStr} - ${t("employment.present")}`;
 
     const endStr = formatDate(emp.endDate);
-    return endStr ? `${startStr} — ${endStr}` : startStr;
+    return endStr ? `${startStr} - ${endStr}` : startStr;
   };
 
   const container: Variants = {
