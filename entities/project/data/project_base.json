@@ -43,7 +43,7 @@
     "githubUrl": "https://github.com/igorator/WEBSPARK-test"
   },
   {
-    "slug": "this-website",
+    "slug": "portfolio",
     "date": "2025-10",
     "isCommercial": false,
     "technologiesIds": ["nextjs", "css", "framer-motion", "i18n", "radix"],

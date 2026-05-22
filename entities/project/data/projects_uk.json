@@ -23,7 +23,7 @@
     "type": "тестове завдання",
     "category": "фронтенд"
   },
-  "this-website": {
+  "portfolio": {
     "title": "Цей вебсайт",
     "description": "Особисте портфоліо розробника на Next.js, CSS Modules, Framer Motion і next-intl (EN/UK); секції з проектами, досвідом роботи, завантаженням CV та посиланнями на GitHub, LinkedIn і Upwork.",
     "type": "стартап",

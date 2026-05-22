@@ -23,7 +23,7 @@
     "type": "test task",
     "category": "frontend"
   },
-  "this-website": {
+  "portfolio": {
     "title": "This Website",
     "description": "Personal developer portfolio built with Next.js, CSS Modules, Framer Motion, and next-intl (EN/UK); features projects showcase, employment history, downloadable CV, and links to GitHub, LinkedIn, and Upwork.",
     "type": "startup",
