@@ -126,6 +126,7 @@
     "githubUrl": "https://github.com/igorator/3mpq-Studio-lite",
     "demoUrl": null,
     "isCommercial": true,
+    "isHidden": true,
     "technologiesIds": [
       "nextjs",
       "typescript",
