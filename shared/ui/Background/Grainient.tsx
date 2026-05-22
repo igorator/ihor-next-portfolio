@@ -212,8 +212,14 @@ export const Grainient: React.FC<GrainientProps> = ({
     ctxMap.set(container, { renderer, program, mesh });
 
     const setSize = () => {
-      const w = Math.max(1, Math.floor(window.innerWidth));
-      const h = Math.max(1, Math.floor(window.innerHeight));
+      const w = Math.max(
+        1,
+        Math.floor(container.clientWidth || window.innerWidth),
+      );
+      const h = Math.max(
+        1,
+        Math.floor(container.clientHeight || window.innerHeight),
+      );
       renderer.setSize(w, h);
       canvas.style.width = "100%";
       canvas.style.height = "100%";
