@@ -1,19 +1,15 @@
 .employment {
-  --tl-rail-color: var(--separator);
+  --tl-rail-color: color-mix(in oklab, var(--accent) 65%, transparent);
   --tl-rail-width: 2px;
 
-  --tl-marker-size: 14px;
-  --tl-marker-ring: 6px;
+  --tl-marker-size: 10px;
+  --tl-marker-ring: 2px;
   --tl-marker-color: var(--accent);
-  --tl-marker-bg: var(--bg);
+  --tl-marker-bg: var(--background);
 
-  --tl-gap-y: 28px;
+  --tl-gap-y: 24px;
   --tl-gap-x: clamp(14px, 2.2vw, 28px);
 
-  --tl-card-bg-0: color-mix(in oklab, var(--surface) 40%, transparent);
-  --tl-card-bg-1: color-mix(in oklab, var(--surface) 20%, transparent);
-  --tl-card-border: color-mix(in oklab, var(--separator) 65%, transparent);
-  --tl-card-radius: var(--radius-lg);
   --tl-card-pad: 16px 18px;
 
   --tl-title-fs: var(--text-3xl);
@@ -33,34 +29,78 @@
   text-align: center;
 }
 
-.timeline {
+.timelineWrapper {
   position: relative;
   width: 100%;
   max-width: min(900px, 100%);
+}
+
+.timeline {
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tl-gap-y);
 }
 
 .item {
   position: relative;
+  display: grid;
   grid-template-columns: var(--tl-marker-size) var(--tl-gap-x) 1fr;
   align-items: start;
-  gap: var(--tl-gap-y) 0;
-  padding-block: 4px;
+}
+
+.marker {
+  grid-column: 1;
+  margin-top: 20px;
+  width: var(--tl-marker-size);
+  height: var(--tl-marker-size);
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid color-mix(in oklab, var(--tl-marker-color) 35%, transparent);
+  flex-shrink: 0;
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.markerActive {
+  background: var(--tl-marker-color);
+  border-color: var(--tl-marker-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes marker-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 var(--tl-marker-ring)
+        color-mix(in oklab, var(--tl-marker-color) 22%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 0 calc(var(--tl-marker-ring) + 4px)
+        color-mix(in oklab, var(--tl-marker-color) 6%, transparent);
+    }
+  }
+
+  .markerCurrent {
+    animation: marker-pulse 2.5s ease-in-out infinite;
+  }
 }
 
 @media (min-width: 720px) {
   .employment {
-    --tl-gap-y: 32px;
-    --tl-marker-size: 16px;
-    --tl-marker-ring: 8px;
+    --tl-gap-y: 28px;
+    --tl-marker-size: 12px;
+    --tl-marker-ring: 3px;
     --tl-card-pad: 18px 20px;
   }
 }
 
 @media (min-width: 1060px) {
-  .timeline {
+  .timelineWrapper {
     max-width: 900px;
   }
   .employment {
