@@ -72,7 +72,7 @@
     "category": "landing"
   },
   "custom-globe": {
-    "title": "Custom Three.js Globe for Website",
+    "title": "Custom Three.js Globe",
     "description": "Custom 3D globe built with Three.js as an animated background element for a client's Webflow website, commissioned via Upwork.",
     "type": "3D",
     "category": "integration"

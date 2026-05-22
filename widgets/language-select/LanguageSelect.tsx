@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Select } from "@/shared/ui/Select";
@@ -37,13 +38,17 @@ export function LanguageSelect({
   const t = useTranslations("a11y");
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <Select
       value={locale}
-      onChange={(nextLocale) =>
-        router.replace(pathname, { locale: nextLocale })
-      }
+      onChange={(nextLocale) => {
+        const qs = searchParams.toString();
+        router.replace(`${pathname}${qs ? `?${qs}` : ""}`, {
+          locale: nextLocale,
+        });
+      }}
       options={localeOptions}
       ariaLabel={t("language")}
       hideChevron

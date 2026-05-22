@@ -1,24 +1,24 @@
 {
   "tenthousand-test": {
-    "title": "Тестове завдання TenThousand",
+    "title": "ТЗ TenThousand",
     "description": "Full-stack клон Google Forms: фронтенд на React, Redux Toolkit і GraphQL; бекенд на Apollo Server з типо-безпечною кодогенерацією; тести через Vitest для логіки форм і обробки відповідей.",
     "type": "тестове завдання",
     "category": "фулстек"
   },
   "perion-test": {
-    "title": "Тестове завдання Perion",
+    "title": "ТЗ Perion",
     "description": "Лендінг для тестового завдання з насиченими скрол-анімаціями та анімаціями появи елементів, зроблено на GSAP.",
     "type": "фронтенд",
     "category": "тестове завдання"
   },
   "atmosphere-school-test": {
-    "title": "Тестове завдання Atmosphere School",
+    "title": "ТЗ Atmosphere School",
     "description": "Фронтенд тестове завдання: інтерактивний картографічний застосунок на React, TypeScript і Vite з відображенням карти через Leaflet.",
     "type": "тестове завдання",
     "category": "фронтенд"
   },
   "webspark-test": {
-    "title": "Тестове завдання WEBSPARK",
+    "title": "ТЗ WEBSPARK",
     "description": "Тестовий проєкт для WEBSPARK, створений на React, CSS та Vite.",
     "type": "тестове завдання",
     "category": "фронтенд"
@@ -72,13 +72,13 @@
     "category": "лендінг"
   },
   "custom-globe": {
-    "title": "Кастомний Three.js глобус для сайту",
+    "title": "Кастомний Three.js глобус",
     "description": "Кастомний 3D-глобус на Three.js як анімований фоновий елемент для Webflow-сайту клієнта, замовлення через Upwork.",
     "type": "3D",
     "category": "інтеграція"
   },
   "out-of-the-box-test": {
-    "title": "Тестове завдання Out-of-the-box",
+    "title": "ТЗ Out-of-the-box",
     "description": "Лендінг для тестового завдання з розширеними анімаціями",
     "type": "фронтенд",
     "category": "тестове-завдання"
