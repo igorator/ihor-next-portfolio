@@ -39,7 +39,9 @@ function buildProject(
   };
 }
 
-function fetchProjects(locale: Locale): ProjectWithTechnologies[] {
+async function fetchProjects(
+  locale: Locale,
+): Promise<ProjectWithTechnologies[]> {
   const safeLocale = resolveLocale(locale);
   const i18n = I18N_BY_LOCALE[safeLocale] as Record<string, ProjectI18n>;
 
@@ -52,7 +54,16 @@ function fetchProjects(locale: Locale): ProjectWithTechnologies[] {
     .filter((p) => !p.isHidden)
     .toSorted((a, b) => b.date.localeCompare(a.date));
 
-  return mergeProjectsWithTechnologies(merged, technologies);
+  const withTech = mergeProjectsWithTechnologies(merged, technologies);
+
+  const images = await Promise.all(
+    withTech.map((p) => listProjectImages(p.slug)),
+  );
+
+  return withTech.map((p, i) => ({
+    ...p,
+    cover: images[i]?.cover ?? undefined,
+  }));
 }
 
 export const getProjects = cache(fetchProjects);

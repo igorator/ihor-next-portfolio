@@ -77,6 +77,45 @@
   border-color: color-mix(in srgb, var(--foreground) 40%, transparent);
 }
 
+.coverLink {
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  flex-shrink: 0;
+}
+
+.coverWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.coverImage {
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: saturate(0.88) brightness(0.96);
+}
+
+.coverLink:hover .coverImage {
+  transform: scale(1.04);
+  filter: saturate(1) brightness(1);
+}
+
+.coverPlaceholder {
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--foreground) 4%, transparent) 0px,
+    color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}
+
 .typesBadges {
   display: flex;
   gap: var(--element-gap);

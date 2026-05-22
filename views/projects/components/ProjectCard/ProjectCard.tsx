@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";
@@ -13,6 +14,7 @@ export type ProjectCardProps = {
   description: string;
   type: string;
   category: string;
+  cover?: string;
   date?: string;
   technologies?: Array<{
     id: string;
@@ -34,6 +36,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   type,
   category,
+  cover,
   date,
   technologies,
   githubUrl,
@@ -77,6 +80,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       )}
 
       <h3 className={styles.title}>{title}</h3>
+
+      {viewMode === "grid" && (
+        <Link
+          href={`/projects/${slug}`}
+          className={styles.coverLink}
+          tabIndex={-1}
+          aria-hidden="true"
+        >
+          <div
+            className={`${styles.coverWrapper}${!cover ? ` ${styles.coverPlaceholder}` : ""}`}
+          >
+            {cover && (
+              <Image
+                src={cover}
+                alt={title}
+                fill
+                className={styles.coverImage}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iOSIgZmlsbD0iIzg4ODg4OCIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4="
+              />
+            )}
+          </div>
+        </Link>
+      )}
 
       <div className={styles.typesBadges}>
         <span className={`${styles.badge} ${styles.badgeType}`} title={type}>
