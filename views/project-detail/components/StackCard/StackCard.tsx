@@ -32,17 +32,22 @@ export function StackCard({ technologies }: Props) {
           {technologies.map((t) => {
             const tw = t as TechWithColor;
             const c = tw.color ?? colorFromString(t.name);
+            const chipStyle = tw.textColor
+              ? {
+                  "--chip-fg": tw.textColor,
+                  "--chip-bg": c,
+                  "--chip-border": `color-mix(in srgb, ${c} 65%, transparent)`,
+                }
+              : {
+                  "--chip-fg": c,
+                  "--chip-bg": `color-mix(in srgb, ${c} 12%, transparent)`,
+                  "--chip-border": `color-mix(in srgb, ${c} 42%, transparent)`,
+                };
             return (
               <li
                 key={t.id}
                 className={styles.technologyChip}
-                style={
-                  {
-                    "--chip-fg": c,
-                    "--chip-bg": `color-mix(in srgb, ${c} 12%, transparent)`,
-                    "--chip-brd": `color-mix(in srgb, ${c} 42%, transparent)`,
-                  } as CSSProperties
-                }
+                style={chipStyle as CSSProperties}
                 title={t.name}
               >
                 <span>{t.name}</span>
