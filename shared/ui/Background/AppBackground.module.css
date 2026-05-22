@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+@media (pointer: coarse) {
+  .wrapper {
+    height: 120dvh;
+  }
+}
+
 .loader {
   position: fixed;
   inset: 0;
