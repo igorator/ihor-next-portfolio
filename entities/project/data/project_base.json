@@ -46,7 +46,15 @@
     "slug": "portfolio",
     "date": "2025-10",
     "isCommercial": false,
-    "technologiesIds": ["nextjs", "css", "framer-motion", "i18n", "radix"],
+    "technologiesIds": [
+      "nextjs",
+      "typescript",
+      "css",
+      "ogl",
+      "framer-motion",
+      "i18n",
+      "radix"
+    ],
     "demoUrl": "https://www.igorator.site",
     "githubUrl": "https://github.com/igorator/ihor-next-portfolio"
   },
@@ -67,7 +75,7 @@
       "vite",
       "react",
       "redux",
-      "react-router-v7",
+      "react-router",
       "typescript",
       "nodejs",
       "express",
@@ -78,6 +86,7 @@
       "tailwind",
       "shadcn",
       "framer-motion",
+      "lottie",
       "jest",
       "grammy"
     ]
@@ -94,7 +103,7 @@
     "date": "2025-01",
     "githubUrl": "https://github.com/igorator/RELY_Test_Kliushnyk",
     "isCommercial": false,
-    "technologiesIds": ["react", "tailwind"]
+    "technologiesIds": ["react", "react-router", "tailwind"]
   },
   {
     "slug": "zycsel-store-bot",
@@ -152,6 +161,8 @@
       "zustand",
       "react-hook-form",
       "framer-motion",
+      "lottie",
+      "spline3d",
       "zoho"
     ]
   },
@@ -177,7 +188,7 @@
     "githubUrl": null,
     "demoUrl": "https://logics7.com/easm/",
     "isCommercial": true,
-    "technologiesIds": ["webflow", "javascript", "css"]
+    "technologiesIds": ["webflow", "javascript", "lottie", "css"]
   },
   {
     "slug": "pss",
@@ -185,7 +196,13 @@
     "githubUrl": null,
     "demoUrl": "https://pss.logics7.com/",
     "isCommercial": true,
-    "technologiesIds": ["webflow", "javascript", "google-maps-api", "css"]
+    "technologiesIds": [
+      "webflow",
+      "javascript",
+      "jquery",
+      "google-maps-api",
+      "css"
+    ]
   },
   {
     "slug": "dovira",

@@ -30,8 +30,6 @@
   inline-size: 100%;
   block-size: 100%;
   padding: var(--space-3);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
   object-fit: contain;
   cursor: inherit;
 }

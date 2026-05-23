@@ -14,6 +14,13 @@
     "priority": 2
   },
   {
+    "id": "jquery",
+    "name": "jQuery",
+    "color": "#0769AD",
+    "category": "Libraries",
+    "priority": 31.3
+  },
+  {
     "id": "css",
     "name": "CSS",
     "color": "#264de4",
@@ -57,11 +64,11 @@
     "priority": 12.5
   },
   {
-    "id": "react-router-v7",
-    "name": "React Router v7",
+    "id": "react-router",
+    "name": "React Router",
     "color": "#CA4245",
     "category": "Routing",
-    "priority": 12.3
+    "priority": 12.2
   },
   {
     "id": "redux",
@@ -158,6 +165,13 @@
     "priority": 22
   },
   {
+    "id": "lottie",
+    "name": "Lottie",
+    "color": "#00DDB4",
+    "category": "Animation",
+    "priority": 22.5
+  },
+  {
     "id": "i18n",
     "name": "i18n",
     "color": "#0070F3",
@@ -208,10 +222,17 @@
   },
   {
     "id": "liqpay",
-    "name": "LiqPay",
+    "name": "Liqpay API",
     "color": "#00B140",
     "category": "Payments",
     "priority": 30
+  },
+  {
+    "id": "google-maps-api",
+    "name": "Google Maps API",
+    "color": "#4285F4",
+    "category": "Integrations",
+    "priority": 31.5
   },
   {
     "id": "zoho",
@@ -226,6 +247,13 @@
     "color": "#146EF5",
     "category": "3D & Design",
     "priority": 32
+  },
+  {
+    "id": "ogl",
+    "name": "OGL",
+    "color": "#6C63FF",
+    "category": "3D & Design",
+    "priority": 32.5
   },
   {
     "id": "leaflet",
