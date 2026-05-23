@@ -101,7 +101,7 @@ body {
     --background: var(--background-light);
     --foreground: var(--foreground-light);
     --accent: var(--accent-light);
-    --glass-bg: rgba(255, 255, 255, 0.62);
+    --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(0, 0, 0, 0.07);
   }
 }
@@ -110,13 +110,15 @@ body {
   --background: var(--background-light);
   --foreground: var(--foreground-light);
   --accent: var(--accent-light);
-  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.07);
 }
 :root[data-theme="dark"] {
   --background: var(--background-dark);
   --foreground: var(--foreground-dark);
   --accent: var(--accent-dark);
+  --glass-bg: rgba(20, 20, 22, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme="light"] {

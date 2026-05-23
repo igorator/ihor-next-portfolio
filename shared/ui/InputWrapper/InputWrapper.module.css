@@ -2,11 +2,15 @@
   display: flex;
   align-items: stretch;
   border-radius: var(--radius-md);
-  border: 1px solid var(--glass-border);
+  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
   background: color-mix(in srgb, var(--foreground) 2%, transparent);
   transition:
     border-color var(--transition-fast),
     background var(--transition-fast);
+}
+
+.inputWrapper[data-active] {
+  border-color: color-mix(in srgb, var(--foreground) 30%, var(--glass-border));
 }
 
 .inputWrapper:has(:focus-visible) {

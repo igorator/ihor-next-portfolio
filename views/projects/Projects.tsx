@@ -76,7 +76,10 @@ export const ProjectsSection = ({
       <h2 className={styles.title}>{t("title")}</h2>
 
       <Card className={styles.filtersBar} aria-busy={loading}>
-        <InputWrapper className={styles.technologySelectWrapper}>
+        <InputWrapper
+          className={styles.technologySelectWrapper}
+          data-active={selectedTechs.length > 0 || undefined}
+        >
           <TechnologyMultiSelect
             technologies={techs}
             selectedTechnologies={selectedTechs}
@@ -85,11 +88,17 @@ export const ProjectsSection = ({
           />
         </InputWrapper>
 
-        <InputWrapper className={styles.sortSelectWrapper}>
+        <InputWrapper
+          className={styles.sortSelectWrapper}
+          data-active={sortBy !== "newest" || undefined}
+        >
           <SortSelect value={sortBy} onChange={setSortBy} loading={loading} />
         </InputWrapper>
 
-        <InputWrapper className={styles.commercialSwitchWrapper}>
+        <InputWrapper
+          className={styles.commercialSwitchWrapper}
+          data-active={!commercialOnly || undefined}
+        >
           <CommercialSwitch
             value={commercialOnly}
             onChange={setCommercialOnly}
