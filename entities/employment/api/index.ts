@@ -34,7 +34,9 @@ function fetchEmployment(locale: Locale): Employment[] {
       projectBase as Array<
         Omit<Project, "title" | "description" | "type" | "category">
       >
-    ).map((projectEntry) => projectEntry.slug),
+    )
+      .filter((projectEntry) => !projectEntry.isHidden)
+      .map((projectEntry) => projectEntry.slug),
   );
 
   const projectsI18n = (
