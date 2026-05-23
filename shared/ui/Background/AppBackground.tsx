@@ -36,6 +36,7 @@ export function AppBackground() {
 
   return (
     <>
+      <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.wrapper} aria-hidden="true">
         <Grainient
           {...colors}

@@ -62,6 +62,12 @@ function supportsSVGFilters(): boolean {
   return div.style.backdropFilter !== "";
 }
 
+let _svgSupported: boolean | null = null;
+function getSvgSupported(): boolean {
+  if (_svgSupported === null) _svgSupported = supportsSVGFilters();
+  return _svgSupported;
+}
+
 export const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
   width,
@@ -92,7 +98,7 @@ export const GlassSurface: React.FC<GlassSurfaceProps> = ({
 
   const svgSupported = useSyncExternalStore(
     () => () => {},
-    supportsSVGFilters,
+    getSvgSupported,
     () => false,
   );
 

@@ -38,3 +38,9 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+@media (hover: none) {
+  .tooltip {
+    display: none;
+  }
+}

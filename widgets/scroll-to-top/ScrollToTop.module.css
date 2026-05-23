@@ -1,9 +1,10 @@
 .positioner {
   position: fixed;
   z-index: 50;
-  right: var(--space-4);
+  right: var(--space-5);
   bottom: calc(
-    var(--navbar-height) + var(--space-4) * 2 + env(safe-area-inset-bottom)
+    var(--navbar-height) + var(--space-4) * 2 - var(--space-2) +
+      env(safe-area-inset-bottom)
   );
 }
 
