@@ -30,8 +30,10 @@
     background var(--transition-fast);
 }
 
-.navItem:hover:not(:active):not(.isActive) {
-  transform: scale(1.05);
+@media (hover: hover) {
+  .navItem:hover:not(:active):not(.isActive) {
+    transform: scale(1.05);
+  }
 }
 
 .isActive {
