@@ -3,14 +3,14 @@
 import { useTranslations } from "next-intl";
 import { BsGithub, BsGlobe2 } from "react-icons/bs";
 import { Card } from "@/shared/ui/Card";
-import type { GithubLink } from "@/entities/project/types";
+import type { GithubUrlValue } from "@/entities/project/types";
 import { normalizeGithubLinks } from "@/entities/project/lib/normalizeGithubLinks";
 import layout from "../../Project.module.css";
 import styles from "./LinksCard.module.css";
 
 type Props = {
   demoUrl?: string | null;
-  githubUrl?: string | GithubLink | GithubLink[] | null;
+  githubUrl?: GithubUrlValue;
 };
 
 export function LinksCard({ demoUrl, githubUrl }: Props) {
