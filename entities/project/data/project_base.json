@@ -24,7 +24,7 @@
     "isCommercial": false,
     "technologiesIds": ["javascript", "css", "gsap"],
     "demoUrl": "",
-    "githubUrl": ""
+    "githubUrl": "https://github.com/igorator/Perion-test"
   },
   {
     "slug": "atmosphere-school-test",
@@ -103,13 +103,15 @@
     "slug": "scart-test",
     "date": "2025-07",
     "githubUrl": "https://github.com/igorator/Scart-test",
+    "demoUrl": "https://scart-test.vercel.app/",
     "isCommercial": false,
     "technologiesIds": ["react", "tailwind"]
   },
   {
     "slug": "rely-test",
     "date": "2025-01",
-    "githubUrl": "https://github.com/igorator/RELY_Test_Kliushnyk",
+    "githubUrl": "https://github.com/igorator/RELY_Test",
+    "demoUrl": "https://rely-test-phi.vercel.app/",
     "isCommercial": false,
     "technologiesIds": ["react", "react-router", "tailwind"]
   },
