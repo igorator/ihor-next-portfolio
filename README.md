@@ -15,20 +15,14 @@ Features a WebGL animated background, glass UI system, bilingual content, and a 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5%20strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-
 [![CSS Modules](https://img.shields.io/badge/CSS%20Modules-styling-264DE4)](https://github.com/css-modules/css-modules)
 [![CSS Custom Properties](https://img.shields.io/badge/CSS-variables-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
-
 [![motion/react](https://img.shields.io/badge/motion%2Freact-v12-0055FF?logo=framer&logoColor=white)](https://motion.dev/)
 [![OGL](https://img.shields.io/badge/WebGL-OGL-000000)](https://github.com/oframe/ogl)
-
 [![next-intl](https://img.shields.io/badge/i18n-next--intl%20v4-1A1A1A)](https://next-intl.dev/)
-
 [![Radix UI](https://img.shields.io/badge/UI-Radix%20Primitives-000000)](https://www.radix-ui.com/)
-
 [![Vercel Analytics](https://img.shields.io/badge/Vercel-Analytics-black?logo=vercel)](https://vercel.com/analytics)
 [![Speed Insights](https://img.shields.io/badge/Speed-Insights-black?logo=vercel)](https://vercel.com/docs/speed-insights)
-
 [![ESLint](https://img.shields.io/badge/ESLint-linting-4B32C3?logo=eslint)](https://eslint.org/)
 [![Prettier](https://img.shields.io/badge/Prettier-formatting-F7B93E?logo=prettier)](https://prettier.io/)
 [![Husky](https://img.shields.io/badge/Husky-git%20hooks-1F1E1E)](https://typicode.github.io/husky/)
