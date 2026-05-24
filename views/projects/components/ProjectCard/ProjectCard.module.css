@@ -67,6 +67,9 @@
 }
 
 .links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--element-gap);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
@@ -78,6 +81,23 @@
 
 .links a:hover {
   border-color: color-mix(in srgb, var(--foreground) 40%, transparent);
+}
+
+.githubIcon {
+  flex-shrink: 0;
+}
+
+.linksMore {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 5px;
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in oklab, var(--foreground) 20%, transparent);
+  color: color-mix(in oklab, var(--foreground) 50%, transparent);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .coverLink {

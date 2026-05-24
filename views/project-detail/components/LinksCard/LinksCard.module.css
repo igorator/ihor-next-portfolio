@@ -42,6 +42,10 @@
   background: var(--link-hover-background);
 }
 
+.githubIcon {
+  flex-shrink: 0;
+}
+
 .emptyState {
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
 }

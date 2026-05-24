@@ -9,6 +9,7 @@ import { Section } from "@/shared/ui/Section/Section";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { routes } from "@/shared/config/routes";
 import type { Technology } from "@/entities/technology/types";
+import type { GithubUrlValue } from "@/entities/project/types";
 import type { MediaItem } from "@/shared/ui/Lightbox/types";
 import { Lightbox } from "@/shared/ui/Lightbox/Lightbox";
 import { OverviewCard } from "./components/OverviewCard/OverviewCard";
@@ -26,7 +27,7 @@ type ProjectSectionProps = {
   date: string;
   cover: string;
   technologies: Technology[];
-  githubUrl?: string | null;
+  githubUrl?: GithubUrlValue;
   demoUrl?: string | null;
   screens?: string[];
   video?: string;

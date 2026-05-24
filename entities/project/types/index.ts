@@ -1,5 +1,16 @@
 import type { Technology } from "@/entities/technology/types";
 
+export type GithubLink = {
+  url: string;
+  label?: string;
+};
+
+export type GithubUrlValue =
+  | string
+  | GithubLink
+  | (string | GithubLink)[]
+  | null;
+
 export type Project = {
   slug: string;
   title: string;
@@ -11,7 +22,7 @@ export type Project = {
   cover?: string;
   screens?: string[];
   video?: string;
-  githubUrl?: string | null;
+  githubUrl?: GithubUrlValue;
   demoUrl?: string | null;
   isCommercial?: boolean;
   isHighlighted?: boolean;

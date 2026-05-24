@@ -214,6 +214,13 @@
     "priority": 28
   },
   {
+    "id": "blueprint",
+    "name": "Blueprint",
+    "color": "#1B6CA8",
+    "category": "Integrations",
+    "priority": 28.5
+  },
+  {
     "id": "grammy",
     "name": "GrammY",
     "color": "#00BFFF",

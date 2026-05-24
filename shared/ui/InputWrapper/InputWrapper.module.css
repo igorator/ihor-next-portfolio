@@ -10,9 +10,10 @@
 }
 
 .inputWrapper[data-active] {
-  border-color: color-mix(in srgb, var(--foreground) 30%, var(--glass-border));
+  border-color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
 }
 
 .inputWrapper:has(:focus-visible) {
-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  border-color: color-mix(in srgb, var(--foreground) 70%, transparent);
 }

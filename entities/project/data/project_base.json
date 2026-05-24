@@ -83,12 +83,20 @@
       "postgres",
       "telegram",
       "ton",
+      "blueprint",
       "tailwind",
       "shadcn",
       "framer-motion",
       "lottie",
       "jest",
       "grammy"
+    ],
+    "githubUrl": [
+      {
+        "url": "https://github.com/igorator/doido-frontend",
+        "label": "Frontend"
+      },
+      { "url": "https://github.com/igorator/doido-backend", "label": "Backend" }
     ]
   },
   {

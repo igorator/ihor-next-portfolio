@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
-import { BsArrowRight } from "react-icons/bs";
+import { BsArrowRight, BsGithub, BsGlobe2 } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/shared/ui/Card";
+import type { GithubUrlValue } from "@/entities/project/types";
+import { normalizeGithubLinks } from "@/entities/project/lib/normalizeGithubLinks";
 import { ProjectCardTooltip } from "./ProjectCardTooltip/ProjectCardTooltip";
 import styles from "./ProjectCard.module.css";
 
@@ -22,7 +24,7 @@ export type ProjectCardProps = {
     color?: string;
     textColor?: string;
   }>;
-  githubUrl?: string | null;
+  githubUrl?: GithubUrlValue;
   demoUrl?: string | null;
   isCommercial?: boolean;
   isHighlighted?: boolean;
@@ -47,6 +49,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   const t = useTranslations();
   const format = useFormatter();
+  const githubLinks = normalizeGithubLinks(githubUrl);
 
   const formatDate = (dateStr: string) => {
     const [year, month] = dateStr.split("-").map(Number);
@@ -156,14 +159,26 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       <div className={styles.cardFooter}>
         <div className={styles.links}>
-          {githubUrl && (
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              {t("projects_ui.links.github", { default: "GitHub" })}
-            </a>
-          )}
           {demoUrl && (
             <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+              <BsGlobe2 aria-hidden size={13} className={styles.githubIcon} />
               {t("projects_ui.links.liveDemo", { default: "Live demo" })}
+            </a>
+          )}
+          {githubLinks[0] && (
+            <a
+              href={githubLinks[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BsGithub aria-hidden size={13} className={styles.githubIcon} />
+              {githubLinks[0].label ??
+                t("projects_ui.links.github", { default: "GitHub" })}
+              {githubLinks.length > 1 && (
+                <span className={styles.linksMore}>
+                  +{githubLinks.length - 1}
+                </span>
+              )}
             </a>
           )}
         </div>

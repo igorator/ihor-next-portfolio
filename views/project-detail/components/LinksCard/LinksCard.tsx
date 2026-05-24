@@ -1,17 +1,21 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { BsGithub, BsGlobe2 } from "react-icons/bs";
 import { Card } from "@/shared/ui/Card";
+import type { GithubLink } from "@/entities/project/types";
+import { normalizeGithubLinks } from "@/entities/project/lib/normalizeGithubLinks";
 import layout from "../../Project.module.css";
 import styles from "./LinksCard.module.css";
 
 type Props = {
   demoUrl?: string | null;
-  githubUrl?: string | null;
+  githubUrl?: string | GithubLink | GithubLink[] | null;
 };
 
 export function LinksCard({ demoUrl, githubUrl }: Props) {
   const t = useTranslations("projects_ui");
+  const githubLinks = normalizeGithubLinks(githubUrl);
 
   return (
     <Card className={layout.linksCard}>
@@ -24,22 +28,25 @@ export function LinksCard({ demoUrl, githubUrl }: Props) {
             target="_blank"
             rel="noopener noreferrer"
           >
+            <BsGlobe2 aria-hidden size={14} className={styles.githubIcon} />
             {t("links.liveDemo")}
           </a>
         ) : null}
 
-        {githubUrl ? (
+        {githubLinks.map((link, i) => (
           <a
+            key={i}
             className={`${styles.link} ${styles.linkGhost}`}
-            href={githubUrl}
+            href={link.url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("links.github")}
+            <BsGithub aria-hidden size={15} className={styles.githubIcon} />
+            {link.label ?? t("links.github")}
           </a>
-        ) : null}
+        ))}
 
-        {!demoUrl && !githubUrl && (
+        {!demoUrl && githubLinks.length === 0 && (
           <span className={styles.emptyState}>{t("noLinks")}</span>
         )}
       </div>
