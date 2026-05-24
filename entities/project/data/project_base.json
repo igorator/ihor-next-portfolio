@@ -23,7 +23,7 @@
     "date": "2026-02",
     "isCommercial": false,
     "technologiesIds": ["javascript", "css", "gsap"],
-    "demoUrl": "",
+    "demoUrl": "https://perion-test.vercel.app",
     "githubUrl": "https://github.com/igorator/Perion-test"
   },
   {
