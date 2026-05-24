@@ -5,6 +5,7 @@
 Personal portfolio built with Next.js 16, React 19, and TypeScript. Features a WebGL animated background, glass UI, bilingual content, and a fully filterable projects showcase.
 
 **Live:** [igorator.site](https://igorator.site)
+**Assets:** [Assets repo]([https://igorator.site](https://github.com/igorator/portfolio-assets))
 
 ---
 
