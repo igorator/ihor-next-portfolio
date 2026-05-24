@@ -39,7 +39,12 @@
     "other": {
       "title": "Projects",
       "description": "This is a catalog of my projects, from commercial to personal. Not all work is listed here for various reasons:",
-      "reasons": ["NDA", "private repositories", "unfinished releases"],
+      "reasons": [
+        "NDA",
+        "private repositories",
+        "unfinished releases",
+        "verbal agreements"
+      ],
       "tags": [
         "10+ Webflow projects",
         "React & Next.js",
