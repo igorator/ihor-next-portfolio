@@ -159,28 +159,38 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       <div className={styles.cardFooter}>
         <div className={styles.links}>
-          {demoUrl && (
-            <a href={demoUrl} target="_blank" rel="noopener noreferrer">
-              <BsGlobe2 aria-hidden size={13} className={styles.githubIcon} />
-              {t("projects_ui.links.liveDemo", { default: "Live demo" })}
-            </a>
-          )}
-          {githubLinks[0] && (
-            <a
-              href={githubLinks[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsGithub aria-hidden size={13} className={styles.githubIcon} />
-              {githubLinks[0].label ??
-                t("projects_ui.links.github", { default: "GitHub" })}
-              {githubLinks.length > 1 && (
-                <span className={styles.linksMore}>
-                  +{githubLinks.length - 1}
-                </span>
-              )}
-            </a>
-          )}
+          {[
+            ...(demoUrl
+              ? [
+                  {
+                    href: demoUrl,
+                    Icon: BsGlobe2,
+                    label: t("projects_ui.links.liveDemo", {
+                      default: "Live demo",
+                    }),
+                  },
+                ]
+              : []),
+            ...githubLinks.map((gl) => ({
+              href: gl.url,
+              Icon: BsGithub,
+              label:
+                gl.label ??
+                t("projects_ui.links.github", { default: "GitHub" }),
+            })),
+          ]
+            .slice(0, 2)
+            .map(({ href, Icon, label }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon aria-hidden size={13} className={styles.githubIcon} />
+                <span className={styles.linkLabel}>{label}</span>
+              </a>
+            ))}
         </div>
 
         <Link
@@ -188,7 +198,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           rel="noopener noreferrer"
           aria-label={t("projects_ui.viewProjectAria", { title })}
         >
-          <BsArrowRight size={20} aria-hidden="true" />
+          <BsArrowRight size={22} aria-hidden="true" />
         </Link>
       </div>
     </Card>

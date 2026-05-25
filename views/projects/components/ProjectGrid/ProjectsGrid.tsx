@@ -22,23 +22,27 @@ export const ProjectsGrid = ({
 }: ProjectsGridProps) => {
   const t = useTranslations("projects_ui");
 
-  return (
-    <div
-      className={`${styles.projectsWrapper} ${viewMode === "list" ? styles.listView : ""}`}
-    >
-      {projects.length > 0 ? (
-        <AnimatePresence>
-          {viewMode === "grid" && !hasActiveFilters && <ProjectOverviewCard />}
+  const gridKey = viewMode + projects.map((p) => p.slug).join(",");
 
-          {projects.map((project) => (
-            <motion.div
-              key={project.slug}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            >
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={gridKey}
+        className={`${styles.projectsWrapper} ${viewMode === "list" ? styles.listView : ""}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15, ease: "easeInOut" }}
+      >
+        {projects.length > 0 ? (
+          <>
+            {viewMode === "grid" && !hasActiveFilters && (
+              <ProjectOverviewCard />
+            )}
+
+            {projects.map((project) => (
               <ProjectCard
+                key={project.slug}
                 onTechnologyClick={onTechnologyClick}
                 slug={project.slug}
                 title={project.title}
@@ -54,19 +58,19 @@ export const ProjectsGrid = ({
                 isHighlighted={project.isHighlighted}
                 viewMode={viewMode}
               />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      ) : (
-        <motion.div
-          className={styles.noProjects}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {t("noMatches")}
-        </motion.div>
-      )}
-    </div>
+            ))}
+          </>
+        ) : (
+          <motion.div
+            className={styles.noProjects}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            {t("noMatches")}
+          </motion.div>
+        )}
+      </motion.div>
+    </AnimatePresence>
   );
 };

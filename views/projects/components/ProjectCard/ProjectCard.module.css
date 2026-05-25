@@ -95,19 +95,6 @@
   flex-shrink: 0;
 }
 
-.linksMore {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 5px;
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in oklab, var(--foreground) 20%, transparent);
-  color: color-mix(in oklab, var(--foreground) 50%, transparent);
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
 .coverLink {
   grid-area: cover;
   display: block;
@@ -243,18 +230,18 @@
 }
 
 .listCard {
+  --list-row-h: 68px;
+
   display: grid;
   grid-template-columns: 28px minmax(100px, 160px) 1fr auto auto auto;
   grid-template-rows: auto;
   grid-template-areas: "badge title techs types meta footer";
   column-gap: var(--space-4);
   align-items: center;
-
   min-height: unset;
-  height: auto;
-  padding: var(--space-4) var(--space-5);
+  height: var(--list-row-h);
+  padding: 0 var(--space-5);
   border-radius: var(--radius-md);
-
   overflow: hidden;
 }
 
@@ -297,6 +284,7 @@
   margin-bottom: 0;
   gap: 4px;
   align-items: center;
+  align-self: center;
 }
 
 .listCard .tech {
@@ -337,6 +325,7 @@
 .listCard .cardFooter {
   grid-area: footer;
   margin-top: 0;
+  padding-top: 0;
   width: auto;
   justify-content: flex-end;
 }
@@ -351,8 +340,33 @@
   color: var(--foreground);
 }
 
-.listCard .description,
+.listCard .description {
+  display: none;
+}
+
 .listCard .links {
+  gap: var(--space-2);
+  margin-right: var(--space-3);
+}
+
+.listCard .links a {
+  padding: var(--space-1);
+  border: none;
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  transition: color var(--transition-fast);
+}
+
+.listCard .links a:hover {
+  color: var(--foreground);
+  border-color: transparent;
+}
+
+.listCard .links .githubIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.listCard .links .linkLabel {
   display: none;
 }
 
