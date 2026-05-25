@@ -1,7 +1,15 @@
 .projectCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto auto 1fr auto;
+  grid-template-areas:
+    "meta"
+    "title"
+    "cover"
+    "types"
+    "desc"
+    "techs"
+    "footer";
   gap: var(--component-gap);
   padding: var(--space-6);
   min-height: 320px;
@@ -9,7 +17,7 @@
 }
 
 .title {
-  margin-bottom: var(--space-3);
+  grid-area: title;
   font-size: var(--text-xl);
   color: var(--foreground);
   max-width: 90%;
@@ -19,7 +27,7 @@
 }
 
 .description {
-  margin-bottom: var(--space-4);
+  grid-area: desc;
   color: color-mix(in srgb, var(--foreground) 80%, transparent);
   line-height: 1.6;
   display: -webkit-box;
@@ -28,17 +36,17 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: var(--text-base);
-  max-height: 120px;
-  text-wrap: pretty;
+  height: 80px;
 }
 
 .technologies {
+  grid-area: techs;
+  align-self: start;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: flex-start;
   gap: var(--element-gap);
-  margin-bottom: var(--space-4);
 }
 
 .tech {
@@ -101,11 +109,10 @@
 }
 
 .coverLink {
+  grid-area: cover;
   display: block;
   border-radius: var(--radius-md);
   overflow: hidden;
-  margin-bottom: var(--space-3);
-  flex-shrink: 0;
 }
 
 .coverWrapper {
@@ -140,13 +147,14 @@
 }
 
 .typesBadges {
+  grid-area: types;
   display: flex;
   gap: var(--element-gap);
   align-items: center;
-  margin-bottom: var(--space-2);
 }
 
 .meta {
+  grid-area: meta;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -171,10 +179,11 @@
 }
 
 .cardFooter {
+  grid-area: footer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
+  padding-top: var(--space-4);
 }
 
 .commercialBadge {
@@ -230,13 +239,13 @@
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
-    text-wrap: pretty;
   }
 }
 
 .listCard {
   display: grid;
   grid-template-columns: 28px minmax(100px, 160px) 1fr auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas: "badge title techs types meta footer";
   column-gap: var(--space-4);
   align-items: center;
