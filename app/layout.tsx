@@ -5,7 +5,6 @@ import { Inter, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing } from "@/i18n/routing";
-import { AppPortal } from "@/shared/portals/AppPortal";
 import { AppBackground } from "@/shared/ui/Background/AppBackground";
 import { siteConfig } from "@/shared/config/site";
 
@@ -72,7 +71,6 @@ export default async function RootLayout({
         <Analytics />
         <SpeedInsights />
         {children}
-        <AppPortal />
       </body>
     </html>
   );

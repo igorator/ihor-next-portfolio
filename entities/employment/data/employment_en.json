@@ -2,7 +2,7 @@
   "doido-market": {
     "type": "startup",
     "category": "E-commerce",
-    "position": "Co-founder & Full-Stack Developer",
+    "position": "Full-Stack Developer & Co-founder",
     "roles": [
       "Architected a Telegram NFT marketplace from scratch: tech stack selection and system design",
       "Built client-side app with TON payment integration",
@@ -28,7 +28,7 @@
   "3mpq-studio": {
     "type": "startup",
     "category": "Digital agency",
-    "position": "Co-founder & Full-Stack Developer",
+    "position": "Full-Stack Developer & Co-founder",
     "roles": [
       "Built and deployed a Telegram bot with Supabase integration",
       "Built a full-stack internal dashboard: frontend, backend API & deployment",
@@ -47,7 +47,7 @@
   },
   "logics7": {
     "type": "on demand",
-    "position": "Front-end / Webflow Developer",
+    "position": "Webflow / Front-end Developer",
     "roles": [
       "Built Webflow websites to client specifications",
       "Built a Next.js website with 3D Spline & CRM integration",

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { BsX } from "react-icons/bs";
-import { AppPortal } from "@/shared/portals/AppPortal";
+import { Portal } from "@/shared/ui/Portal";
 import { LanguageSelect } from "@/widgets/language-select/LanguageSelect";
 import { Socials } from "@/widgets/socials/Socials";
 import { ThemeSwitch } from "@/widgets/theme-switcher/ThemeSwitcher";
@@ -34,7 +34,7 @@ export const MobileHiddenMenu: React.FC<Props> = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
-    <AppPortal>
+    <Portal>
       <button
         type="button"
         className={styles.layer}
@@ -74,6 +74,6 @@ export const MobileHiddenMenu: React.FC<Props> = ({ open, onClose }) => {
           <ThemeSwitch />
         </div>
       </div>
-    </AppPortal>
+    </Portal>
   );
 };
