@@ -1,6 +1,6 @@
 .projectsWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-6);
   width: 100%;
   padding: var(--space-6) 0;
@@ -22,7 +22,13 @@
   grid-column: 1 / -1;
 }
 
-@media (min-width: 768px) {
+@media (--mobile) {
+  .projectsWrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 721px) {
   .projectsWrapper {
     grid-template-columns: repeat(2, 1fr);
   }
