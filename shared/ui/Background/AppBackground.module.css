@@ -21,19 +21,3 @@
 .loader[data-ready] {
   opacity: 0;
 }
-
-.loaderSpinner {
-  width: 36px;
-  height: 36px;
-  color: color-mix(in srgb, var(--foreground) 65%, transparent);
-  animation: ios-spin 0.8s steps(12, end) infinite;
-}
-
-@keyframes ios-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

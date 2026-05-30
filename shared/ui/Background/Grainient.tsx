@@ -238,11 +238,14 @@ export const Grainient: React.FC<GrainientProps> = ({
     let raf = 0;
     let isVisible = true;
     let isPageVisible = !document.hidden;
-    const t0 = performance.now();
+    let accTime = 0;
+    let lastT = -1;
     let firstFrame = true;
 
     const loop = (t: number) => {
-      (program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001;
+      if (lastT >= 0) accTime += (t - lastT) * 0.001;
+      lastT = t;
+      (program.uniforms.iTime as { value: number }).value = accTime;
       renderer.render({ scene: mesh });
       if (firstFrame) {
         firstFrame = false;
@@ -259,6 +262,7 @@ export const Grainient: React.FC<GrainientProps> = ({
       if (raf !== 0) {
         cancelAnimationFrame(raf);
         raf = 0;
+        lastT = -1;
       }
     };
 

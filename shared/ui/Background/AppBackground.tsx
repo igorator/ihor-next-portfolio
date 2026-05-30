@@ -2,8 +2,21 @@
 
 import { useState } from "react";
 import { useTheme } from "@/shared/hooks/useTheme";
+import { Spinner } from "@/shared/loading/Spinner";
 import { Grainient } from "./Grainient";
 import styles from "./AppBackground.module.css";
+
+const ANIMATION = {
+  timeSpeed: 0.65,
+  warpSpeed: 2.0,
+  warpStrength: 1.0,
+  warpAmplitude: 50,
+  warpFrequency: 5.0,
+  rotationAmount: 500,
+  grainAmount: 0.1,
+  grainScale: 2.0,
+  zoom: 0.8,
+};
 
 const DARK = {
   color1: "#1e3d6e",
@@ -25,7 +38,7 @@ export function AppBackground() {
   const { isDark } = useTheme();
   const [ready, setReady] = useState(false);
   const [unmounted, setUnmounted] = useState(false);
-  const colors = isDark ? DARK : LIGHT;
+  const COLORS = isDark ? DARK : LIGHT;
 
   const handleReady = () => {
     setTimeout(() => {
@@ -37,16 +50,7 @@ export function AppBackground() {
   return (
     <>
       <div className={styles.wrapper} aria-hidden="true">
-        <Grainient
-          {...colors}
-          timeSpeed={0.6}
-          warpSpeed={3.5}
-          grainAmount={0.06}
-          grainScale={2.5}
-          warpStrength={0.8}
-          zoom={0.85}
-          onReady={handleReady}
-        />
+        <Grainient {...ANIMATION} {...COLORS} onReady={handleReady} />
       </div>
 
       {!unmounted && (
@@ -55,27 +59,7 @@ export function AppBackground() {
           data-ready={ready || undefined}
           aria-hidden="true"
         >
-          <svg
-            className={styles.loaderSpinner}
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {Array.from({ length: 12 }, (_, i) => (
-              <line
-                key={i}
-                x1="20"
-                y1="7"
-                x2="20"
-                y2="13"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                transform={`rotate(${i * 30} 20 20)`}
-                opacity={((12 - i) / 12).toFixed(2)}
-              />
-            ))}
-          </svg>
+          <Spinner size={36} />
         </div>
       )}
     </>
