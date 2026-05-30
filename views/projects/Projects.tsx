@@ -114,7 +114,10 @@ export const ProjectsSection = ({
           />
         </InputWrapper>
 
-        <InputWrapper className={styles.filterClearButtonWrapper}>
+        <InputWrapper
+          className={styles.filterClearButtonWrapper}
+          data-active={hasActiveFilters || undefined}
+        >
           <FilterClearButton
             onClear={clearAll}
             disabled={!hasActiveFilters}

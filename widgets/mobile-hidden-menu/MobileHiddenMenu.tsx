@@ -50,28 +50,33 @@ export const MobileHiddenMenu: React.FC<Props> = ({ open, onClose }) => {
         aria-modal="true"
         aria-label={t("openMenu")}
         className={styles.menu}
-        onClick={(e) => e.stopPropagation()}
-        onKeyDown={(e) => e.stopPropagation()}
       >
-        <div className={styles.header}>
-          <LanguageSelect
-            triggerClassName={styles.langTrigger}
-            contentAlign="start"
-            sideOffset={8}
-          />
-          <button
-            type="button"
-            className={styles.closeBtn}
-            onClick={onClose}
-            aria-label={t("closeMenu")}
-          >
-            <BsX className={styles.closeIcon} size={30} />
-          </button>
-        </div>
+        <div className={styles.menuInner}>
+          <div className={styles.header}>
+            <LanguageSelect
+              triggerClassName={styles.langTrigger}
+              contentAlign="start"
+              sideOffset={8}
+            />
+            <button
+              type="button"
+              className={styles.closeBtn}
+              onClick={onClose}
+              aria-label={t("closeMenu")}
+            >
+              <BsX className={styles.closeIcon} size={30} />
+            </button>
+          </div>
 
-        <div className={styles.content}>
-          <Socials vertical />
-          <ThemeSwitch />
+          <div
+            className={styles.content}
+            onClick={(e) => {
+              if (!(e.target as HTMLElement).closest("a, button")) onClose();
+            }}
+          >
+            <Socials vertical />
+            <ThemeSwitch />
+          </div>
         </div>
       </div>
     </Portal>

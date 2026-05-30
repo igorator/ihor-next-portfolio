@@ -1,7 +1,7 @@
 .projectCard {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto auto 1fr auto;
+  grid-template-rows: auto auto auto auto 80px 1fr auto;
   grid-template-areas:
     "meta"
     "title"
@@ -28,15 +28,15 @@
 
 .description {
   grid-area: desc;
+  align-self: start;
   color: color-mix(in srgb, var(--foreground) 80%, transparent);
   line-height: 1.6;
+  font-size: var(--text-base);
   display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   line-clamp: 3;
-  -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: var(--text-base);
-  height: 80px;
 }
 
 .technologies {
