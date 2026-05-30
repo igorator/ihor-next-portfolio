@@ -1,6 +1,20 @@
 {
-  "loading": {
-    "loading": "Loading..."
+  "common": {
+    "loading": "Loading...",
+    "scrollToTop": "Scroll to top"
+  },
+
+  "a11y": {
+    "toggleTheme": "Toggle color theme",
+    "language": "Language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+
+  "navigation": {
+    "root": "Home",
+    "projects": "Projects",
+    "employment": "Employment"
   },
 
   "home": {
@@ -10,35 +24,32 @@
     "rolePrefix": "and I'm a",
     "role": "Developer"
   },
-  "navigation": {
-    "root": "Home",
-    "projects": "Projects",
-    "employment": "Employment"
-  },
+
   "projects": {
     "title": "Projects",
+    "noMatches": "No projects match your filters",
     "filters": {
       "technologies": "Technologies",
       "sort": "Sort by",
       "clear": "Clear filters",
       "selected": "{count, plural, =0{Select Technologies} =1{# selected} other{# selected}}",
+      "commercial": "Commercial only",
       "options": {
         "newest": "Newest First",
         "oldest": "Oldest First",
         "az": "A-Z",
         "za": "Z-A"
       }
-    }
-  },
-  "projects_ui": {
-    "noMatches": "No projects match your filters",
-    "links": {
+    },
+    "card": {
+      "viewAria": "View details: {title}",
+      "commercial": "Commercial",
+      "commercialAria": "Commercial project",
       "github": "GitHub",
       "liveDemo": "Live Demo"
     },
-    "other": {
+    "overview": {
       "label": "Project Catalog",
-      "title": "Projects",
       "commercial": "Commercial",
       "personal": "Personal",
       "description": "This is a catalog of my projects, from commercial to personal. Not all work is listed here for various reasons:",
@@ -55,30 +66,31 @@
         "Certifications"
       ],
       "stackHighlightsAria": "Stack highlights"
-    },
-    "noLinks": "No links data",
-    "noImages": "No image data",
-    "commercial": "Commercial",
-    "onlyCommercialProjects": "Commercial only",
+    }
+  },
+
+  "projectDetail": {
     "back": "Back",
     "backToProjectsAria": "Back to projects",
-    "viewProjectAria": "View details: {title}",
     "technologiesTitle": "Technologies",
     "linksTitle": "Links",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
     "type": "Type",
     "category": "Category",
     "date": "Date",
     "descriptionTitle": "Description",
     "noTechnologies": "No technologies listed.",
+    "noLinks": "No links data",
+    "noImages": "No image data",
+    "imageAltCover": "{title}: cover",
     "openImageAria": "Open image in lightbox",
     "openVideoAria": "Open video in lightbox",
-    "imageAltCover": "{title}: cover",
     "previousImageAria": "Previous image",
     "nextImageAria": "Next image",
     "goToImageAria": "Go to image {index}",
     "technologyStackAria": "Technology stack",
     "stackHighlightsAria": "Stack highlights",
-    "commercialProjectAria": "Commercial project",
     "lightbox": {
       "closeAria": "Close",
       "previousAria": "Previous",
@@ -88,24 +100,21 @@
       "imageAlt": "{title}: image {current} of {total}"
     }
   },
+
   "employment": {
     "title": "Employment History",
     "linkedProjects": "Linked projects",
     "present": "Present"
   },
+
   "error": {
     "title": "Something went wrong",
     "tryAgain": "Try again",
     "backHome": "Back to Home"
   },
+
   "notFound": {
     "title": "Page not found",
     "backHome": "Back to Home"
-  },
-  "a11y": {
-    "toggleTheme": "Toggle color theme",
-    "language": "Language",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu"
   }
 }

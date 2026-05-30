@@ -17,7 +17,7 @@ export const LightboxToolbar = ({
   item,
   onInteraction,
 }: LightboxToolbarProps) => {
-  const t = useTranslations("projects_ui.lightbox");
+  const t = useTranslations("projectDetail.lightbox");
 
   return (
     <div

@@ -2,6 +2,7 @@
 
 import { startTransition, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { GlassSurface } from "@/shared/ui/GlassSurface/GlassSurface";
 import { BsArrowUp } from "react-icons/bs";
 import styles from "./ScrollToTop.module.css";
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const ScrollToTop = ({ variant = "fixed", className }: Props) => {
+  const t = useTranslations("common");
   const [visible, setVisible] = useState(false);
   const prefersReduced = useReducedMotion();
 
@@ -27,7 +29,8 @@ export const ScrollToTop = ({ variant = "fixed", className }: Props) => {
       <button
         className={styles.button}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Scroll to top"
+        aria-label={t("scrollToTop")}
+        title={t("scrollToTop")}
       >
         <BsArrowUp className={styles.icon} />
       </button>

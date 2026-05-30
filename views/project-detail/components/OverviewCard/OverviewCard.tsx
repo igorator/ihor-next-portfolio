@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function OverviewCard({ title, type, category, date }: Props) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
   const format = useFormatter();
 
   const formatDate = (dateStr: string) => {

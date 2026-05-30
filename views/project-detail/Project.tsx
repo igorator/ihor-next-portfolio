@@ -53,7 +53,7 @@ export function ProjectSection({
   screens = [],
   video,
 }: ProjectSectionProps) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
   const router = useRouter();
 
   const items: MediaItem[] = [];

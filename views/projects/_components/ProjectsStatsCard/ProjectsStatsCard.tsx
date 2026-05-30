@@ -2,30 +2,35 @@
 
 import { useTranslations } from "next-intl";
 import { Card } from "@/shared/ui/Card";
-import styles from "./ProjectOverviewCard.module.css";
+import { CountUp } from "@/shared/ui/CountUp/CountUp";
+import styles from "./ProjectsStatsCard.module.css";
 
 type Props = {
   commercialCount: number;
   personalCount: number;
 };
 
-export const ProjectOverviewCard = ({
+export const ProjectsStatsCard = ({
   commercialCount,
   personalCount,
 }: Props) => {
-  const t = useTranslations("projects_ui.other");
+  const t = useTranslations("projects.overview");
 
   return (
-    <Card className={styles.card} aria-label={t("title")}>
+    <Card className={styles.card} aria-label={t("label")}>
       <span className={styles.label}>{t("label")}</span>
 
       <div className={styles.stats}>
         <div className={styles.statItem}>
-          <span className={styles.statNumber}>{commercialCount}</span>
+          <span className={styles.statNumber}>
+            <CountUp to={commercialCount} />
+          </span>
           <span className={styles.statUnit}>{t("commercial")}</span>
         </div>
         <div className={styles.statItem}>
-          <span className={styles.statNumber}>{personalCount}</span>
+          <span className={styles.statNumber}>
+            <CountUp to={personalCount} />
+          </span>
           <span className={styles.statUnit}>{t("personal")}</span>
         </div>
       </div>

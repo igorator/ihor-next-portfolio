@@ -37,7 +37,7 @@ export default async function Projects({ params }: LocalePageProps) {
 
   const [projects, technologies] = await Promise.all([
     getProjects(locale),
-    getTechnologies(),
+    getTechnologies(locale),
   ]);
 
   return (

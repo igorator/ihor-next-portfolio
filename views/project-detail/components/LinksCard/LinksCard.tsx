@@ -14,7 +14,7 @@ type Props = {
 };
 
 export function LinksCard({ demoUrl, githubUrl }: Props) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
   const githubLinks = normalizeGithubLinks(githubUrl);
 
   return (
@@ -29,7 +29,7 @@ export function LinksCard({ demoUrl, githubUrl }: Props) {
             rel="noopener noreferrer"
           >
             <BsGlobe2 aria-hidden size={14} className={styles.githubIcon} />
-            {t("links.liveDemo")}
+            {t("liveDemo")}
           </a>
         ) : null}
 
@@ -42,7 +42,7 @@ export function LinksCard({ demoUrl, githubUrl }: Props) {
             rel="noopener noreferrer"
           >
             <BsGithub aria-hidden size={15} className={styles.githubIcon} />
-            {link.label ?? t("links.github")}
+            {link.label ?? t("github")}
           </a>
         ))}
 

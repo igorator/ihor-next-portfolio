@@ -19,7 +19,7 @@ function colorFromString(seed: string) {
 type Props = { technologies: Technology[] };
 
 export function StackCard({ technologies }: Props) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
 
   return (
     <Card className={layout.stackCard}>

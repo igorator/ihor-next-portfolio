@@ -36,7 +36,7 @@
 .icon {
   width: 18px;
   height: 18px;
-  color: color-mix(in oklab, var(--foreground) 60%, transparent);
+  color: var(--foreground);
 }
 
 .surface:hover .icon {

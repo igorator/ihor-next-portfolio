@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { LightboxButton } from "./LightboxButton";
+import { NavButton } from "@/shared/ui/NavButton/NavButton";
 import { LightboxToolbar } from "./LightboxToolbar";
 import type { MediaItem } from "./types";
 import styles from "./Lightbox.module.css";
@@ -23,7 +23,7 @@ export const Lightbox = ({
   onClose,
   title,
 }: LightboxProps) => {
-  const t = useTranslations("projects_ui.lightbox");
+  const t = useTranslations("projectDetail.lightbox");
   const total = items.length;
   const current = items[index];
 
@@ -63,14 +63,15 @@ export const Lightbox = ({
         if (e.key === "Escape") onClose();
       }}
     >
-      <LightboxButton
+      <NavButton
         variant="close"
         ariaLabel={t("closeAria")}
         onClick={onClose}
         onPointerDown={stopPropagation}
+        className={`${styles.controlButton} ${styles.closeButton}`}
       />
 
-      <LightboxButton
+      <NavButton
         variant="previous"
         ariaLabel={t("previousAria")}
         onClick={(e) => {
@@ -78,9 +79,10 @@ export const Lightbox = ({
           navigate(-1);
         }}
         onPointerDown={stopPropagation}
+        className={`${styles.controlButton} ${styles.previousButton}`}
       />
 
-      <LightboxButton
+      <NavButton
         variant="next"
         ariaLabel={t("nextAria")}
         onClick={(e) => {
@@ -88,6 +90,7 @@ export const Lightbox = ({
           navigate(1);
         }}
         onPointerDown={stopPropagation}
+        className={`${styles.controlButton} ${styles.nextButton}`}
       />
 
       <div className={styles.stage} aria-live="polite">

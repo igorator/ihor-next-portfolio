@@ -5,11 +5,11 @@ import { Section } from "@/shared/ui/Section/Section";
 import type { ProjectWithTechnologies } from "@/entities/project/types";
 import type { Technology } from "@/entities/technology/types";
 import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
-import { useProjectFilters } from "./useProjectFilters";
-import { useViewMode } from "./useViewMode";
-import { FilterBar } from "./FilterBar/FilterBar";
-import { ControlsBar } from "./ControlsBar/ControlsBar";
-import { ProjectsGrid } from "./ProjectGrid/ProjectsGrid";
+import { useProjectFilters } from "./_hooks/useProjectFilters";
+import { useViewMode } from "./_hooks/useViewMode";
+import { FilterBar } from "./_components/FilterBar/FilterBar";
+import { ControlsBar } from "./_components/ControlsBar/ControlsBar";
+import { ProjectsGrid } from "./_components/ProjectGrid/ProjectsGrid";
 import styles from "./Projects.module.css";
 
 interface ProjectsSectionProps {

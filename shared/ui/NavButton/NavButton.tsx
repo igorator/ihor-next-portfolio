@@ -1,12 +1,15 @@
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
-import styles from "./Lightbox.module.css";
+import styles from "./NavButton.module.css";
 
-type LightboxButtonProps = {
-  variant: "previous" | "next" | "close";
+type NavButtonVariant = "previous" | "next" | "close";
+
+type Props = {
+  variant: NavButtonVariant;
   ariaLabel: string;
   onClick: (e: React.MouseEvent) => void;
-  onPointerDown: (e: React.PointerEvent) => void;
+  onPointerDown?: (e: React.PointerEvent) => void;
+  className?: string;
 };
 
 const icons = {
@@ -15,29 +18,23 @@ const icons = {
   close: MdClose,
 };
 
-const variantClass = {
-  previous: styles.previousButton,
-  next: styles.nextButton,
-  close: styles.closeButton,
-};
-
-export const LightboxButton = ({
+export const NavButton = ({
   variant,
   ariaLabel,
   onClick,
   onPointerDown,
-}: LightboxButtonProps) => {
+  className,
+}: Props) => {
   const Icon = icons[variant];
-
   return (
     <button
       type="button"
-      className={`${styles.controlButton} ${variantClass[variant]}`}
+      className={`${styles.navButton}${className ? ` ${className}` : ""}`}
       aria-label={ariaLabel}
       onClick={onClick}
       onPointerDown={onPointerDown}
     >
-      <Icon />
+      <Icon size={16} />
     </button>
   );
 };

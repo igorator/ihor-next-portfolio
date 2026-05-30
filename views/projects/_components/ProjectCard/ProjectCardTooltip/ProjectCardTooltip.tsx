@@ -22,7 +22,7 @@ export const ProjectCardTooltip = ({
         <Tooltip.Trigger asChild>
           <div
             className={styles.commercialBadge}
-            aria-label={t("projects_ui.commercialProjectAria", {
+            aria-label={t("projects.card.commercialAria", {
               default: "Commercial project",
             })}
           >
@@ -36,7 +36,7 @@ export const ProjectCardTooltip = ({
             side="top"
             sideOffset={6}
           >
-            {t("projects_ui.commercial", { default: "Commercial project" })}
+            {t("projects.card.commercial", { default: "Commercial" })}
             <Tooltip.Arrow className={styles.tooltipArrow} />
           </Tooltip.Content>
         </Tooltip.Portal>

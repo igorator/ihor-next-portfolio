@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { ProjectWithTechnologies } from "@/entities/project/types";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
-import { ProjectOverviewCard } from "../ProjectOverviewCard/ProjectOverviewCard";
+import { ProjectsStatsCard } from "../ProjectsStatsCard/ProjectsStatsCard";
 import styles from "./ProjectGrid.module.css";
 
 type ProjectsGridProps = {
@@ -24,7 +24,7 @@ export const ProjectsGrid = ({
   viewMode = "grid",
   hasActiveFilters = false,
 }: ProjectsGridProps) => {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projects");
 
   const gridKey = viewMode + projects.map((p) => p.slug).join(",");
 
@@ -41,7 +41,7 @@ export const ProjectsGrid = ({
         {projects.length > 0 ? (
           <>
             {viewMode === "grid" && !hasActiveFilters && (
-              <ProjectOverviewCard
+              <ProjectsStatsCard
                 commercialCount={commercialCount}
                 personalCount={personalCount}
               />

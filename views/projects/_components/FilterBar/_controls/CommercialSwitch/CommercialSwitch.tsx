@@ -20,7 +20,7 @@ export const CommercialSwitch = ({
 
   return (
     <LabeledSwitch
-      label={t("projects_ui.onlyCommercialProjects", {
+      label={t("projects.filters.commercial", {
         default: "Commercial only",
       })}
       checked={value}

@@ -8,7 +8,7 @@ import styles from "./DescriptionCard.module.css";
 type Props = { description: string };
 
 export function DescriptionCard({ description }: Props) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
   return (
     <Card className={layout.descriptionCard}>
       <h2 className={layout.cardTitle}>{t("descriptionTitle")}</h2>

@@ -4,7 +4,7 @@ import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { NavButton } from "@/shared/ui/NavButton/NavButton";
 import { Spinner } from "@/shared/loading";
 import type { MediaItem } from "@/shared/ui/Lightbox/types";
 import { Card } from "@/shared/ui/Card";
@@ -54,7 +54,7 @@ export function ImageCard({
   onGoTo,
   onOpenLightbox,
 }: Props) {
-  const t = useTranslations("projects_ui");
+  const t = useTranslations("projectDetail");
   const [loadedIdx, setLoadedIdx] = useState<number | null>(null);
   const current = items[idx];
   const loading = current?.type !== "video" && loadedIdx !== idx;
@@ -121,22 +121,18 @@ export function ImageCard({
 
           {hasMany && (
             <>
-              <button
-                type="button"
-                className={`${styles.navigationButton} ${styles.previousButton}`}
-                aria-label={t("previousImageAria")}
+              <NavButton
+                variant="previous"
+                ariaLabel={t("previousImageAria")}
                 onClick={onPrev}
-              >
-                <BsArrowLeft />
-              </button>
-              <button
-                type="button"
-                className={`${styles.navigationButton} ${styles.nextButton}`}
-                aria-label={t("nextImageAria")}
+                className={`${styles.navigationButton} ${styles.previousButton}`}
+              />
+              <NavButton
+                variant="next"
+                ariaLabel={t("nextImageAria")}
                 onClick={onNext}
-              >
-                <BsArrowRight />
-              </button>
+                className={`${styles.navigationButton} ${styles.nextButton}`}
+              />
 
               <div className={styles.indicators}>
                 {items.map((item, dotIndex) => (

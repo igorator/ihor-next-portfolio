@@ -7,7 +7,7 @@ import { TechnologyMultiSelect } from "./_controls/TechnologyMultiSelect/Technol
 import { SortSelect } from "./_controls/SortSelect/SortSelect";
 import { CommercialSwitch } from "./_controls/CommercialSwitch/CommercialSwitch";
 import { FilterClearButton } from "./_controls/FilterClearButton/FilterClearButton";
-import type { SortKey } from "../useProjectFilters";
+import type { SortKey } from "../../_hooks/useProjectFilters";
 import styles from "./FilterBar.module.css";
 
 interface FilterBarProps {

@@ -4,7 +4,7 @@ import type { Locale } from "next-intl";
 import projectBase from "@/entities/project/data/project_base.json";
 import projectsEn from "@/entities/project/data/projects_en.json";
 import projectsUk from "@/entities/project/data/projects_uk.json";
-import technologiesData from "@/entities/technology/data/technologies.json";
+import { buildTechnologies } from "@/entities/technology/api";
 
 import { listProjectImages } from "./images";
 import { listProjectVideo } from "./videos";
@@ -12,11 +12,8 @@ import type {
   Project,
   ProjectWithTechnologies,
 } from "@/entities/project/types";
-import type { Technology } from "@/entities/technology/types";
 import { mergeProjectsWithTechnologies } from "./mergeProjectsWithTechnologies";
 import { resolveLocale } from "@/shared/server/locale";
-
-const technologies = technologiesData as Technology[];
 
 type ProjectI18n = Pick<Project, "title" | "description" | "type" | "category">;
 
@@ -43,6 +40,7 @@ async function fetchProjects(
   locale: Locale,
 ): Promise<ProjectWithTechnologies[]> {
   const safeLocale = resolveLocale(locale);
+  const technologies = buildTechnologies(safeLocale);
   const i18n = I18N_BY_LOCALE[safeLocale] as Record<string, ProjectI18n>;
 
   const bases = projectBase as Array<
@@ -73,6 +71,7 @@ async function fetchProjectBySlug(
   locale: Locale,
 ): Promise<(ProjectWithTechnologies & { screens: string[] }) | null> {
   const safeLocale = resolveLocale(locale);
+  const technologies = buildTechnologies(safeLocale);
   const i18n = I18N_BY_LOCALE[safeLocale] as Record<string, ProjectI18n>;
 
   const bases = projectBase as Array<

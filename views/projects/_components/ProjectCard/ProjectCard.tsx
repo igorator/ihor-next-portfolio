@@ -174,8 +174,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   {
                     href: demoUrl,
                     Icon: BsGlobe2,
-                    label: t("projects_ui.links.liveDemo", {
-                      default: "Live demo",
+                    label: t("projects.card.liveDemo", {
+                      default: "Live Demo",
                     }),
                   },
                 ]
@@ -184,8 +184,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href: gl.url,
               Icon: BsGithub,
               label:
-                gl.label ??
-                t("projects_ui.links.github", { default: "GitHub" }),
+                gl.label ?? t("projects.card.github", { default: "GitHub" }),
             })),
           ]
             .slice(0, 2)
@@ -205,8 +204,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Link
           href={`/projects/${slug}`}
           rel="noopener noreferrer"
-          aria-label={t("projects_ui.viewProjectAria", { title })}
-          title={t("projects_ui.viewProjectAria", { title })}
+          aria-label={t("projects.card.viewAria", { title })}
+          title={t("projects.card.viewAria", { title })}
           className={styles.arrowLink}
         >
           <BsBoxArrowUpRight size={18} aria-hidden="true" />

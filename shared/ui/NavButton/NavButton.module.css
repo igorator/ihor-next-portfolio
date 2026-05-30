@@ -1,0 +1,24 @@
+.navButton {
+  --size: 36px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--foreground) 22%, transparent);
+  background: color-mix(in srgb, var(--background) 70%, transparent);
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(140%);
+  color: var(--foreground);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--foreground) 10%, transparent);
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s,
+    box-shadow 0.15s;
+}
+
+.navButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}

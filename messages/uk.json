@@ -1,6 +1,20 @@
 {
-  "loading": {
-    "loading": "Завантаження..."
+  "common": {
+    "loading": "Завантаження...",
+    "scrollToTop": "Прокрутити вгору"
+  },
+
+  "a11y": {
+    "toggleTheme": "Змінити тему оформлення",
+    "language": "Мова",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню"
+  },
+
+  "navigation": {
+    "root": "Головна",
+    "projects": "Проекти",
+    "employment": "Досвід"
   },
 
   "home": {
@@ -10,48 +24,32 @@
     "rolePrefix": "і я",
     "role": "Розробник"
   },
-  "navigation": {
-    "root": "Головна",
-    "projects": "Проекти",
-    "employment": "Досвід"
-  },
+
   "projects": {
     "title": "Проекти",
+    "noMatches": "Жоден проект не відповідає фільтрам",
     "filters": {
       "technologies": "Технології",
       "sort": "Сортувати за",
       "clear": "Очистити фільтри",
       "selected": "{count, plural, =0{Виберіть технології} =1{# вибрано} other{# вибрано}}",
+      "commercial": "Тільки комерційні",
       "options": {
         "newest": "Найновіші",
         "oldest": "Найстаріші",
         "az": "A-Z",
         "za": "Z-A"
       }
-    }
-  },
-  "projects_ui": {
-    "back": "Назад",
-    "backToProjectsAria": "Назад до проєктів",
-    "viewProjectAria": "Детальніше: {title}",
-    "technologiesTitle": "Технології",
-    "linksTitle": "Посилання",
-    "type": "Тип",
-    "category": "Категорія",
-    "date": "Дата",
-    "descriptionTitle": "Опис",
-    "noTechnologies": "Технології не вказані.",
-    "openImageAria": "Відкрити зображення в лайтбоксі",
-    "openVideoAria": "Відкрити відео в лайтбоксі",
-    "imageAltCover": "{title}: обкладинка",
-    "noMatches": "Жоден проект не відповідає фільтрам",
-    "links": {
+    },
+    "card": {
+      "viewAria": "Детальніше: {title}",
+      "commercial": "Комерційний",
+      "commercialAria": "Комерційний проєкт",
       "github": "GitHub",
       "liveDemo": "Демо"
     },
-    "other": {
+    "overview": {
       "label": "Каталог проєктів",
-      "title": "Проєкти",
       "commercial": "Комерційні",
       "personal": "Особисті",
       "description": "Це каталог моїх проектів, від комерційних до особистих. Не всі роботи представлені тут з різних причин:",
@@ -68,17 +66,31 @@
         "Сертифікації"
       ],
       "stackHighlightsAria": "Основні технології"
-    },
+    }
+  },
+
+  "projectDetail": {
+    "back": "Назад",
+    "backToProjectsAria": "Назад до проєктів",
+    "technologiesTitle": "Технології",
+    "linksTitle": "Посилання",
+    "github": "GitHub",
+    "liveDemo": "Демо",
+    "type": "Тип",
+    "category": "Категорія",
+    "date": "Дата",
+    "descriptionTitle": "Опис",
+    "noTechnologies": "Технології не вказані.",
     "noLinks": "Нема посилань",
     "noImages": "Ще нема зображень",
-    "commercial": "Комерційний",
-    "onlyCommercialProjects": "Тільки комерційні",
+    "imageAltCover": "{title}: обкладинка",
+    "openImageAria": "Відкрити зображення в лайтбоксі",
+    "openVideoAria": "Відкрити відео в лайтбоксі",
     "previousImageAria": "Попереднє зображення",
     "nextImageAria": "Наступне зображення",
     "goToImageAria": "Перейти до зображення {index}",
     "technologyStackAria": "Стек технологій",
     "stackHighlightsAria": "Основні технології",
-    "commercialProjectAria": "Комерційний проєкт",
     "lightbox": {
       "closeAria": "Закрити",
       "previousAria": "Попереднє",
@@ -88,24 +100,21 @@
       "imageAlt": "{title}: зображення {current} з {total}"
     }
   },
+
   "employment": {
     "title": "Досвід роботи",
     "linkedProjects": "Пов'язані проєкти",
     "present": "Донині"
   },
+
   "error": {
     "title": "Щось пішло не так",
     "tryAgain": "Спробувати знову",
     "backHome": "На головну"
   },
+
   "notFound": {
     "title": "Сторінку не знайдено",
     "backHome": "На головну"
-  },
-  "a11y": {
-    "toggleTheme": "Змінити тему оформлення",
-    "language": "Мова",
-    "openMenu": "Відкрити меню",
-    "closeMenu": "Закрити меню"
   }
 }
