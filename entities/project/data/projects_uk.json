@@ -7,9 +7,9 @@
   },
   "perion-test": {
     "title": "ТЗ Perion",
-    "description": "Лендінг для тестового завдання з насиченими скрол-анімаціями та анімаціями появи елементів, зроблено на GSAP.",
-    "type": "фронтенд",
-    "category": "тестове завдання"
+    "description": "Лендінг для тестового завдання зі скрол-анімаціями та анімаціями появи елементів, зроблено на GSAP.",
+    "type": "тестове завдання",
+    "category": "лендінг"
   },
   "atmosphere-school-test": {
     "title": "ТЗ Atmosphere School",
@@ -24,21 +24,21 @@
     "category": "фронтенд"
   },
   "portfolio": {
-    "title": "Цей вебсайт",
-    "description": "Особисте портфоліо розробника на Next.js, CSS Modules, Framer Motion і next-intl (EN/UK); секції з проектами, досвідом роботи, завантаженням CV та посиланнями на GitHub, LinkedIn і Upwork.",
-    "type": "стартап",
+    "title": "Портфоліо",
+    "description": "Зроблено на Next.js, CSS Modules, Framer Motion і next-intl. Двомовний (EN/UK). Каталог проєктів з фільтрами, досвід роботи та завантаження CV.",
+    "type": "особистий",
     "category": "портфоліо"
   },
   "doido-market": {
     "title": "DOIDO Market",
-    "description": "Web3 NFT-маркетплейс для Telegram Gifts у браузері та як Telegram Mini App; фронтенд на React, Redux Toolkit і React Router v7; бекенд на Node.js, Express і TypeORM; TON-платежі, Telegram-авторизація, Telegram-бот, а також розробка та тестування смарт-контрактів через фреймворк Blueprint.",
+    "description": "NFT-маркетплейс для Telegram Gifts, працює як браузерний додаток і Telegram Mini App. Фронтенд на React, Redux Toolkit і React Router v7, бекенд на Node.js, Express і TypeORM. TON-платежі, Telegram-авторизація, бот і смарт-контракти через Blueprint.",
     "type": "стартап",
-    "category": "NFT маркетплейс"
+    "category": "маркетплейс"
   },
   "zycsel-store-bot": {
     "title": "Zycsel Store Bot",
     "description": "Telegram-бот для пошуку й каталогу одягу із базою даних Supabase, на Node.js з фреймворком GrammY та інтеграцією Telegram API.",
-    "type": "сервіс",
+    "type": "стартап",
     "category": "бот"
   },
   "studio-dashboard": {
@@ -49,8 +49,8 @@
   },
   "3mpq-studio-lite": {
     "title": "3mpq Studio Lite",
-    "description": "Сайт агентства 3mpq Studio на Next.js, Tailwind і Zustand; мультимовність через next-intl, форми зворотнього зв'язку на React Hook Form і плавні анімації через Framer Motion.",
-    "type": "агентство",
+    "description": "Сайт агентства 3mpq Studio на Next.js, Tailwind і Zustand; мультимовність через next-intl, форми зворотнього зв'язку на React Hook Form і анімації через Framer Motion.",
+    "type": "бізнес",
     "category": "лендінг"
   },
   "webwise": {
@@ -74,21 +74,21 @@
   "custom-globe": {
     "title": "Кастомний Three.js глобус",
     "description": "Кастомний 3D-глобус на Three.js як анімований фоновий елемент для Webflow-сайту клієнта, замовлення через Upwork.",
-    "type": "3D",
+    "type": "фріланс",
     "category": "інтеграція"
   },
   "out-of-the-box-test": {
     "title": "ТЗ Out-of-the-box",
-    "description": "Лендінг для тестового завдання з розширеними анімаціями",
-    "type": "фронтенд",
-    "category": "тестове-завдання"
+    "description": "Лендінг для тестового завдання з акцентом на анімації.",
+    "type": "тестове завдання",
+    "category": "лендінг"
   },
 
   "scart-test": {
     "title": "Scart Test",
-    "description": "Невеликий тестовий проєкт на React і Tailwind, зосереджений на верстці та чистому коді.",
-    "type": "фронтенд",
-    "category": "тестове завдання"
+    "description": "Невеликий тестовий проєкт на React і Tailwind, зосереджений на верстці та якості коду.",
+    "type": "тестове завдання",
+    "category": "фронтенд"
   },
   "rely-test": {
     "title": "Rely Test",
@@ -110,7 +110,7 @@
   },
   "dovira": {
     "title": "Dovira by Logics7",
-    "description": "Сайт ініціативи Dovira, української платформи психологічної підтримки з безкоштовними онлайн-консультаціями, відеоконтентом, стрим-сесіями та тестами для цивільних і військових, постраждалих від війни. Зроблено у Webflow.",
+    "description": "Сайт Dovira, платформи психологічної підтримки з безкоштовними онлайн-консультаціями, відеоконтентом, стрим-сесіями та тестами для цивільних і військових, постраждалих від війни. Зроблено у Webflow.",
     "type": "психологія",
     "category": "лендінг"
   },
@@ -122,7 +122,7 @@
   },
   "evogym": {
     "title": "EvoGym",
-    "description": "Сучасний фітнес-лендінг із анімаціями та адаптивом на React, Tailwind і Framer Motion.",
+    "description": "Фітнес-лендінг із анімаціями та адаптивом на React, Tailwind і Framer Motion.",
     "type": "навчальний",
     "category": "лендінг"
   },
@@ -134,7 +134,7 @@
   },
   "cashdata": {
     "title": "CASHData",
-    "description": "Леднінг прототипу вебдодатку для відстеження витрат і візуалізації даних на React і Tailwind.",
+    "description": "Лендінг прототипу вебдодатку для відстеження витрат і візуалізації даних на React і Tailwind.",
     "type": "навчальний",
     "category": "лендінг"
   }
