@@ -1,41 +1,113 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useInView, useMotionValue, useSpring } from "motion/react";
+import { useCallback, useEffect, useRef } from "react";
 
 type Props = {
   to: number;
+  from?: number;
+  direction?: "up" | "down";
+  delay?: number;
   duration?: number;
+  className?: string;
+  startWhen?: boolean;
+  separator?: string;
+  onStart?: () => void;
+  onEnd?: () => void;
 };
 
-export function CountUp({ to, duration = 1400 }: Props) {
-  const [count, setCount] = useState(0);
+export function CountUp({
+  to,
+  from = 0,
+  direction = "up",
+  delay = 0,
+  duration = 0.5,
+  className = "",
+  startWhen = true,
+  separator = "",
+  onStart,
+  onEnd,
+}: Props) {
   const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(direction === "down" ? to : from);
+
+  const damping = 20 + 40 * (1 / duration);
+  const stiffness = 100 * (1 / duration);
+
+  const springValue = useSpring(motionValue, { damping, stiffness });
+
+  const isInView = useInView(ref, { once: true, margin: "0px" });
+
+  const getDecimalPlaces = (num: number): number => {
+    const str = num.toString();
+    if (str.includes(".")) {
+      const decimals = str.split(".")[1];
+      if (parseInt(decimals ?? "0") !== 0) return decimals!.length;
+    }
+    return 0;
+  };
+
+  const maxDecimals = Math.max(getDecimalPlaces(from), getDecimalPlaces(to));
+
+  const formatValue = useCallback(
+    (latest: number) => {
+      const hasDecimals = maxDecimals > 0;
+      const options: Intl.NumberFormatOptions = {
+        useGrouping: !!separator,
+        minimumFractionDigits: hasDecimals ? maxDecimals : 0,
+        maximumFractionDigits: hasDecimals ? maxDecimals : 0,
+      };
+      const formatted = Intl.NumberFormat("en-US", options).format(latest);
+      return separator ? formatted.replace(/,/g, separator) : formatted;
+    },
+    [maxDecimals, separator],
+  );
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (ref.current) {
+      ref.current.textContent = formatValue(direction === "down" ? to : from);
+    }
+  }, [from, to, direction, formatValue]);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        observer.disconnect();
+  useEffect(() => {
+    if (isInView && startWhen) {
+      onStart?.();
 
-        const start = performance.now();
-        const tick = (now: number) => {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-          setCount(Math.round(eased * to));
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.5 },
-    );
+      const timeoutId = setTimeout(() => {
+        motionValue.set(direction === "down" ? from : to);
+      }, delay * 1000);
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [to, duration]);
+      const endTimeoutId = setTimeout(
+        () => {
+          onEnd?.();
+        },
+        delay * 1000 + duration * 1000,
+      );
 
-  return <span ref={ref}>{count}</span>;
+      return () => {
+        clearTimeout(timeoutId);
+        clearTimeout(endTimeoutId);
+      };
+    }
+  }, [
+    isInView,
+    startWhen,
+    motionValue,
+    direction,
+    from,
+    to,
+    delay,
+    onStart,
+    onEnd,
+    duration,
+  ]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest: number) => {
+      if (ref.current) ref.current.textContent = formatValue(latest);
+    });
+    return () => unsubscribe();
+  }, [springValue, formatValue]);
+
+  return <span className={className} ref={ref} />;
 }
