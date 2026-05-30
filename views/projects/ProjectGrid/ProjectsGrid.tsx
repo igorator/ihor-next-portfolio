@@ -9,6 +9,8 @@ import styles from "./ProjectGrid.module.css";
 
 type ProjectsGridProps = {
   projects: ProjectWithTechnologies[];
+  commercialCount?: number;
+  personalCount?: number;
   onTechnologyClick?: (techId: string) => void;
   viewMode?: "grid" | "list";
   hasActiveFilters?: boolean;
@@ -16,6 +18,8 @@ type ProjectsGridProps = {
 
 export const ProjectsGrid = ({
   projects,
+  commercialCount = 0,
+  personalCount = 0,
   onTechnologyClick,
   viewMode = "grid",
   hasActiveFilters = false,
@@ -37,7 +41,10 @@ export const ProjectsGrid = ({
         {projects.length > 0 ? (
           <>
             {viewMode === "grid" && !hasActiveFilters && (
-              <ProjectOverviewCard />
+              <ProjectOverviewCard
+                commercialCount={commercialCount}
+                personalCount={personalCount}
+              />
             )}
 
             {projects.map((project) => (

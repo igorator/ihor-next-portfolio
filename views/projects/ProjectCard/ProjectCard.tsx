@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
-import { BsArrowRight, BsGithub, BsGlobe2 } from "react-icons/bs";
+import { BsBoxArrowUpRight, BsGithub, BsGlobe2 } from "react-icons/bs";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/shared/ui/Card";
 import type { GithubUrlValue } from "@/entities/project/types";
@@ -206,8 +206,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           href={`/projects/${slug}`}
           rel="noopener noreferrer"
           aria-label={t("projects_ui.viewProjectAria", { title })}
+          title={t("projects_ui.viewProjectAria", { title })}
+          className={styles.arrowLink}
         >
-          <BsArrowRight size={22} aria-hidden="true" />
+          <BsBoxArrowUpRight size={18} aria-hidden="true" />
         </Link>
       </div>
     </Card>

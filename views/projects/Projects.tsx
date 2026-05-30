@@ -63,6 +63,8 @@ export const ProjectsSection = ({
 
       <ProjectsGrid
         projects={filteredProjects}
+        commercialCount={projects.filter((p) => p.isCommercial).length}
+        personalCount={projects.filter((p) => !p.isCommercial).length}
         onTechnologyClick={setOnlyTechnology}
         viewMode={viewMode}
         hasActiveFilters={hasActiveFilters}

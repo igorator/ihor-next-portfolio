@@ -60,13 +60,15 @@
   cursor: pointer;
   transition:
     background var(--transition-fast),
-    border-color var(--transition-fast);
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .tech:hover {
-  --tech-bg: color-mix(in srgb, var(--tech-color) 25%, transparent);
+  --tech-bg: color-mix(in srgb, var(--tech-color) 28%, transparent);
   --tech-text: var(--tech-color);
-  border-color: color-mix(in srgb, var(--tech-color) 65%, transparent);
+  border-color: color-mix(in srgb, var(--tech-color) 70%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tech-color) 20%, transparent);
 }
 
 .links {
@@ -78,17 +80,22 @@
   display: inline-flex;
   align-items: center;
   gap: var(--element-gap);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
   text-decoration: none;
   font-weight: 500;
   font-size: var(--text-sm);
-  transition: border-color var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .links a:hover {
-  border-color: color-mix(in srgb, var(--foreground) 40%, transparent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--foreground);
 }
 
 .githubIcon {
@@ -118,7 +125,8 @@
   filter: saturate(0.88) brightness(0.96);
 }
 
-.coverLink:hover .coverImage {
+.coverLink:hover .coverImage,
+.projectCard:has(.arrowLink:hover) .coverImage {
   transform: scale(1.04);
   filter: saturate(1) brightness(1);
 }
@@ -170,7 +178,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-3);
   padding-top: var(--space-4);
+}
+
+.arrowLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.arrowLink:hover,
+.projectCard:has(.coverLink:hover) .arrowLink {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--foreground);
 }
 
 .commercialBadge {
@@ -214,6 +246,12 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (--tablet) {
+  .projectCard {
+    padding: var(--space-4);
   }
 }
 
@@ -388,6 +426,7 @@
 
 @media (--mobile) {
   .listCard {
+    --list-row-h: 88px;
     grid-template-columns: 28px 1fr auto;
     grid-template-rows: auto auto;
     grid-template-areas:

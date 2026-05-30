@@ -33,7 +33,7 @@
   "projects_ui": {
     "back": "Назад",
     "backToProjectsAria": "Назад до проєктів",
-    "viewProjectAria": "Переглянути проєкт {title}",
+    "viewProjectAria": "Детальніше: {title}",
     "technologiesTitle": "Технології",
     "linksTitle": "Посилання",
     "type": "Тип",
@@ -50,7 +50,10 @@
       "liveDemo": "Демо"
     },
     "other": {
+      "label": "Каталог проєктів",
       "title": "Проєкти",
+      "commercial": "Комерційні",
+      "personal": "Особисті",
       "description": "Це каталог моїх проектів, від комерційних до особистих. Не всі роботи представлені тут з різних причин:",
       "reasons": [
         "NDA",
