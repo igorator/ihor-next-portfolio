@@ -17,7 +17,7 @@ export function CountUp({ to, duration = 1400 }: Props) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
+        if (!entry?.isIntersecting) return;
         observer.disconnect();
 
         const start = performance.now();
