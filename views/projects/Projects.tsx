@@ -1,21 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
-import { useRouter, usePathname } from "@/i18n/navigation";
 import { Section } from "@/shared/ui/Section/Section";
-import { Card } from "@/shared/ui/Card";
-import { InputWrapper } from "@/shared/ui/InputWrapper";
 import type { ProjectWithTechnologies } from "@/entities/project/types";
 import type { Technology } from "@/entities/technology/types";
-import { TechnologyMultiSelect } from "./filters/TechnologyMultiSelect/TechnologyMultiSelect";
-import { SortSelect } from "./filters/SortSelect/SortSelect";
-import { CommercialSwitch } from "./filters/CommercialSwitch/CommercialSwitch";
-import { ViewToggleButton } from "./filters/ViewToggleButton/ViewToggleButton";
-import { FilterClearButton } from "./filters/FilterClearButton/FilterClearButton";
-import { useProjectFilters } from "./filters/useProjectFilters";
-import { ProjectsGrid } from "./components/ProjectGrid/ProjectsGrid";
+import { useScrollToTop } from "@/shared/hooks/useScrollToTop";
+import { useProjectFilters } from "./useProjectFilters";
+import { useViewMode } from "./useViewMode";
+import { FilterBar } from "./FilterBar/FilterBar";
+import { ControlsBar } from "./ControlsBar/ControlsBar";
+import { ProjectsGrid } from "./ProjectGrid/ProjectsGrid";
 import styles from "./Projects.module.css";
 
 interface ProjectsSectionProps {
@@ -39,92 +33,33 @@ export const ProjectsSection = ({
     availableTechnologies,
     commercialOnly,
     setCommercialOnly,
+    hasActiveFilters,
     clearAll,
   } = useProjectFilters(projects, technologies);
 
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
+  const { viewMode, toggleViewMode } = useViewMode();
 
-  const viewMode = (searchParams.get("view") as "grid" | "list") ?? "grid";
-  const toggleViewMode = () => {
-    const next = viewMode === "grid" ? "list" : "grid";
-    const params = new URLSearchParams(searchParams.toString());
-    if (next === "grid") params.delete("view");
-    else params.set("view", "list");
-    const qs = params.toString();
-    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
-  };
-
-  const techs = availableTechnologies ?? technologies;
-  const loading = !techs || techs.length === 0;
-  const hasActiveFilters =
-    selectedTechs.length > 0 || sortBy !== "newest" || !commercialOnly;
-
-  const didMount = useRef(false);
-  const selectedTechsKey = selectedTechs.join(",");
-  useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-      return;
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [selectedTechsKey, sortBy, commercialOnly]);
+  useScrollToTop(selectedTechs.join(","), sortBy, commercialOnly);
 
   return (
     <Section className={styles.projectSection}>
       <h2 className={styles.title}>{t("title")}</h2>
 
-      <Card className={styles.filtersBar} aria-busy={loading}>
-        <InputWrapper
-          className={styles.technologySelectWrapper}
-          data-active={selectedTechs.length > 0 || undefined}
-        >
-          <TechnologyMultiSelect
-            technologies={techs}
-            selectedTechnologies={selectedTechs}
-            onToggle={toggleTech}
-            loading={loading}
-          />
-        </InputWrapper>
-
-        <InputWrapper
-          className={styles.sortSelectWrapper}
-          data-active={sortBy !== "newest" || undefined}
-        >
-          <SortSelect value={sortBy} onChange={setSortBy} loading={loading} />
-        </InputWrapper>
-
-        <InputWrapper
-          className={styles.commercialSwitchWrapper}
-          data-active={!commercialOnly || undefined}
-        >
-          <CommercialSwitch
-            value={commercialOnly}
-            onChange={setCommercialOnly}
-            loading={loading}
-          />
-        </InputWrapper>
-
-        <InputWrapper className={styles.viewToggleWrapper}>
-          <ViewToggleButton
-            viewMode={viewMode}
-            onToggle={toggleViewMode}
-            loading={loading}
-          />
-        </InputWrapper>
-
-        <InputWrapper
-          className={styles.filterClearButtonWrapper}
-          data-active={hasActiveFilters || undefined}
-        >
-          <FilterClearButton
-            onClear={clearAll}
-            disabled={!hasActiveFilters}
-            loading={loading}
-          />
-        </InputWrapper>
-      </Card>
+      <div className={styles.controlsRow}>
+        <FilterBar
+          availableTechnologies={availableTechnologies}
+          technologies={technologies}
+          selectedTechs={selectedTechs}
+          onToggleTech={toggleTech}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+          commercialOnly={commercialOnly}
+          onCommercialChange={setCommercialOnly}
+          onClearAll={clearAll}
+          hasActiveFilters={hasActiveFilters}
+        />
+        <ControlsBar viewMode={viewMode} onToggleView={toggleViewMode} />
+      </div>
 
       <ProjectsGrid
         projects={filteredProjects}

@@ -1,0 +1,23 @@
+.controlsBar {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: var(--space-4);
+  padding: var(--space-3);
+}
+
+.viewToggleWrapper {
+  display: flex;
+  align-self: center;
+  height: 100%;
+}
+
+.viewToggleWrapper button {
+  font-size: var(--text-xl);
+}
+
+@media (--tablet) {
+  .controlsBar {
+    display: none;
+  }
+}

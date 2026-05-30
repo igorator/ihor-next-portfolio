@@ -131,7 +131,7 @@
   color: color-mix(in srgb, var(--foreground) 60%, transparent);
 }
 
-@media (max-width: 720px) {
+@media (--mobile) {
   .content {
     width: var(--radix-dropdown-menu-trigger-width);
   }

@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/shared/ui/Card";
 import type { GithubUrlValue } from "@/entities/project/types";
 import { normalizeGithubLinks } from "@/entities/project/lib/normalizeGithubLinks";
+import { FadeMask } from "@/shared/ui/FadeMask";
 import { ProjectCardTooltip } from "./ProjectCardTooltip/ProjectCardTooltip";
 import styles from "./ProjectCard.module.css";
 
@@ -125,37 +126,45 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         {description}
       </p>
 
-      {!!technologies?.length && (
-        <div className={styles.technologies}>
-          {technologies.slice(0, viewMode === "list" ? 4 : 6).map((tech) => (
-            <button
-              key={tech.id}
-              className={styles.tech}
-              style={
-                {
-                  "--tech-color": tech.color,
-                  "--tech-text": tech.textColor ?? tech.color,
-                  "--tech-bg": tech.textColor
-                    ? tech.color
-                    : `color-mix(in srgb, ${tech.color} 12%, transparent)`,
-                } as React.CSSProperties
-              }
-              onClick={() => onTechnologyClick?.(tech.id)}
-              type="button"
-              title={tech.name}
-            >
-              {tech.name}
-            </button>
-          ))}
-          {(() => {
-            const limit = viewMode === "list" ? 4 : 6;
-            const overflow = technologies.length - limit;
-            return overflow > 0 ? (
-              <span className={styles.techMore}>+{overflow}</span>
-            ) : null;
-          })()}
-        </div>
-      )}
+      {!!technologies?.length &&
+        (() => {
+          const TechWrapper = viewMode === "list" ? FadeMask : "div";
+          const wrapperProps =
+            viewMode === "list" ? { variant: "right" as const } : {};
+          return (
+            <TechWrapper className={styles.technologies} {...wrapperProps}>
+              {technologies
+                .slice(0, viewMode === "list" ? 4 : 6)
+                .map((tech) => (
+                  <button
+                    key={tech.id}
+                    className={styles.tech}
+                    style={
+                      {
+                        "--tech-color": tech.color,
+                        "--tech-text": tech.textColor ?? tech.color,
+                        "--tech-bg": tech.textColor
+                          ? tech.color
+                          : `color-mix(in srgb, ${tech.color} 12%, transparent)`,
+                      } as React.CSSProperties
+                    }
+                    onClick={() => onTechnologyClick?.(tech.id)}
+                    type="button"
+                    title={tech.name}
+                  >
+                    {tech.name}
+                  </button>
+                ))}
+              {(() => {
+                const limit = viewMode === "list" ? 4 : 6;
+                const overflow = technologies.length - limit;
+                return overflow > 0 ? (
+                  <span className={styles.techMore}>+{overflow}</span>
+                ) : null;
+              })()}
+            </TechWrapper>
+          );
+        })()}
 
       <div className={styles.cardFooter}>
         <div className={styles.links}>

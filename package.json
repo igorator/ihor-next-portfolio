@@ -31,6 +31,7 @@
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^4.0.0",
     "@types/node": "^25.2.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -44,6 +45,7 @@
     "eslint-plugin-import": "^2.32.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "postcss-custom-media": "^12.0.1",
     "prettier": "^3.8.1",
     "typescript": "^5"
   },

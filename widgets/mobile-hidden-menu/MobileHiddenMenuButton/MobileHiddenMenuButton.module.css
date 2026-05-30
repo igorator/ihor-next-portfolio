@@ -5,7 +5,7 @@
   z-index: 1000;
 }
 
-@media (min-width: 768px) {
+@media (--mobile-up) {
   .wrapper {
     display: none;
   }

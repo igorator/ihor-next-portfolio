@@ -1,0 +1,21 @@
+.mask {
+  --fade-size: 10%;
+}
+
+.left {
+  mask-image: linear-gradient(to right, transparent, black var(--fade-size));
+}
+
+.right {
+  mask-image: linear-gradient(to left, transparent, black var(--fade-size));
+}
+
+.both {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black var(--fade-size),
+    black calc(100% - var(--fade-size)),
+    transparent
+  );
+}

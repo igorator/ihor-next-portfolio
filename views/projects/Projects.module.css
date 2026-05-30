@@ -5,89 +5,25 @@
   text-align: center;
 }
 
-.filtersBar {
+.controlsRow {
   display: flex;
   align-items: stretch;
-  flex-wrap: wrap;
   gap: var(--space-3);
-  font-weight: 500;
-  padding: var(--space-3);
-  width: fit-content;
-  margin-inline: auto;
   position: sticky;
   top: var(--space-4);
   z-index: 20;
-}
-
-.filtersBar > * {
-  flex: 1 1 260px;
-  min-width: 220px;
-}
-
-.filterClearButtonWrapper,
-.viewToggleWrapper {
-  min-width: unset;
-  flex: 0 0 auto;
-}
-
-.technologySelectWrapper,
-.commercialSwitchWrapper,
-.sortSelectWrapper {
   width: fit-content;
-  flex: 0 0 auto;
+  margin-inline: auto;
 }
 
-@media (max-width: 720px) {
-  .viewToggleWrapper {
-    display: none;
+@media (--tablet) {
+  .controlsRow {
+    width: 100%;
   }
+}
 
-  .filtersBar {
+@media (--mobile) {
+  .controlsRow {
     position: static;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "tech tech"
-      "comm sort"
-      "clear clear";
-    gap: var(--space-2);
-  }
-
-  .technologySelectWrapper {
-    grid-area: tech;
-    width: 100%;
-  }
-  .commercialSwitchWrapper {
-    grid-area: comm;
-    width: 100%;
-  }
-  .sortSelectWrapper {
-    grid-area: sort;
-    width: 100%;
-  }
-  .filterClearButtonWrapper {
-    grid-area: clear;
-    width: 100%;
-    aspect-ratio: auto;
-  }
-
-  .filtersBar > * {
-    min-width: 0;
-  }
-
-  .filterClearButtonWrapper :where(button, a) {
-    width: 100%;
-  }
-}
-
-@media (max-width: 420px) {
-  .filtersBar {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "tech"
-      "comm"
-      "sort"
-      "clear";
   }
 }

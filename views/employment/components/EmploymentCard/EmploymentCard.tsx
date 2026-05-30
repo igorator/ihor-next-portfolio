@@ -39,7 +39,7 @@ export const EmploymentCard = ({
         {position && <span className={styles.position}>{position}</span>}
       </header>
 
-      {period && <div className={styles.period}>{period}</div>}
+      {period && <span className={styles.period}>{period}</span>}
 
       <ul className={styles.roles}>
         {roles.map((role) => (

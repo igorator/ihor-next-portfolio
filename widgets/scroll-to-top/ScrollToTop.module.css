@@ -8,7 +8,7 @@
   );
 }
 
-@media (min-width: 721px) {
+@media (--mobile-up) {
   .positioner {
     display: none;
   }
@@ -36,7 +36,7 @@
 .icon {
   width: 18px;
   height: 18px;
-  color: var(--text-muted);
+  color: color-mix(in oklab, var(--foreground) 60%, transparent);
 }
 
 .surface:hover .icon {

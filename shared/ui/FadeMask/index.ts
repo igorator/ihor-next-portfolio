@@ -1,0 +1,1 @@
+export { FadeMask } from "./FadeMask";

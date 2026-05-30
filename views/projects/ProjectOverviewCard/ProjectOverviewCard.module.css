@@ -26,6 +26,7 @@
 
 .description {
   font-size: var(--text-lg, 18px);
+  font-weight: 300;
   color: color-mix(in srgb, var(--foreground, #fff) 90%, transparent);
   line-height: 1.6;
   margin: 0;

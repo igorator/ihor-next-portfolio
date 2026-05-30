@@ -217,7 +217,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (--mobile) {
   .projectCard {
     padding: var(--space-3);
   }
@@ -386,7 +386,7 @@
   background: color-mix(in oklab, var(--accent) 10%, transparent);
 }
 
-@media (max-width: 720px) {
+@media (--mobile) {
   .listCard {
     grid-template-columns: 28px 1fr auto;
     grid-template-rows: auto auto;

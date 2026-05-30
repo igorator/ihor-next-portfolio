@@ -28,6 +28,13 @@
   }
 }
 
+@media (--tablet) {
+  .projectsWrapper {
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+  }
+}
+
 @media (min-width: 1024px) {
   .projectsWrapper {
     grid-template-columns: repeat(3, 1fr);

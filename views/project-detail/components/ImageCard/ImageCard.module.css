@@ -129,7 +129,7 @@
   align-items: center;
 }
 
-@media (max-width: 720px) {
+@media (--mobile) {
   .navigationButton {
     width: 40px;
     height: 40px;

@@ -2,7 +2,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { ProjectWithTechnologies } from "@/entities/project/types";
 import type { Technology } from "@/entities/technology/types";
 
-type SortKey = "newest" | "oldest" | "az" | "za";
+export type SortKey = "newest" | "oldest" | "az" | "za";
 type MatchMode = "any" | "all";
 
 const SORT_VALUES = new Set<SortKey>(["newest", "oldest", "az", "za"]);
@@ -110,6 +110,9 @@ export const useProjectFilters = (
     )
     .toSorted((a, b) => a.priority - b.priority);
 
+  const hasActiveFilters =
+    selectedTechs.length > 0 || sortBy !== "newest" || !commercialOnly;
+
   return {
     selectedTechs,
     sortBy,
@@ -117,6 +120,7 @@ export const useProjectFilters = (
     commercialOnly,
     filteredProjects,
     availableTechnologies,
+    hasActiveFilters,
     toggleTech,
     setOnlyTechnology,
     clearTechnologies,

@@ -1,0 +1,42 @@
+.filtersBar {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-weight: 500;
+  padding: var(--space-3);
+}
+
+.technologySelectWrapper,
+.commercialSwitchWrapper,
+.sortSelectWrapper {
+  flex: 1 0 auto;
+  min-width: 160px;
+}
+
+.filterClearButtonWrapper {
+  flex: 0 0 auto;
+}
+
+.filterClearButtonWrapper button {
+  flex: 1;
+  align-self: stretch;
+}
+
+@media (--tablet) {
+  .filtersBar {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filtersBar > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (--mobile) {
+  .filtersBar {
+    grid-template-columns: 1fr;
+  }
+}

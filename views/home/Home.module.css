@@ -167,7 +167,7 @@
     brightness(var(--navigation-link-active-brightness));
 }
 
-@media (max-width: 720px) {
+@media (--mobile) {
   .navigationList {
     justify-content: center;
   }
@@ -178,7 +178,7 @@
   }
 }
 
-@media (min-width: 721px) {
+@media (--mobile-up) {
   .navigationLink {
     width: auto;
     min-width: var(--navigation-link-min-width);
